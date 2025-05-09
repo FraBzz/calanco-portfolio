@@ -1,12 +1,12 @@
-import React from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import Layout from './components/Layout';
-import Home from './pages/Home';
+import About from './pages/About';
 import Backend from './pages/Backend';
-import Frontend from './pages/Frontend';
-import Mobile from './pages/Mobile';
 import Contact from './pages/Contact';
+import Frontend from './pages/Frontend';
+import Home from './pages/Home';
+import Mobile from './pages/Mobile';
 
 function App() {
   const location = useLocation();
@@ -20,6 +20,7 @@ function App() {
           <Route path="/frontend" element={<Frontend />} />
           <Route path="/mobile" element={<Mobile />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/about" element={<About />} />
         </Routes>
       </AnimatePresence>
     </Layout>

@@ -1,7 +1,7 @@
+import { motion } from 'framer-motion';
+import { ArrowRight, Layout as LayoutIcon, Server, Smartphone } from 'lucide-react';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { ArrowRight, Server, Layout as LayoutIcon, Smartphone } from 'lucide-react';
 
 const Home: React.FC = () => {
   const container = {
@@ -20,6 +20,7 @@ const Home: React.FC = () => {
   };
 
   return (
+    <>
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -85,8 +86,38 @@ const Home: React.FC = () => {
             </motion.div>
           </motion.div>
         </div>
+
+        <motion.div variants={item} className="mt-8 text-center">
+  <Link 
+    to="/about" 
+    className="inline-block text-accent hover:underline text-base sm:text-lg font-medium transition-colors"
+  >
+    Learn more about me
+  </Link>
+</motion.div>
+
+{/* <motion.div variants={item} className="mt-12 flex justify-center">
+<Link 
+  to="/about"
+  className="flex items-center gap-2 bg-neutral-800 hover:bg-neutral-700 text-white font-medium px-6 py-3 rounded-md transition-colors"
+>
+  Learn more about me
+  <ArrowRight className="h-5 w-5" />
+</Link>
+</motion.div> */}
       </section>
+      
+      {/* <AboutMe /> */}
+      
     </motion.div>
+
+
+
+
+
+
+</>
+
   );
 };
 

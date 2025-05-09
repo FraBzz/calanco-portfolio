@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import { Menu, Moon, Parentheses, Sun, X } from 'lucide-react';
+import { Menu, Moon, Sun, X } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
@@ -73,9 +73,15 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
           <NavLink to="/" className="flex items-center gap-2">
             {/* <Code2 className="h-6 w-6 text-accent" /> */}
-            <h1 className="text-xl font-display font-bold">calanco</h1>
+            <span className="flex items-center text-xl font-display font-bold leading-none">
+  <span className="text-accent mr-[1px]">{'{'}</span>
+  <span className="-ml-[1px]">c</span>
+  <span className="text-accent mr-2">{'}'}</span>
+  <span className="">calanco</span>
+</span>
+
             
-            <Parentheses className="h-6 w-6 text-accent" />
+            {/* <Parentheses className="h-6 w-6 text-accent -ml-1" /> */}
           </NavLink>
 
           <nav className="hidden md:flex items-center gap-6">
@@ -102,6 +108,14 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               }
             >
               Mobile
+            </NavLink>
+            <NavLink 
+              to="/about"
+              className={({ isActive }) => 
+                `font-medium transition-colors ${isActive ? 'text-accent' : 'hover:text-accent'}`
+              }
+            >
+              About
             </NavLink>
             <NavLink 
               to="/contact"
@@ -216,6 +230,19 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                   }
                 >
                   Mobile
+                </NavLink>
+                <NavLink 
+                  to="/about"
+                  onClick={closeMenu}
+                  className={({ isActive }) => 
+                    `p-2 rounded-md font-medium transition-colors ${
+                      isActive 
+                        ? 'bg-accent/10 text-accent' 
+                        : 'hover:bg-gray-100 dark:hover:bg-gray-800'
+                    }`
+                  }
+                >
+                  About
                 </NavLink>
                 <NavLink 
                   to="/contact"
