@@ -2,12 +2,21 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Search, Cloud, CloudRain, Sun, CloudFog, CloudLightning, Wind } from 'lucide-react';
 
+interface ForecastDay {
+  day: string;
+  high: number;
+  low: number;
+  condition: 'sunny' | 'cloudy' | 'rainy' | 'stormy' | 'foggy';
+}
+
 interface WeatherData {
   location: string;
   temperature: number;
   humidity: number;
   wind: number;
   condition: 'sunny' | 'cloudy' | 'rainy' | 'stormy' | 'foggy';
+  forecast: ForecastDay[];
+  advice: string;
 }
 
 const WeatherDemo: React.FC = () => {
@@ -31,15 +40,42 @@ const WeatherDemo: React.FC = () => {
     setTimeout(() => {
       const conditions: Array<'sunny' | 'cloudy' | 'rainy' | 'stormy' | 'foggy'> = ['sunny', 'cloudy', 'rainy', 'stormy', 'foggy'];
       const randomCondition = conditions[Math.floor(Math.random() * conditions.length)];
-      
+
+      // Generate forecast for next 3 days
+      const daysOfWeek = [
+        'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'
+      ];
+      const today = new Date();
+      const forecast: ForecastDay[] = Array.from({ length: 3 }).map((_, i) => {
+        const date = new Date(today);
+        date.setDate(today.getDate() + i + 1);
+        const day = daysOfWeek[date.getDay()];
+        const high = Math.floor(Math.random() * 10) + 20; // 20-29°C
+        const low = high - Math.floor(Math.random() * 7) - 2; // high-2 to high-8
+        const condition = conditions[Math.floor(Math.random() * conditions.length)];
+        return { day, high, low, condition };
+      });
+
+      // Simulate advice from API
+      const advices = [
+        'Always carry an umbrella!',
+        'Don’t forget your sunscreen.',
+        'Today is perfect for a walk.',
+        'Watch out for strong winds!',
+        'Ideal day to stay home and read.'
+      ];
+      const advice = advices[Math.floor(Math.random() * advices.length)];
+
       setWeather({
         location: searchQuery,
         temperature: Math.floor(Math.random() * 30) + 5, // 5-35°C
         humidity: Math.floor(Math.random() * 70) + 30, // 30-100%
         wind: Math.floor(Math.random() * 20) + 1, // 1-20 km/h
-        condition: randomCondition
+        condition: randomCondition,
+        forecast,
+        advice,
       });
-      
+
       setIsLoading(false);
     }, 1200);
   };
@@ -97,6 +133,7 @@ const WeatherDemo: React.FC = () => {
         )}
       </form>
       
+
       {weather && (
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -111,13 +148,12 @@ const WeatherDemo: React.FC = () => {
                 Today's weather
               </p>
             </div>
-            
             <div className="flex flex-col items-center">
               {getWeatherIcon(weather.condition)}
               <span className="mt-1 font-medium">{getConditionLabel(weather.condition)}</span>
             </div>
           </div>
-          
+
           <div className="mt-6 grid grid-cols-3 gap-4 text-center">
             <div className="bg-gray-50 dark:bg-gray-900 p-3 rounded">
               <div className="text-3xl font-display font-bold mb-1">
@@ -125,14 +161,12 @@ const WeatherDemo: React.FC = () => {
               </div>
               <div className="text-sm text-gray-600 dark:text-gray-400">Temperature</div>
             </div>
-            
             <div className="bg-gray-50 dark:bg-gray-900 p-3 rounded">
               <div className="text-3xl font-display font-bold mb-1">
                 {weather.humidity}%
               </div>
               <div className="text-sm text-gray-600 dark:text-gray-400">Humidity</div>
             </div>
-            
             <div className="bg-gray-50 dark:bg-gray-900 p-3 rounded">
               <div className="text-3xl font-display font-bold mb-1 flex items-center justify-center">
                 <Wind className="h-5 w-5 mr-1" />
@@ -141,18 +175,36 @@ const WeatherDemo: React.FC = () => {
               <div className="text-sm text-gray-600 dark:text-gray-400">Wind (km/h)</div>
             </div>
           </div>
-          
-          <div className="mt-6 p-3 bg-gray-100 dark:bg-gray-900/80 rounded-md text-xs text-gray-600 dark:text-gray-400">
-            <p className="font-medium mb-1">API Request:</p>
-            <code className="block">
-              GET /api/weather?location={encodeURIComponent(weather.location)}
-            </code>
-            
-            <p className="font-medium mt-3 mb-1">API Response:</p>
-            <pre className="overflow-x-auto">
-              {JSON.stringify(weather, null, 2)}
-            </pre>
+
+          {/* Forecast for next 3 days */}
+          <div className="mt-8">
+          <h4 className="font-semibold mb-3 text-lg">3-day forecast</h4>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              {weather.forecast.map((day, idx) => (
+                <div key={idx} className="bg-gray-50 dark:bg-gray-900 p-4 rounded flex flex-col items-center">
+                  <span className="font-medium mb-1">{day.day}</span>
+                  {getWeatherIcon(day.condition)}
+                  <span className="mt-1 text-sm">{getConditionLabel(day.condition)}</span>
+                  <div className="mt-2 text-base">
+                    <span className="font-bold">{day.high}°C</span>
+                    <span className="mx-1 text-gray-500">/</span>
+                    <span className="text-gray-500">{day.low}°C</span>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
+
+          {/* Advice from API */}
+          {weather.advice && (
+          <div className="mt-6 text-center">
+            <span className="inline-block bg-blue-100 dark:bg-blue-900/40 text-blue-800 dark:text-blue-200 px-4 py-2 rounded font-medium">
+              {weather.advice}
+            </span>
+          </div>)
+          }
+
+          {/* API Request/Response rimossi per una UI più compatta */}
         </motion.div>
       )}
       
