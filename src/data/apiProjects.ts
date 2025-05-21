@@ -98,7 +98,7 @@ export const apiProjects: ApiProject[] = [
   {
     id: 'weather',
     title: 'Weather API Integration',
-    description: 'Reliable weather data API with caching and geolocation support.',
+    description: 'Reliable weather data API with caching and geolocation support. Demo showcases Italian municipalities database integration.',
     stack: ['Node.js', 'Express', 'Axios', 'Redis', 'OpenWeatherMap'],
     features: [
       'Current weather conditions',
