@@ -14,10 +14,8 @@ const WeatherDemo: React.FC = () => {
 
   const handleCitySelect = async (city: Comune) => {
     setIsLoading(true);
-    setError(null);
-
-    try {
-      const response = await fetch(`http://localhost:3000/weather?city=${encodeURIComponent(city.name)},${city.country_code}&days=3`);
+    setError(null);    try {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/weather?city=${encodeURIComponent(city.name)},${city.country_code}&days=3`);
       if (!response.ok) {
         throw new Error('Failed to fetch weather data');
       }
