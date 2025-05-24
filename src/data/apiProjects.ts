@@ -97,35 +97,35 @@ export const apiProjects: ApiProject[] = [
   },
   {
     id: 'weather',
-    title: 'Weather API Integration',
-    description: 'Reliable weather data API with caching and geolocation support. Demo showcases Italian municipalities database integration.',
-    stack: ['Node.js', 'Express', 'Axios', 'Redis', 'OpenWeatherMap'],
+    title: 'Weather API Integration',      
+    description: 'Reliable weather data API with WeatherAPI integration and Italian municipalities database support. Features real-time weather conditions and 3-day forecasts.',
+    stack: ['Nest.js', 'TypeScript', 'WeatherAPI', 'React', 'Tailwind CSS', 'Framer Motion', 'Fuse.js'],
     features: [
-      'Current weather conditions',
-      'Weekly forecasts',
-      'Geolocation support',
-      'Response caching',
-      'Rate limiting',
-      'Weather alerts'
-    ],
-    endpoints: [
-      { method: 'GET', path: '/api/weather/current?location={city}' },
-      { method: 'GET', path: '/api/weather/forecast?location={city}&days={number}' },
-      { method: 'GET', path: '/api/weather/alerts?location={city}' },
-      { method: 'GET', path: '/api/weather/historical?location={city}&date={date}' }
-    ],
-    exampleResponse: {
-      "location": "London",
-      "temperature": 18,
-      "humidity": 65,
-      "wind": 12,
-      "condition": "cloudy",
-      "forecast": [
-        { "day": "Monday", "high": 20, "low": 13, "condition": "partly_cloudy" },
-        { "day": "Tuesday", "high": 22, "low": 14, "condition": "sunny" },
-        { "day": "Wednesday", "high": 19, "low": 12, "condition": "rainy" }
-      ],
-      "lastUpdated": "2023-05-20T11:45:30Z"
+      'Current weather data with temperature, humidity, and wind',
+      '3-day weather forecast',
+      'Smart city search with autocomplete',
+      'Italian municipalities database',
+      'Smart weather advice'
+    ],endpoints: [
+      { method: 'GET', path: '/weather?city={city},{country}&days={number}' }
+    ],exampleResponse: {
+      "type": "success",
+      "data": {
+        "location": "Milano",
+        "temperature": 18,
+        "humidity": 65,
+        "wind": 12,
+        "condition": "cloudy",
+        "forecast": [
+          { "date": "2025-05-24", "maxTemp": 20, "minTemp": 13, "condition": "sunny" },
+          { "date": "2025-05-25", "maxTemp": 22, "minTemp": 14, "condition": "cloudy" },
+          { "date": "2025-05-26", "maxTemp": 19, "minTemp": 12, "condition": "rainy" }
+        ],
+        "advice": "Ottimo momento per una passeggiata all'aperto"
+      },
+      "message": "Success",
+      "status": 200,
+      "timestamp": "2025-05-24T11:45:30Z"
     }
   },
   {
