@@ -36,7 +36,7 @@ export const CurrentWeather: React.FC<CurrentWeatherProps> = ({ weather }) => {
     >
       <div className="flex flex-col sm:flex-row items-center sm:justify-between">
         <div className="text-center sm:text-left mb-4 sm:mb-0">
-          <h3 className="text-2xl font-bold mb-1">{weather.location}</h3>
+          <h3 className="text-xl sm:text-2xl font-bold mb-1">{weather.location}</h3>
           <p className="text-gray-600 dark:text-gray-400">
             Today's weather
           </p>
@@ -47,25 +47,34 @@ export const CurrentWeather: React.FC<CurrentWeatherProps> = ({ weather }) => {
         </div>
       </div>
 
-      <div className="mt-6 grid grid-cols-3 gap-4 text-center">
-        <div className="bg-gray-50 dark:bg-gray-900 p-3 rounded">
-          <div className="text-3xl font-display font-bold mb-1">
+      <div className="mt-6 grid grid-cols-3 gap-2 sm:gap-4 text-center">
+        <div className="bg-gray-50 dark:bg-gray-900 p-2 sm:p-3 rounded">
+          <div className="text-2xl sm:text-3xl font-display font-bold mb-1">
             {weather.temperature}°C
           </div>
-          <div className="text-sm text-gray-600 dark:text-gray-400">Temperature</div>
+          <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">
+            <span className="sm:hidden">Temp.</span>
+            <span className="hidden sm:inline">Temperature</span>
+          </div>
         </div>
-        <div className="bg-gray-50 dark:bg-gray-900 p-3 rounded">
-          <div className="text-3xl font-display font-bold mb-1">
+        <div className="bg-gray-50 dark:bg-gray-900 p-2 sm:p-3 rounded">
+          <div className="text-2xl sm:text-3xl font-display font-bold mb-1">
             {weather.humidity}%
           </div>
-          <div className="text-sm text-gray-600 dark:text-gray-400">Humidity</div>
+          <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">
+            <span className="sm:hidden">Humid.</span>
+            <span className="hidden sm:inline">Humidity</span>
+          </div>
         </div>
-        <div className="bg-gray-50 dark:bg-gray-900 p-3 rounded">
-          <div className="text-3xl font-display font-bold mb-1 flex items-center justify-center">
-            <Wind className="h-5 w-5 mr-1" />
+        <div className="bg-gray-50 dark:bg-gray-900 p-2 sm:p-3 rounded">
+          <div className="text-2xl sm:text-3xl font-display font-bold mb-1 flex items-center justify-center">
+            <Wind className="h-4 w-4 sm:h-5 sm:w-5 mr-1" />
             {weather.wind}
           </div>
-          <div className="text-sm text-gray-600 dark:text-gray-400">Wind (km/h)</div>
+          <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">
+            <span className="sm:hidden">Wind</span>
+            <span className="hidden sm:inline">Wind (km/h)</span>
+          </div>
         </div>
       </div>
     </motion.div>
