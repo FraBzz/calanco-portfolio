@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Cloud } from 'lucide-react';
 import type { WeatherData } from '../types/weather';
+import type { ApiResponseDto } from '../types/api';
 import type { Comune } from '../data/comuni';
 import { CityAutocomplete } from '../components/weather/CityAutocomplete';
 import { CurrentWeather } from '../components/weather/CurrentWeather';
@@ -14,13 +15,19 @@ const WeatherDemo: React.FC = () => {
 
   const handleCitySelect = async (city: Comune) => {
     setIsLoading(true);
-    setError(null);    try {
-      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/weather?city=${encodeURIComponent(city.name)},${city.country_code}&days=3`);
+    setError(null);
+    try {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/weather?city=${encodeURIComponent(city.name)},${city.country_code}&days=4`);
       if (!response.ok) {
         throw new Error('Failed to fetch weather data');
       }
-      const data = await response.json();
-      setWeather(data);
+      const apiResponse: ApiResponseDto<WeatherData> = await response.json();
+      
+      if (apiResponse.type === 'error' || !apiResponse.data) {
+        throw new Error(apiResponse.message || 'Failed to fetch weather data');
+      }
+      
+      setWeather(apiResponse.data);
     } catch (err: any) {
       setError(err.message || 'Unknown error');
       setWeather(null);
