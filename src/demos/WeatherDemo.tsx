@@ -55,7 +55,7 @@ const WeatherDemo: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="bg-white dark:bg-gray-800 p-6 rounded-lg border border-separator-light dark:border-separator-dark"
+          className="bg-white dark:bg-background-dark p-6 rounded-lg border border-separator-light dark:border-separator-dark"
         >
           <CurrentWeather weather={weather} />
           <WeatherForecast forecast={weather.forecast} />

@@ -2,6 +2,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { Menu, Moon, Sun, X } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { CalancoLogo } from '../assets/icons';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -70,18 +71,11 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <div className="min-h-screen bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark">
       <header className="sticky top-0 z-50 border-b border-separator-light dark:border-separator-dark bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-sm">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-          <NavLink to="/" className="flex items-center gap-2">
-            {/* <Code2 className="h-6 w-6 text-accent" /> */}
-            <span className="flex items-center text-xl font-display font-bold leading-none">
-  <span className="text-accent mr-[1px]">{'{'}</span>
-  <span className="-ml-[1px]">c</span>
-  <span className="text-accent mr-2">{'}'}</span>
-  <span className="">calanco</span>
-</span>
-
-            
-            {/* <Parentheses className="h-6 w-6 text-accent -ml-1" /> */}
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">          <NavLink to="/" className="flex items-center gap-1.5">
+            <CalancoLogo size="header" />
+            <span className="text-2xl font-display font-black leading-[1] -translate-y-[1px]">
+              calanco
+            </span>
           </NavLink>
 
           <nav className="hidden md:flex items-center gap-6">
@@ -131,7 +125,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             <motion.button
               onClick={toggleDarkMode}
               whileTap={{ scale: 0.95 }}
-              className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-background-dark transition-colors"
               aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
             >
               {darkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
@@ -139,7 +133,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
             <button
               onClick={() => setIsMenuOpen(true)}
-              className="md:hidden p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition-colors"
+              className="md:hidden p-2 hover:bg-gray-100 dark:hover:bg-background-dark rounded-full transition-colors"
               aria-label="Open menu"
             >
               <Menu className="h-6 w-6" />
@@ -171,7 +165,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 <h2 className="font-display font-bold">Navigation</h2>
                 <button
                   onClick={closeMenu}
-                  className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition-colors"
+                  className="p-2 hover:bg-gray-100 dark:hover:bg-background-dark rounded-full transition-colors"
                   aria-label="Close menu"
                 >
                   <X className="h-5 w-5" />
@@ -186,7 +180,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                     `p-2 rounded-md font-medium transition-colors ${
                       isActive 
                         ? 'bg-accent/10 text-accent' 
-                        : 'hover:bg-gray-100 dark:hover:bg-gray-800'
+                        : 'hover:bg-gray-100 dark:hover:bg-background-dark'
                     }`
                   }
                 >
@@ -199,7 +193,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                     `p-2 rounded-md font-medium transition-colors ${
                       isActive 
                         ? 'bg-accent/10 text-accent' 
-                        : 'hover:bg-gray-100 dark:hover:bg-gray-800'
+                        : 'hover:bg-gray-100 dark:hover:bg-background-dark'
                     }`
                   }
                 >
@@ -212,7 +206,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                     `p-2 rounded-md font-medium transition-colors ${
                       isActive 
                         ? 'bg-accent/10 text-accent' 
-                        : 'hover:bg-gray-100 dark:hover:bg-gray-800'
+                        : 'hover:bg-gray-100 dark:hover:bg-background-dark'
                     }`
                   }
                 >
@@ -225,7 +219,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                     `p-2 rounded-md font-medium transition-colors ${
                       isActive 
                         ? 'bg-accent/10 text-accent' 
-                        : 'hover:bg-gray-100 dark:hover:bg-gray-800'
+                        : 'hover:bg-gray-100 dark:hover:bg-background-dark'
                     }`
                   }
                 >
@@ -238,7 +232,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                     `p-2 rounded-md font-medium transition-colors ${
                       isActive 
                         ? 'bg-accent/10 text-accent' 
-                        : 'hover:bg-gray-100 dark:hover:bg-gray-800'
+                        : 'hover:bg-gray-100 dark:hover:bg-background-dark'
                     }`
                   }
                 >
@@ -251,7 +245,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                     `p-2 rounded-md font-medium transition-colors ${
                       isActive 
                         ? 'bg-accent/10 text-accent' 
-                        : 'hover:bg-gray-100 dark:hover:bg-gray-800'
+                        : 'hover:bg-gray-100 dark:hover:bg-background-dark'
                     }`
                   }
                 >

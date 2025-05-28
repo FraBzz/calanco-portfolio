@@ -6,15 +6,16 @@ export default {
     extend: {
       colors: {
         background: {
-          light: '#FDFDFB',
-          dark: '#141414'
+          light: '#F5F5DC',
+          dark: '#1A1A18'
         },
         text: {
           light: '#232323',
-          dark: '#F1F1F1'
+          dark: '#E3C198'
         },
-        accent: '#7C3AED',
-        cta: '#FF6A3D',
+        accent: '#4E342E',
+        accent2: '#D7A86E',
+        cta: '#0088A8',
         separator: {
           light: '#EDEDED',
           dark: '#2D2D2D'
