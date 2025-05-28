@@ -71,7 +71,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <div className="min-h-screen bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark">
       <header className="sticky top-0 z-50 border-b border-separator-light dark:border-separator-dark bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-sm">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">          <NavLink to="/" className="flex items-center gap-1.5">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">          <NavLink to="/" className="flex items-center gap-0.5">
             <CalancoLogo size="header" />
             <span className="text-2xl font-display font-black leading-[1] -translate-y-[1px]">
               calanco
