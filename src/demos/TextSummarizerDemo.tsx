@@ -79,7 +79,7 @@ const TextSummarizerDemo: React.FC = () => {
             onChange={handleChange}
             rows={8}
             placeholder="Paste your long text here (minimum 100 characters)..."
-            className="w-full p-3 bg-white dark:bg-gray-900 border border-separator-light dark:border-separator-dark rounded-md"
+            className="w-full p-3 bg-white dark:bg-neutral-800 border border-separator-light dark:border-separator-dark rounded-md"
             required
           ></textarea>
           
@@ -108,7 +108,7 @@ const TextSummarizerDemo: React.FC = () => {
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-white dark:bg-gray-900 p-5 rounded-lg border border-separator-light dark:border-separator-dark"
+          className="bg-white dark:bg-neutral-800 p-5 rounded-lg border border-separator-light dark:border-separator-dark"
         >
           <div className="flex items-center justify-between mb-4">
             <h4 className="font-medium flex items-center gap-2">
@@ -130,7 +130,7 @@ const TextSummarizerDemo: React.FC = () => {
                 <Copy className="h-3 w-3" /> Copy
               </button>
             </div>
-            <div className="p-3 bg-gray-50 dark:bg-gray-800 rounded text-sm">
+            <div className="p-3 bg-neutral-800 dark:bg-background-dark rounded text-sm">
               {result.summary.text}
             </div>
             <div className="mt-1 text-xs text-gray-500 dark:text-gray-400">
@@ -143,7 +143,7 @@ const TextSummarizerDemo: React.FC = () => {
               <h5 className="text-sm font-medium mb-1">Key Phrases</h5>
               <ul className="space-y-2">
                 {result.keyPhrases.map((phrase: string, index: number) => (
-                  <li key={index} className="text-xs p-2 bg-gray-50 dark:bg-gray-800 rounded">
+                  <li key={index} className="text-xs p-2 bg-neutral-800 dark:bg-background-dark rounded">
                     {phrase}
                   </li>
                 ))}
@@ -164,7 +164,7 @@ const TextSummarizerDemo: React.FC = () => {
           
           <div>
             <h5 className="text-sm font-medium mb-2">API Response</h5>
-            <div className="bg-gray-100 dark:bg-gray-900/80 p-3 rounded-md overflow-x-auto">
+            <div className="bg-gray-100 dark:bg-neutral-800/80 p-3 rounded-md overflow-x-auto">
               <pre className="text-xs">
                 {JSON.stringify(result, null, 2)}
               </pre>

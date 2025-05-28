@@ -48,7 +48,7 @@ export const CurrentWeather: React.FC<CurrentWeatherProps> = ({ weather }) => {
       </div>
 
       <div className="mt-6 grid grid-cols-3 gap-2 sm:gap-4 text-center">
-        <div className="bg-gray-50 dark:bg-gray-900 p-2 sm:p-3 rounded">
+        <div className="bg-neutral-800 dark:bg-neutral-800 p-2 sm:p-3 rounded">
           <div className="text-2xl sm:text-3xl font-display font-bold mb-1">
             {weather.temperature}°C
           </div>
@@ -57,7 +57,7 @@ export const CurrentWeather: React.FC<CurrentWeatherProps> = ({ weather }) => {
             <span className="hidden sm:inline">Temperature</span>
           </div>
         </div>
-        <div className="bg-gray-50 dark:bg-gray-900 p-2 sm:p-3 rounded">
+        <div className="bg-neutral-800 dark:bg-neutral-800 p-2 sm:p-3 rounded">
           <div className="text-2xl sm:text-3xl font-display font-bold mb-1">
             {weather.humidity}%
           </div>
@@ -66,7 +66,7 @@ export const CurrentWeather: React.FC<CurrentWeatherProps> = ({ weather }) => {
             <span className="hidden sm:inline">Humidity</span>
           </div>
         </div>
-        <div className="bg-gray-50 dark:bg-gray-900 p-2 sm:p-3 rounded">
+        <div className="bg-neutral-800 dark:bg-neutral-800 p-2 sm:p-3 rounded">
           <div className="text-2xl sm:text-3xl font-display font-bold mb-1 flex items-center justify-center">
             <Wind className="h-4 w-4 sm:h-5 sm:w-5 mr-1" />
             {weather.wind}

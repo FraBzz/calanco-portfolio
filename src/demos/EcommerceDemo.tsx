@@ -87,7 +87,7 @@ const EcommerceDemo: React.FC = () => {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
+      <div className="bg-neutral-800 dark:bg-background-dark p-6 rounded-lg">
         <h4 className="font-medium mb-4 flex items-center gap-2">
           <Package className="h-5 w-5 text-accent" />
           Available Products
@@ -98,7 +98,7 @@ const EcommerceDemo: React.FC = () => {
             <motion.div 
               key={product.id}
               whileHover={{ scale: 1.01 }}
-              className="bg-white dark:bg-gray-900 p-4 rounded-md border border-separator-light dark:border-separator-dark"
+              className="bg-white dark:bg-neutral-800 p-4 rounded-md border border-separator-light dark:border-separator-dark"
             >
               <div className="flex justify-between items-start mb-2">
                 <h5 className="font-medium">{product.name}</h5>
@@ -118,7 +118,7 @@ const EcommerceDemo: React.FC = () => {
         </div>
       </div>
       
-      <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
+      <div className="bg-neutral-800 dark:bg-background-dark p-6 rounded-lg">
         <h4 className="font-medium mb-4 flex items-center gap-2">
           <ShoppingCart className="h-5 w-5 text-accent" />
           Your Cart {cart.length > 0 && `(${cart.reduce((total, item) => total + item.quantity, 0)} items)`}
@@ -154,7 +154,7 @@ const EcommerceDemo: React.FC = () => {
                   {cart.map(item => (
                     <div 
                       key={item.id}
-                      className="flex justify-between items-center bg-white dark:bg-gray-900 p-3 rounded-md border border-separator-light dark:border-separator-dark"
+                      className="flex justify-between items-center bg-white dark:bg-neutral-800 p-3 rounded-md border border-separator-light dark:border-separator-dark"
                     >
                       <div>
                         <div className="font-medium">{item.name}</div>
@@ -194,7 +194,7 @@ const EcommerceDemo: React.FC = () => {
                   </button>
                 </div>
                 
-                <div className="bg-gray-100 dark:bg-gray-900/80 p-3 rounded text-xs text-gray-600 dark:text-gray-400">
+                <div className="bg-gray-100 dark:bg-neutral-800/80 p-3 rounded text-xs text-gray-600 dark:text-gray-400">
                   <p className="font-medium mb-1">API Request Preview:</p>
                   <code className="block overflow-x-auto">
                     POST /api/checkout<br/>

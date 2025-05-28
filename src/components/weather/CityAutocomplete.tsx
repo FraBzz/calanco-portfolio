@@ -64,12 +64,12 @@ export const CityAutocomplete: React.FC<CityAutocompleteProps> = ({ onCitySelect
           placeholder="Enter city name (e.g., Milano, Roma, Napoli)"
           value={searchQuery}
           onChange={handleInputChange}
-          className="pl-10 w-full p-3 bg-white dark:bg-gray-800 border border-separator-light dark:border-separator-dark rounded-md"
+          className="pl-10 w-full p-3 bg-white dark:bg-background-dark border border-separator-light dark:border-separator-dark rounded-md"
         />
         {showSuggestions && suggestions.length > 0 && (
           <div
             ref={suggestionRef}
-            className="absolute z-10 w-full mt-1 bg-white dark:bg-gray-800 border border-separator-light dark:border-separator-dark rounded-md shadow-lg"
+            className="absolute z-10 w-full mt-1 bg-white dark:bg-background-dark border border-separator-light dark:border-separator-dark rounded-md shadow-lg"
           >
             {suggestions.map((city) => (
               <button

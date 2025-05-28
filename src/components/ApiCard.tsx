@@ -39,7 +39,7 @@ const ApiCard: React.FC<ApiCardProps> = ({ project, index }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="bg-white dark:bg-gray-900 rounded-lg shadow-sm border border-separator-light dark:border-separator-dark overflow-hidden"
+      className="bg-white dark:bg-neutral-800 rounded-lg shadow-sm border border-separator-light dark:border-separator-dark overflow-hidden"
     >
       <div className="p-6 sm:p-8">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
@@ -99,7 +99,7 @@ const ApiCard: React.FC<ApiCardProps> = ({ project, index }) => {
                 
                 <div className="mt-6">
                   <h5 className="text-base font-medium mb-2">Sample Endpoints</h5>
-                  <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-md overflow-x-auto">
+                  <div className="bg-gray-100 dark:bg-background-dark p-4 rounded-md overflow-x-auto">
                     <pre className="text-sm">
                       {project.endpoints.map((endpoint, i) => (
                         <div key={i} className="mb-2">
@@ -112,7 +112,7 @@ const ApiCard: React.FC<ApiCardProps> = ({ project, index }) => {
                 
                 <div className="mt-6">
                   <h5 className="text-base font-medium mb-2">Example Response</h5>
-                  <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-md overflow-x-auto">
+                  <div className="bg-gray-100 dark:bg-background-dark p-4 rounded-md overflow-x-auto">
                     <pre className="text-sm">
                       {JSON.stringify(project.exampleResponse, null, 2)}
                     </pre>

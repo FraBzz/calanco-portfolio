@@ -36,7 +36,7 @@ export const WeatherForecast: React.FC<WeatherForecastProps> = ({ forecast }) =>
           const dateObj = new Date(day.date);
           const dateLabel = dateObj.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
           return (
-            <div key={idx} className="bg-gray-50 dark:bg-gray-900 p-4 rounded flex flex-col items-center">
+            <div key={idx} className="bg-neutral-800 dark:bg-neutral-800 p-4 rounded flex flex-col items-center">
               <span className="font-medium mb-1">{dateLabel}</span>
               {getWeatherIcon(day.condition)}
               <span className="mt-1 text-sm">{getConditionLabel(day.condition)}</span>
