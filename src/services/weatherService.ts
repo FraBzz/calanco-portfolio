@@ -30,12 +30,10 @@ export class WeatherService {
       
       return apiResponse.data;
     } catch (error) {
-      // Re-throw with more context if it's a network error
       if (error instanceof TypeError && error.message.includes('fetch')) {
         throw new Error('Network error: Unable to connect to weather service');
       }
       
-      // Re-throw the original error for other cases
       throw error;
     }
   }
