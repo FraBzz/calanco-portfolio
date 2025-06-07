@@ -2,7 +2,7 @@ import type { CheckoutDto, OrderResponseDto } from '../types/orders';
 import type { ApiResponseDto } from '../types/api';
 
 export class OrdersService {
-  private static readonly BASE_URL = 'http://localhost:3000';
+  private static readonly BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000';
 
   /**
    * Processes checkout for a cart and creates an order
