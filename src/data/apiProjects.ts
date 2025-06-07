@@ -165,8 +165,42 @@ export const apiProjects: ApiProject[] = [
           "status": "delivered",
           "deliveredAt": "2023-06-10T09:31:22Z",
           "createdAt": "2023-06-10T09:30:45Z"
-        }
-      }
+        }      }
+    }
+  },
+  {
+    id: 'product-management',
+    title: 'Product Management API',
+    description: 'Administrative API for product lifecycle management with full CRUD operations.',
+    stack: ['NestJS', 'PostgreSQL', 'TypeORM', 'Class Validator', 'Swagger'],
+    features: [
+      'Create new products',
+      'Update existing products',
+      'Delete products',
+      'Product inventory tracking',
+      'Input validation and sanitization',
+      'Auto-generated API documentation'
+    ],
+    endpoints: [
+      { method: 'GET', path: '/api/products' },
+      { method: 'POST', path: '/api/products' },
+      { method: 'PUT', path: '/api/products/{id}' },
+      { method: 'DELETE', path: '/api/products/{id}' },
+      { method: 'GET', path: '/api/products/{id}' }
+    ],
+    exampleResponse: {
+      "type": "success",
+      "data": {
+        "id": "prod_abc123",
+        "name": "Premium Headphones",
+        "description": "High-quality wireless headphones with noise cancellation",
+        "price": 299.99,
+        "createdAt": "2023-06-15T10:30:00Z",
+        "updatedAt": "2023-06-15T10:30:00Z"
+      },
+      "status": 201,
+      "message": "Product created successfully",
+      "timestamp": "2023-06-15T10:30:00Z"
     }
   },
   {

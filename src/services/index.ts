@@ -2,7 +2,7 @@ export { WeatherService } from './weatherService';
 export { ProductsService } from './productsService';
 export { CartService } from './cartService';
 export { OrdersService } from './ordersService';
-export type { Product } from './productsService';
+export type { Product, CreateProductDto, UpdateProductDto } from './productsService';
 export type { CartDto, CartLine, AddItemDto } from './cartService';
 export type { 
   CheckoutDto, 

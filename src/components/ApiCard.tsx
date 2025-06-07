@@ -4,6 +4,7 @@ import { ChevronDown, ChevronUp } from 'lucide-react';
 import { ApiProject } from '../types';
 import AuthDemo from '../demos/AuthDemo';
 import EcommerceDemo from '../demos/EcommerceDemo';
+import ProductManagementDemo from '../demos/ProductManagementDemo';
 import WeatherDemo from '../demos/WeatherDemo';
 import NotificationDemo from '../demos/NotificationDemo';
 import TextSummarizerDemo from '../demos/TextSummarizerDemo';
@@ -15,13 +16,14 @@ interface ApiCardProps {
 
 const ApiCard: React.FC<ApiCardProps> = ({ project, index }) => {
   const [isDocOpen, setIsDocOpen] = useState(false);
-
   const renderDemo = () => {
     switch (project.id) {
       case 'auth':
         return <AuthDemo />;
       case 'ecommerce':
         return <EcommerceDemo />;
+      case 'product-management':
+        return <ProductManagementDemo />;
       case 'weather':
         return <WeatherDemo />;
       case 'notification':
