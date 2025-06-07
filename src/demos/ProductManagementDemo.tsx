@@ -68,9 +68,8 @@ const ProductManagementDemo: React.FC = () => {
     });
     setFormMode('edit');
   };
-
   const handleDelete = async (product: Product) => {
-    if (!window.confirm(`Sei sicuro di voler eliminare "${product.name}"?`)) {
+    if (!window.confirm(`Are you sure you want to delete "${product.name}"?`)) {
       return;
     }
 
@@ -79,7 +78,7 @@ const ProductManagementDemo: React.FC = () => {
       await ProductsService.deleteProduct(product.id);
       setProducts(prev => prev.filter(p => p.id !== product.id));
       setActionStatus('success');
-      setActionMessage(`Prodotto "${product.name}" eliminato con successo`);
+      setActionMessage(`Product "${product.name}" deleted successfully`);
       
       setTimeout(() => {
         setActionStatus('idle');
@@ -87,7 +86,7 @@ const ProductManagementDemo: React.FC = () => {
       }, 3000);
     } catch (err: any) {
       setActionStatus('error');
-      setActionMessage(err.message || 'Errore durante l\'eliminazione');
+      setActionMessage(err.message || 'Error deleting product');
       
       setTimeout(() => {
         setActionStatus('idle');
@@ -98,11 +97,10 @@ const ProductManagementDemo: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // Validation
+      // Validation
     if (!formData.name.trim() || !formData.description.trim() || !formData.price.trim()) {
       setActionStatus('error');
-      setActionMessage('Tutti i campi sono obbligatori');
+      setActionMessage('All fields are required');
       setTimeout(() => {
         setActionStatus('idle');
         setActionMessage('');
@@ -113,7 +111,7 @@ const ProductManagementDemo: React.FC = () => {
     const price = parseFloat(formData.price);
     if (isNaN(price) || price <= 0) {
       setActionStatus('error');
-      setActionMessage('Il prezzo deve essere un numero positivo');
+      setActionMessage('Price must be a positive number');
       setTimeout(() => {
         setActionStatus('idle');
         setActionMessage('');
@@ -130,10 +128,9 @@ const ProductManagementDemo: React.FC = () => {
           description: formData.description.trim(),
           price: price
         };
-        
-        const newProduct = await ProductsService.createProduct(createData);
+          const newProduct = await ProductsService.createProduct(createData);
         setProducts(prev => [...prev, newProduct]);
-        setActionMessage(`Prodotto "${newProduct.name}" creato con successo`);
+        setActionMessage(`Product "${newProduct.name}" created successfully`);
       } else if (formMode === 'edit' && editingProduct) {
         const updateData: UpdateProductDto = {
           name: formData.name.trim(),
@@ -143,7 +140,7 @@ const ProductManagementDemo: React.FC = () => {
         
         const updatedProduct = await ProductsService.updateProduct(editingProduct.id, updateData);
         setProducts(prev => prev.map(p => p.id === updatedProduct.id ? updatedProduct : p));
-        setActionMessage(`Prodotto "${updatedProduct.name}" aggiornato con successo`);
+        setActionMessage(`Product "${updatedProduct.name}" updated successfully`);
       }
       
       setActionStatus('success');
@@ -153,10 +150,9 @@ const ProductManagementDemo: React.FC = () => {
         setActionStatus('idle');
         setActionMessage('');
       }, 3000);
-      
-    } catch (err: any) {
+        } catch (err: any) {
       setActionStatus('error');
-      setActionMessage(err.message || 'Errore durante il salvataggio');
+      setActionMessage(err.message || 'Error saving product');
       
       setTimeout(() => {
         setActionStatus('idle');
@@ -174,7 +170,7 @@ const ProductManagementDemo: React.FC = () => {
       {/* Header */}
       <div className="flex justify-between items-center">        <h3 className="font-semibold text-xl flex items-center gap-2">
           <Package className="h-6 w-6 text-accent" />
-          Gestionale Prodotti
+          Product Management
         </h3>
         
         <button
@@ -182,7 +178,7 @@ const ProductManagementDemo: React.FC = () => {
           className="flex items-center gap-2 bg-accent hover:bg-accent/90 text-white px-4 py-2 rounded-md font-medium transition-colors"
         >
           <Plus className="h-4 w-4" />
-          Nuovo Prodotto
+          New Product
         </button>
       </div>
 
@@ -229,10 +225,9 @@ const ProductManagementDemo: React.FC = () => {
             ><div 
                 className="bg-white dark:bg-neutral-800 rounded-lg shadow-xl w-full max-w-md max-h-[90vh] overflow-y-auto"
                 onClick={(e) => e.stopPropagation()}
-              >
-                <div className="flex items-center justify-between p-6 border-b border-separator-light dark:border-separator-dark">
+              >                <div className="flex items-center justify-between p-6 border-b border-separator-light dark:border-separator-dark">
                   <h4 className="font-medium text-lg">
-                    {formMode === 'create' ? 'Crea Nuovo Prodotto' : 'Modifica Prodotto'}
+                    {formMode === 'create' ? 'Create New Product' : 'Edit Product'}
                   </h4>
                   <button
                     onClick={resetForm}
@@ -243,18 +238,17 @@ const ProductManagementDemo: React.FC = () => {
                 </div>
 
                 <div className="p-6">
-                  <form onSubmit={handleSubmit} className="space-y-4">
-                    <div>
+                  <form onSubmit={handleSubmit} className="space-y-4">                    <div>
                       <label className="block text-sm font-medium mb-2 flex items-center gap-2">
                         <FileText className="h-4 w-4" />
-                        Nome Prodotto
+                        Product Name
                       </label>
                       <input
                         type="text"
                         value={formData.name}
                         onChange={(e) => handleInputChange('name', e.target.value)}
                         className="w-full px-3 py-2 border border-separator-light dark:border-separator-dark rounded-md bg-white dark:bg-neutral-700 focus:outline-none focus:ring-2 focus:ring-accent"
-                        placeholder="Inserisci il nome del prodotto"
+                        placeholder="Enter product name"
                         disabled={actionStatus === 'loading'}
                         autoFocus
                       />
@@ -263,14 +257,14 @@ const ProductManagementDemo: React.FC = () => {
                     <div>
                       <label className="block text-sm font-medium mb-2 flex items-center gap-2">
                         <FileText className="h-4 w-4" />
-                        Descrizione
+                        Description
                       </label>
                       <textarea
                         value={formData.description}
                         onChange={(e) => handleInputChange('description', e.target.value)}
                         rows={3}
                         className="w-full px-3 py-2 border border-separator-light dark:border-separator-dark rounded-md bg-white dark:bg-neutral-700 focus:outline-none focus:ring-2 focus:ring-accent resize-none"
-                        placeholder="Inserisci la descrizione del prodotto"
+                        placeholder="Enter product description"
                         disabled={actionStatus === 'loading'}
                       />
                     </div>
@@ -278,7 +272,7 @@ const ProductManagementDemo: React.FC = () => {
                     <div>
                       <label className="block text-sm font-medium mb-2 flex items-center gap-2">
                         <DollarSign className="h-4 w-4" />
-                        Prezzo (€)
+                        Price ($)
                       </label>
                       <input
                         type="number"
@@ -304,12 +298,11 @@ const ProductManagementDemo: React.FC = () => {
                         {actionStatus === 'loading' ? (
                           <>
                             <div className="animate-spin h-4 w-4 border-2 border-white border-t-transparent rounded-full"></div>
-                            Salvando...
-                          </>
-                        ) : (
+                            Saving...
+                          </>                        ) : (
                           <>
                             <Save className="h-4 w-4" />
-                            {formMode === 'create' ? 'Crea Prodotto' : 'Aggiorna Prodotto'}
+                            {formMode === 'create' ? 'Create Product' : 'Update Product'}
                           </>
                         )}
                       </button>
@@ -319,7 +312,7 @@ const ProductManagementDemo: React.FC = () => {
                         disabled={actionStatus === 'loading'}
                         className="px-4 py-2.5 border border-separator-light dark:border-separator-dark rounded-md font-medium hover:bg-gray-50 dark:hover:bg-neutral-700 transition-colors"
                       >
-                        Annulla
+                        Cancel
                       </button>
                     </div>
                   </form>
@@ -349,7 +342,7 @@ const ProductManagementDemo: React.FC = () => {
       <div className="bg-neutral-800 dark:bg-background-dark p-6 rounded-lg">
           <h4 className="font-medium mb-4 flex items-center gap-2">
             <Package className="h-5 w-5 text-accent" />
-            Prodotti Registrati ({products.length})
+            Registered Products ({products.length})
           </h4>
 
           {isLoading ? (
@@ -389,11 +382,10 @@ const ProductManagementDemo: React.FC = () => {
                       <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
                         {product.description}
                       </p>
-                      <div className="flex items-center gap-2">
-                        <span className="font-display font-bold text-xl text-accent">
+                      <div className="flex items-center gap-2">                        <span className="font-display font-bold text-xl text-accent">
                           €{product.price.toFixed(2)}
                         </span>
-                        <span className="text-xs text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
+                        <span className="text-xs text-gray-400 dark:text-gray-500 font-mono">
                           ID: {product.id}
                         </span>
                       </div>

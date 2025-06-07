@@ -190,10 +190,9 @@ const EcommerceDemo: React.FC = () => {
   };
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">      <div className="bg-neutral-800 dark:bg-background-dark p-6 rounded-lg">
-        <h4 className="font-medium mb-4 flex items-center gap-2">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">      <div className="bg-neutral-800 dark:bg-background-dark p-6 rounded-lg">        <h4 className="font-medium mb-4 flex items-center gap-2">
           <Package className="h-5 w-5 text-accent" />
-          Available Products
+          Available Products ({products.length})
         </h4>
         
         {isLoading ? (
@@ -245,17 +244,7 @@ const EcommerceDemo: React.FC = () => {
                     </button>
                   </motion.div>
                 ))}
-              </div>
-            </div>
-            
-            {/* Scroll indicator */}
-            {products.length > 3 && (
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-neutral-800 dark:from-background-dark to-transparent h-6 flex items-end justify-center pb-1">
-                <div className="text-xs text-gray-500 dark:text-gray-400 bg-neutral-800 dark:bg-background-dark px-2 py-1 rounded">
-                  Scroll for more ({products.length} total)
-                </div>
-              </div>
-            )}
+              </div>            </div>
           </div>
         )}
       </div>
