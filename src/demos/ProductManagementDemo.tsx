@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Plus, Edit, Trash2, Package, Check, AlertCircle, X, DollarSign, FileText, Save } from 'lucide-react';
 import { ProductsService, type Product, type CreateProductDto, type UpdateProductDto } from '../services';
+import { DemoLimits } from '../utils/demoLimits';
+import DemoNotice from '../components/DemoNotice';
 
 type FormMode = 'create' | 'edit' | 'view';
 type ActionStatus = 'idle' | 'loading' | 'success' | 'error';
@@ -53,13 +55,46 @@ const ProductManagementDemo: React.FC = () => {
     setActionStatus('idle');
     setActionMessage('');
   };
-
   const handleCreateNew = () => {
+    // Check demo limits
+    const canCreate = DemoLimits.canCreateProduct();
+    if (!canCreate.allowed) {
+      setActionStatus('error');
+      setActionMessage(canCreate.message || 'Demo limit reached');
+      setTimeout(() => {
+        setActionStatus('idle');
+        setActionMessage('');
+      }, 5000);
+      return;
+    }
+
+    const canOperate = DemoLimits.canPerformOperation();
+    if (!canOperate.allowed) {
+      setActionStatus('error');
+      setActionMessage(canOperate.message || 'Too many operations');
+      setTimeout(() => {
+        setActionStatus('idle');
+        setActionMessage('');
+      }, 3000);
+      return;
+    }
+
     resetForm();
     setFormMode('create');
+    DemoLimits.recordOperation();
   };
-
   const handleEdit = (product: Product) => {
+    const canOperate = DemoLimits.canPerformOperation();
+    if (!canOperate.allowed) {
+      setActionStatus('error');
+      setActionMessage(canOperate.message || 'Too many operations');
+      setTimeout(() => {
+        setActionStatus('idle');
+        setActionMessage('');
+      }, 3000);
+      return;
+    }
+
     setEditingProduct(product);
     setFormData({
       name: product.name,
@@ -67,13 +102,26 @@ const ProductManagementDemo: React.FC = () => {
       price: product.price.toString()
     });
     setFormMode('edit');
-  };
-  const handleDelete = async (product: Product) => {
+    DemoLimits.recordOperation();
+  };  const handleDelete = async (product: Product) => {
+    const canOperate = DemoLimits.canPerformOperation();
+    if (!canOperate.allowed) {
+      setActionStatus('error');
+      setActionMessage(canOperate.message || 'Too many operations');
+      setTimeout(() => {
+        setActionStatus('idle');
+        setActionMessage('');
+      }, 3000);
+      return;
+    }
+
     if (!window.confirm(`Are you sure you want to delete "${product.name}"?`)) {
       return;
     }
 
     setActionStatus('loading');
+    DemoLimits.recordOperation();
+    
     try {
       await ProductsService.deleteProduct(product.id);
       setProducts(prev => prev.filter(p => p.id !== product.id));
@@ -94,10 +142,20 @@ const ProductManagementDemo: React.FC = () => {
       }, 5000);
     }
   };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-      // Validation
+    
+    const canOperate = DemoLimits.canPerformOperation();
+    if (!canOperate.allowed) {
+      setActionStatus('error');
+      setActionMessage(canOperate.message || 'Too many operations');
+      setTimeout(() => {
+        setActionStatus('idle');
+        setActionMessage('');
+      }, 3000);
+      return;
+    }
+
     if (!formData.name.trim() || !formData.description.trim() || !formData.price.trim()) {
       setActionStatus('error');
       setActionMessage('All fields are required');
@@ -120,6 +178,7 @@ const ProductManagementDemo: React.FC = () => {
     }
 
     setActionStatus('loading');
+    DemoLimits.recordOperation();
     
     try {
       if (formMode === 'create') {
@@ -128,9 +187,12 @@ const ProductManagementDemo: React.FC = () => {
           description: formData.description.trim(),
           price: price
         };
-          const newProduct = await ProductsService.createProduct(createData);
+        
+        const newProduct = await ProductsService.createProduct(createData);
         setProducts(prev => [...prev, newProduct]);
         setActionMessage(`Product "${newProduct.name}" created successfully`);
+        
+        DemoLimits.recordProductCreation();
       } else if (formMode === 'edit' && editingProduct) {
         const updateData: UpdateProductDto = {
           name: formData.name.trim(),
@@ -150,7 +212,7 @@ const ProductManagementDemo: React.FC = () => {
         setActionStatus('idle');
         setActionMessage('');
       }, 3000);
-        } catch (err: any) {
+    } catch (err: any) {
       setActionStatus('error');
       setActionMessage(err.message || 'Error saving product');
       
@@ -166,23 +228,27 @@ const ProductManagementDemo: React.FC = () => {
   };
 
   return (
-    <div className="space-y-6">
-      {/* Header */}
+    <div className="space-y-6">      {/* Header */}
       <div className="flex justify-between items-center">        <h3 className="font-semibold text-xl flex items-center gap-2">
           <Package className="h-6 w-6 text-accent" />
           Product Management
         </h3>
         
-        <button
-          onClick={handleCreateNew}
-          className="flex items-center gap-2 bg-accent hover:bg-accent/90 text-white px-4 py-2 rounded-md font-medium transition-colors"
-        >
-          <Plus className="h-4 w-4" />
-          New Product
-        </button>
+        <div className="flex items-center gap-3">
+          <div className="text-xs text-gray-500 dark:text-gray-400 hidden sm:block">
+            Demo: {DemoLimits.getSessionStats().productsCreated}/{DemoLimits.getSessionStats().maxProducts} products
+          </div>
+          
+          <button
+            onClick={handleCreateNew}
+            className="flex items-center gap-2 bg-accent hover:bg-accent/90 text-white px-4 py-2 rounded-md font-medium transition-colors"
+          >
+            <Plus className="h-4 w-4" />
+            New Product
+          </button>
+        </div>
       </div>
 
-      {/* Status Messages */}
       <AnimatePresence>
         {actionMessage && (
           <motion.div
@@ -202,10 +268,10 @@ const ProductManagementDemo: React.FC = () => {
             <span>{actionMessage}</span>
           </motion.div>
         )}
-      </AnimatePresence>      {/* Product Form Modal */}
+      </AnimatePresence>  
       <AnimatePresence>
         {formMode !== 'view' && (
-          <>            {/* Modal Backdrop */}
+          <>            
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -214,7 +280,6 @@ const ProductManagementDemo: React.FC = () => {
               className="fixed inset-0 bg-black/50 z-40"
             />
             
-            {/* Modal Content */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -317,7 +382,6 @@ const ProductManagementDemo: React.FC = () => {
                     </div>
                   </form>
 
-                  {/* API Preview */}
                   <div className="mt-6 bg-gray-100 dark:bg-neutral-700/50 p-3 rounded text-xs text-gray-600 dark:text-gray-400">
                     <p className="font-medium mb-1">API Request Preview:</p>
                     <code className="block overflow-x-auto">
@@ -348,25 +412,24 @@ const ProductManagementDemo: React.FC = () => {
           {isLoading ? (
             <div className="flex flex-col items-center py-8 text-gray-500 dark:text-gray-400">
               <div className="animate-spin h-8 w-8 mb-4 border-2 border-accent border-t-transparent rounded-full"></div>
-              <p>Caricamento prodotti...</p>
+              <p>Loading products...</p>
             </div>
           ) : error ? (
             <div className="flex flex-col items-center py-8 text-red-500 dark:text-red-400">
               <AlertCircle className="h-8 w-8 mb-4" />
-              <p className="font-medium mb-2">Errore nel caricamento</p>
+              <p className="font-medium mb-2">Loading Error</p>
               <p className="text-sm text-center">{error}</p>
               <button
                 onClick={loadProducts}
                 className="mt-4 py-1.5 px-3 bg-red-100 dark:bg-red-900/20 text-red-600 dark:text-red-400 text-sm font-medium rounded hover:bg-red-200 dark:hover:bg-red-900/40 transition-colors"
               >
-                Riprova
+                Retry
               </button>
             </div>
           ) : products.length === 0 ? (
             <div className="text-center py-8 text-gray-500 dark:text-gray-400">
-              <Package className="h-12 w-12 mx-auto mb-4 opacity-50" />
-              <p>Nessun prodotto trovato.</p>
-              <p className="text-sm mt-2">Inizia creando il tuo primo prodotto.</p>
+              <Package className="h-12 w-12 mx-auto mb-4 opacity-50" />              <p>No products found.</p>
+              <p className="text-sm mt-2">Start by creating your first product.</p>
             </div>          ) : (
             <div className="max-h-96 overflow-y-auto space-y-3 pr-2 custom-scrollbar">
               {products.map(product => (
@@ -399,7 +462,7 @@ const ProductManagementDemo: React.FC = () => {
                             ? 'bg-blue-100/30 dark:bg-blue-900/10 text-blue-400/50 dark:text-blue-500/40 cursor-not-allowed'
                             : 'bg-blue-100 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 hover:bg-blue-200 dark:hover:bg-blue-900/40'
                         }`}
-                        title="Modifica prodotto"
+                        title="Edit product"
                       >
                         <Edit className="h-4 w-4" />
                       </button>
@@ -411,7 +474,7 @@ const ProductManagementDemo: React.FC = () => {
                             ? 'bg-red-100/30 dark:bg-red-900/10 text-red-400/50 dark:text-red-500/40 cursor-not-allowed'
                             : 'bg-red-100 dark:bg-red-900/20 text-red-600 dark:text-red-400 hover:bg-red-200 dark:hover:bg-red-900/40'
                         }`}
-                        title="Elimina prodotto"
+                        title="Delete product"
                       >
                         <Trash2 className="h-4 w-4" />
                       </button>

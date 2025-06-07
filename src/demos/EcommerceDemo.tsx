@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ShoppingCart, Package, Check, AlertCircle, Clock, CheckCircle, Cog, Truck, Home, X, RefreshCw } from 'lucide-react';
 import { ProductsService, CartService, OrdersService, ORDER_STATUS_DESCRIPTIONS, type Product, type OrderResponseDto, type OrderStatus } from '../services';
+import { DemoLimits } from '../utils/demoLimits';
 
 type CheckoutStatus = 'idle' | 'processing' | 'success' | 'error';
 
@@ -76,9 +77,25 @@ const EcommerceDemo: React.FC = () => {
     };
 
     loadProducts();
-  }, []);
-  const addToCart = async (product: Product) => {
+  }, []);  const addToCart = async (product: Product) => {
+    const canOperate = DemoLimits.canPerformOperation();
+    if (!canOperate.allowed) {
+      setCartError(canOperate.message || 'Too many operations');
+      setTimeout(() => setCartError(null), 3000);
+      return;
+    }
+
+    const totalCartItems = cart.reduce((total, item) => total + item.quantity, 0);
+    const canAddToCart = DemoLimits.canAddToCart(totalCartItems);
+    if (!canAddToCart.allowed) {
+      setCartError(canAddToCart.message || 'Cart limit reached');
+      setTimeout(() => setCartError(null), 5000);
+      return;
+    }
+
     setIsCartLoading(true);
+    DemoLimits.recordOperation();
+    
     try {
       const quantityToAdd = 1;
 
@@ -87,12 +104,10 @@ const EcommerceDemo: React.FC = () => {
         quantity: quantityToAdd
       });
 
-      // Aggiorna l'ID del carrello se è cambiato (nuovo carrello creato)
       if (cartId !== newCartId) {
         setCartId(newCartId);
       }
 
-      // Converte i dati del carrello backend in formato locale
       const updatedLocalCart = updatedCart.lines.map(line => {
         const productData = products.find(p => p.id === line.productId);
         return {
@@ -102,9 +117,7 @@ const EcommerceDemo: React.FC = () => {
       });      setCart(updatedLocalCart);
     } catch (err: any) {
       setCartError(err.message || 'Failed to add item to cart');
-      // Clear cart error after 3 seconds
       setTimeout(() => setCartError(null), 3000);
-      // Fallback al comportamento locale in caso di errore
       setCart(prevCart => {
         const existingItem = prevCart.find(item => item.id === product.id);
         
@@ -129,7 +142,6 @@ const EcommerceDemo: React.FC = () => {
     try {
       const updatedCart = await CartService.removeFromCart(cartId, productId);
       
-      // Converte i dati del carrello backend in formato locale
       const updatedLocalCart = updatedCart.lines.map(line => {
         const productData = products.find(p => p.id === line.productId);
         return {
@@ -139,9 +151,7 @@ const EcommerceDemo: React.FC = () => {
       });      setCart(updatedLocalCart);
     } catch (err: any) {
       setCartError(err.message || 'Failed to remove item from cart');
-      // Clear cart error after 3 seconds
       setTimeout(() => setCartError(null), 3000);
-      // Fallback al comportamento locale in caso di errore
       setCart(prevCart => {
         const existingItem = prevCart.find(item => item.id === productId);
         
@@ -162,11 +172,18 @@ const EcommerceDemo: React.FC = () => {
   
   const getTotalPrice = () => {
     return cart.reduce((total, item) => total + (item.price * item.quantity), 0).toFixed(2);
-  };
-    const handleCheckout = async () => {
+  };    const handleCheckout = async () => {
     if (!cartId || cart.length === 0) return;
     
+    const canOperate = DemoLimits.canPerformOperation();
+    if (!canOperate.allowed) {
+      setCartError(canOperate.message || 'Too many operations');
+      setTimeout(() => setCartError(null), 3000);
+      return;
+    }
+    
     setCheckoutStatus('processing');
+    DemoLimits.recordOperation();
     
     try {
       const orderResponse = await OrdersService.checkout({
@@ -175,14 +192,11 @@ const EcommerceDemo: React.FC = () => {
       
       setCompletedOrder(orderResponse);
       setCheckoutStatus('success');
-        // Reset cart after successful checkout
       setCart([]);
       setCartId(null);} catch (err: any) {
       console.error('Checkout failed:', err);
       setCheckoutStatus('error');
-      // Note: We don't set cart error here as checkout failure is handled by checkoutStatus
       
-      // Reset error state after 3 seconds
       setTimeout(() => {
         setCheckoutStatus('idle');
       }, 3000);
@@ -248,11 +262,17 @@ const EcommerceDemo: React.FC = () => {
           </div>
         )}
       </div>
-      
-      <div className="bg-neutral-800 dark:bg-background-dark p-6 rounded-lg">        <h4 className="font-medium mb-4 flex items-center gap-2">
-          <ShoppingCart className="h-5 w-5 text-accent" />
-          Your Cart {cart.length > 0 && `(${cart.reduce((total, item) => total + item.quantity, 0)} items)`}
-        </h4>
+        <div className="bg-neutral-800 dark:bg-background-dark p-6 rounded-lg">
+        <div className="flex justify-between items-center mb-4">
+          <h4 className="font-medium flex items-center gap-2">
+            <ShoppingCart className="h-5 w-5 text-accent" />
+            Your Cart {cart.length > 0 && `(${cart.reduce((total, item) => total + item.quantity, 0)} items)`}
+          </h4>
+          
+          <div className="text-xs text-gray-500 dark:text-gray-400 hidden sm:block">
+            Demo: {cart.reduce((total, item) => total + item.quantity, 0)}/10 items
+          </div>
+        </div>
         
         {cartError && (
           <motion.div
