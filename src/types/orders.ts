@@ -22,13 +22,13 @@ export const ORDER_STATUSES = [
 ] as const;
 
 export const ORDER_STATUS_DESCRIPTIONS = {
-  pending: 'In attesa di conferma',
-  confirmed: 'Ordine confermato',
-  processing: 'In elaborazione',
-  shipped: 'Spedito',
-  delivered: 'Consegnato',
-  cancelled: 'Annullato',
-  refunded: 'Rimborsato'
+  pending: 'Pending confirmation',
+  confirmed: 'Order confirmed',
+  processing: 'Processing',
+  shipped: 'Shipped',
+  delivered: 'Delivered',
+  cancelled: 'Cancelled',
+  refunded: 'Refunded'
 } as const;
 
 export interface OrderLineDto {

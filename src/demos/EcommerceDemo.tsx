@@ -235,11 +235,10 @@ const EcommerceDemo: React.FC = () => {
                       {product.description}
                     </p>                    <button
                       onClick={() => addToCart(product)}
-                      disabled={isCartLoading}
-                      className={`py-1.5 px-3 text-sm font-medium rounded transition-colors ${
+                      disabled={isCartLoading}                      className={`py-2 px-4 text-sm font-medium rounded-md transition-colors ${
                         isCartLoading 
-                          ? 'bg-gray-300 text-gray-500 cursor-not-allowed' 
-                          : 'bg-accent/10 text-accent hover:bg-accent/20'
+                          ? 'bg-accent/20 text-accent/50 cursor-not-allowed' 
+                          : 'bg-accent text-white hover:bg-accent/90 dark:hover:bg-accent/80 shadow-sm hover:shadow-md'
                       }`}
                     >
                       {isCartLoading ? 'Adding...' : 'Add to Cart'}
@@ -384,7 +383,7 @@ const EcommerceDemo: React.FC = () => {
                           disabled={isCartLoading}
                           className={`p-1 text-xs rounded transition-colors ${
                             isCartLoading
-                              ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                              ? 'bg-gray-200/50 dark:bg-gray-700/30 text-gray-400/60 dark:text-gray-500/50 cursor-not-allowed'
                               : 'bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600'
                           }`}
                         >
@@ -400,13 +399,12 @@ const EcommerceDemo: React.FC = () => {
                     <span className="font-medium">Total:</span>
                     <span className="font-display font-bold text-lg">${getTotalPrice()}</span>
                   </div>
-                  
-                  <button
+                    <button
                     onClick={handleCheckout}
                     disabled={checkoutStatus === 'processing'}
                     className={`w-full py-2.5 rounded-md font-medium transition-colors ${
                       checkoutStatus === 'processing' 
-                        ? 'bg-gray-400 text-white cursor-not-allowed' 
+                        ? 'bg-cta/20 text-cta/50 cursor-not-allowed' 
                         : 'bg-cta hover:bg-cta/90 text-white'
                     }`}
                   >

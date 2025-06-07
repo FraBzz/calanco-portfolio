@@ -159,15 +159,14 @@ const AuthDemo: React.FC = () => {
               <div className="mb-4 p-3 bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-300 text-sm rounded-md flex items-start gap-2">
                 <AlertCircle className="h-5 w-5 flex-shrink-0 mt-0.5" />
                 <span>{error}</span>
-              </div>
-            )}
+              </div>            )}
             
             <button
               type="submit"
               disabled={isLoading}
               className={`w-full py-2.5 rounded-md font-medium transition-colors ${
                 isLoading 
-                  ? 'bg-gray-400 text-white cursor-not-allowed' 
+                  ? 'bg-accent/20 text-accent/50 cursor-not-allowed' 
                   : 'bg-accent hover:bg-accent/90 text-white'
               }`}
             >
@@ -231,13 +230,12 @@ const AuthDemo: React.FC = () => {
                 <span>{error}</span>
               </div>
             )}
-            
-            <button
+              <button
               type="submit"
               disabled={isLoading}
               className={`w-full py-2.5 rounded-md font-medium transition-colors ${
                 isLoading 
-                  ? 'bg-gray-400 text-white cursor-not-allowed' 
+                  ? 'bg-accent/20 text-accent/50 cursor-not-allowed' 
                   : 'bg-accent hover:bg-accent/90 text-white'
               }`}
             >

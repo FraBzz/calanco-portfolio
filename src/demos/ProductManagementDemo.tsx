@@ -172,21 +172,18 @@ const ProductManagementDemo: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex justify-between items-center">
-        <h3 className="font-semibold text-xl flex items-center gap-2">
+      <div className="flex justify-between items-center">        <h3 className="font-semibold text-xl flex items-center gap-2">
           <Package className="h-6 w-6 text-accent" />
           Gestionale Prodotti
         </h3>
         
-        {formMode === 'view' && (
-          <button
-            onClick={handleCreateNew}
-            className="flex items-center gap-2 bg-accent hover:bg-accent/90 text-white px-4 py-2 rounded-md font-medium transition-colors"
-          >
-            <Plus className="h-4 w-4" />
-            Nuovo Prodotto
-          </button>
-        )}
+        <button
+          onClick={handleCreateNew}
+          className="flex items-center gap-2 bg-accent hover:bg-accent/90 text-white px-4 py-2 rounded-md font-medium transition-colors"
+        >
+          <Plus className="h-4 w-4" />
+          Nuovo Prodotto
+        </button>
       </div>
 
       {/* Status Messages */}
@@ -209,124 +206,147 @@ const ProductManagementDemo: React.FC = () => {
             <span>{actionMessage}</span>
           </motion.div>
         )}
+      </AnimatePresence>      {/* Product Form Modal */}
+      <AnimatePresence>
+        {formMode !== 'view' && (
+          <>            {/* Modal Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 bg-black/50 z-40"
+            />
+            
+            {/* Modal Content */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 z-50 flex items-center justify-center p-4"
+              onClick={resetForm}
+            ><div 
+                className="bg-white dark:bg-neutral-800 rounded-lg shadow-xl w-full max-w-md max-h-[90vh] overflow-y-auto"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <div className="flex items-center justify-between p-6 border-b border-separator-light dark:border-separator-dark">
+                  <h4 className="font-medium text-lg">
+                    {formMode === 'create' ? 'Crea Nuovo Prodotto' : 'Modifica Prodotto'}
+                  </h4>
+                  <button
+                    onClick={resetForm}
+                    className="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 p-1"
+                  >
+                    <X className="h-5 w-5" />
+                  </button>
+                </div>
+
+                <div className="p-6">
+                  <form onSubmit={handleSubmit} className="space-y-4">
+                    <div>
+                      <label className="block text-sm font-medium mb-2 flex items-center gap-2">
+                        <FileText className="h-4 w-4" />
+                        Nome Prodotto
+                      </label>
+                      <input
+                        type="text"
+                        value={formData.name}
+                        onChange={(e) => handleInputChange('name', e.target.value)}
+                        className="w-full px-3 py-2 border border-separator-light dark:border-separator-dark rounded-md bg-white dark:bg-neutral-700 focus:outline-none focus:ring-2 focus:ring-accent"
+                        placeholder="Inserisci il nome del prodotto"
+                        disabled={actionStatus === 'loading'}
+                        autoFocus
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium mb-2 flex items-center gap-2">
+                        <FileText className="h-4 w-4" />
+                        Descrizione
+                      </label>
+                      <textarea
+                        value={formData.description}
+                        onChange={(e) => handleInputChange('description', e.target.value)}
+                        rows={3}
+                        className="w-full px-3 py-2 border border-separator-light dark:border-separator-dark rounded-md bg-white dark:bg-neutral-700 focus:outline-none focus:ring-2 focus:ring-accent resize-none"
+                        placeholder="Inserisci la descrizione del prodotto"
+                        disabled={actionStatus === 'loading'}
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium mb-2 flex items-center gap-2">
+                        <DollarSign className="h-4 w-4" />
+                        Prezzo (€)
+                      </label>
+                      <input
+                        type="number"
+                        step="0.01"
+                        min="0"
+                        value={formData.price}
+                        onChange={(e) => handleInputChange('price', e.target.value)}
+                        className="w-full px-3 py-2 border border-separator-light dark:border-separator-dark rounded-md bg-white dark:bg-neutral-700 focus:outline-none focus:ring-2 focus:ring-accent"
+                        placeholder="0.00"
+                        disabled={actionStatus === 'loading'}
+                      />
+                    </div>
+
+                    <div className="flex gap-3 pt-4">
+                      <button
+                        type="submit"
+                        disabled={actionStatus === 'loading'}                        className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-md font-medium transition-colors ${
+                          actionStatus === 'loading'
+                            ? 'bg-accent/20 text-accent/50 cursor-not-allowed'
+                            : 'bg-cta hover:bg-cta/90 text-white'
+                        }`}
+                      >
+                        {actionStatus === 'loading' ? (
+                          <>
+                            <div className="animate-spin h-4 w-4 border-2 border-white border-t-transparent rounded-full"></div>
+                            Salvando...
+                          </>
+                        ) : (
+                          <>
+                            <Save className="h-4 w-4" />
+                            {formMode === 'create' ? 'Crea Prodotto' : 'Aggiorna Prodotto'}
+                          </>
+                        )}
+                      </button>
+                      <button
+                        type="button"
+                        onClick={resetForm}
+                        disabled={actionStatus === 'loading'}
+                        className="px-4 py-2.5 border border-separator-light dark:border-separator-dark rounded-md font-medium hover:bg-gray-50 dark:hover:bg-neutral-700 transition-colors"
+                      >
+                        Annulla
+                      </button>
+                    </div>
+                  </form>
+
+                  {/* API Preview */}
+                  <div className="mt-6 bg-gray-100 dark:bg-neutral-700/50 p-3 rounded text-xs text-gray-600 dark:text-gray-400">
+                    <p className="font-medium mb-1">API Request Preview:</p>
+                    <code className="block overflow-x-auto">
+                      {formMode === 'create' ? 'POST' : 'PUT'} /api/products
+                      {formMode === 'edit' && editingProduct ? `/${editingProduct.id}` : ''}
+                      <br/>
+                      {JSON.stringify({
+                        name: formData.name || 'Product Name',
+                        description: formData.description || 'Product Description', 
+                        price: parseFloat(formData.price) || 0
+                      }, null, 2)}
+                    </code>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </>
+        )}
       </AnimatePresence>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Product Form */}
-        {formMode !== 'view' && (
-          <div className="bg-neutral-800 dark:bg-background-dark p-6 rounded-lg">
-            <div className="flex items-center justify-between mb-6">
-              <h4 className="font-medium text-lg">
-                {formMode === 'create' ? 'Crea Nuovo Prodotto' : 'Modifica Prodotto'}
-              </h4>
-              <button
-                onClick={resetForm}
-                className="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300"
-              >
-                <X className="h-5 w-5" />
-              </button>
-            </div>
-
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium mb-2 flex items-center gap-2">
-                  <FileText className="h-4 w-4" />
-                  Nome Prodotto
-                </label>
-                <input
-                  type="text"
-                  value={formData.name}
-                  onChange={(e) => handleInputChange('name', e.target.value)}
-                  className="w-full px-3 py-2 border border-separator-light dark:border-separator-dark rounded-md bg-white dark:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-accent"
-                  placeholder="Inserisci il nome del prodotto"
-                  disabled={actionStatus === 'loading'}
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium mb-2 flex items-center gap-2">
-                  <FileText className="h-4 w-4" />
-                  Descrizione
-                </label>
-                <textarea
-                  value={formData.description}
-                  onChange={(e) => handleInputChange('description', e.target.value)}
-                  rows={3}
-                  className="w-full px-3 py-2 border border-separator-light dark:border-separator-dark rounded-md bg-white dark:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-accent resize-none"
-                  placeholder="Inserisci la descrizione del prodotto"
-                  disabled={actionStatus === 'loading'}
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium mb-2 flex items-center gap-2">
-                  <DollarSign className="h-4 w-4" />
-                  Prezzo (€)
-                </label>
-                <input
-                  type="number"
-                  step="0.01"
-                  min="0"
-                  value={formData.price}
-                  onChange={(e) => handleInputChange('price', e.target.value)}
-                  className="w-full px-3 py-2 border border-separator-light dark:border-separator-dark rounded-md bg-white dark:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-accent"
-                  placeholder="0.00"
-                  disabled={actionStatus === 'loading'}
-                />
-              </div>
-
-              <div className="flex gap-3 pt-4">
-                <button
-                  type="submit"
-                  disabled={actionStatus === 'loading'}
-                  className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-md font-medium transition-colors ${
-                    actionStatus === 'loading'
-                      ? 'bg-gray-400 text-white cursor-not-allowed'
-                      : 'bg-cta hover:bg-cta/90 text-white'
-                  }`}
-                >
-                  {actionStatus === 'loading' ? (
-                    <>
-                      <div className="animate-spin h-4 w-4 border-2 border-white border-t-transparent rounded-full"></div>
-                      Salvando...
-                    </>
-                  ) : (
-                    <>
-                      <Save className="h-4 w-4" />
-                      {formMode === 'create' ? 'Crea Prodotto' : 'Aggiorna Prodotto'}
-                    </>
-                  )}
-                </button>
-                  <button
-                  type="button"
-                  onClick={resetForm}
-                  disabled={actionStatus === 'loading'}
-                  className="px-4 py-2.5 border border-separator-light dark:border-separator-dark rounded-md font-medium hover:bg-gray-50 dark:hover:bg-neutral-700 transition-colors"
-                >
-                  Cancel
-                </button>
-              </div>
-            </form>
-
-            {/* API Preview */}
-            <div className="mt-6 bg-gray-100 dark:bg-neutral-800/80 p-3 rounded text-xs text-gray-600 dark:text-gray-400">
-              <p className="font-medium mb-1">API Request Preview:</p>
-              <code className="block overflow-x-auto">
-                {formMode === 'create' ? 'POST' : 'PUT'} /api/products
-                {formMode === 'edit' && editingProduct ? `/${editingProduct.id}` : ''}
-                <br/>
-                {JSON.stringify({
-                  name: formData.name || 'Product Name',
-                  description: formData.description || 'Product Description', 
-                  price: parseFloat(formData.price) || 0
-                }, null, 2)}
-              </code>
-            </div>
-          </div>
-        )}
-
-        {/* Products List */}
-        <div className={`bg-neutral-800 dark:bg-background-dark p-6 rounded-lg ${formMode === 'view' ? 'lg:col-span-2' : ''}`}>
+      {/* Products List */}
+      <div className="bg-neutral-800 dark:bg-background-dark p-6 rounded-lg">
           <h4 className="font-medium mb-4 flex items-center gap-2">
             <Package className="h-5 w-5 text-accent" />
             Prodotti Registrati ({products.length})
@@ -354,9 +374,8 @@ const ProductManagementDemo: React.FC = () => {
               <Package className="h-12 w-12 mx-auto mb-4 opacity-50" />
               <p>Nessun prodotto trovato.</p>
               <p className="text-sm mt-2">Inizia creando il tuo primo prodotto.</p>
-            </div>
-          ) : (
-            <div className="space-y-3">
+            </div>          ) : (
+            <div className="max-h-96 overflow-y-auto space-y-3 pr-2 custom-scrollbar">
               {products.map(product => (
                 <motion.div
                   key={product.id}
@@ -383,10 +402,9 @@ const ProductManagementDemo: React.FC = () => {
                     <div className="flex gap-2 ml-4">
                       <button
                         onClick={() => handleEdit(product)}
-                        disabled={actionStatus === 'loading'}
-                        className={`p-2 rounded transition-colors ${
+                        disabled={actionStatus === 'loading'}                        className={`p-2 rounded transition-colors ${
                           actionStatus === 'loading'
-                            ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                            ? 'bg-blue-100/30 dark:bg-blue-900/10 text-blue-400/50 dark:text-blue-500/40 cursor-not-allowed'
                             : 'bg-blue-100 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 hover:bg-blue-200 dark:hover:bg-blue-900/40'
                         }`}
                         title="Modifica prodotto"
@@ -396,10 +414,9 @@ const ProductManagementDemo: React.FC = () => {
                       
                       <button
                         onClick={() => handleDelete(product)}
-                        disabled={actionStatus === 'loading'}
-                        className={`p-2 rounded transition-colors ${
+                        disabled={actionStatus === 'loading'}                        className={`p-2 rounded transition-colors ${
                           actionStatus === 'loading'
-                            ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                            ? 'bg-red-100/30 dark:bg-red-900/10 text-red-400/50 dark:text-red-500/40 cursor-not-allowed'
                             : 'bg-red-100 dark:bg-red-900/20 text-red-600 dark:text-red-400 hover:bg-red-200 dark:hover:bg-red-900/40'
                         }`}
                         title="Elimina prodotto"
@@ -407,13 +424,11 @@ const ProductManagementDemo: React.FC = () => {
                         <Trash2 className="h-4 w-4" />
                       </button>
                     </div>
-                  </div>
-                </motion.div>
+                  </div>                </motion.div>
               ))}
             </div>
           )}
         </div>
-      </div>
     </div>
   );
 };

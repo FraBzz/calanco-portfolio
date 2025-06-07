@@ -131,13 +131,12 @@ const NotificationDemo: React.FC = () => {
               required
             ></textarea>
           </div>
-          
-          <button
+            <button
             type="submit"
             disabled={isLoading}
             className={`w-full py-2.5 rounded-md font-medium transition-colors flex items-center justify-center gap-2 ${
               isLoading 
-                ? 'bg-gray-400 text-white cursor-not-allowed' 
+                ? 'bg-accent/20 text-accent/50 cursor-not-allowed' 
                 : 'bg-accent hover:bg-accent/90 text-white'
             }`}
           >
