@@ -5,28 +5,28 @@ import { apiProjects } from '../data/apiProjects';
 import { Server, Database, Shield, Zap } from 'lucide-react';
 
 const stats = [
-  { label: 'APIs Built', value: '20+', icon: Server },
+  { label: 'APIs Built', value: '12+', icon: Server },
   { label: 'Databases', value: '8+', icon: Database },
-  { label: 'Security Features', value: '15+', icon: Shield },
-  { label: 'Uptime', value: '99.9%', icon: Zap }
+  { label: 'Years Experience', value: '5+', icon: Shield },
+  { label: 'Projects Completed', value: '15+', icon: Zap }
 ];
 
 const backendExpertise = [
   {
-    title: 'API Design',
-    description: 'RESTful and GraphQL APIs with proper documentation and versioning'
+    title: 'API Development',
+    description: 'RESTful APIs, authentication systems, and integration with third-party services'
   },
   {
-    title: 'Database Management',
-    description: 'SQL and NoSQL databases with optimized queries and migrations'
+    title: 'Database Design',
+    description: 'MySQL, PostgreSQL and MongoDB database design, optimization, and data modeling'
   },
   {
-    title: 'Security',
-    description: 'Authentication, authorization, encryption, and security best practices'
+    title: 'Web Agency Experience',
+    description: '5+ years developing scalable solutions for diverse client projects'
   },
   {
-    title: 'Scalability',
-    description: 'Microservices, caching, load balancing, and performance optimization'
+    title: 'Full-Stack Integration',
+    description: 'Seamless frontend-backend integration and deployment strategies'
   }
 ];
 

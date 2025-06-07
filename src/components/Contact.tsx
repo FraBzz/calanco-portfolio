@@ -231,10 +231,9 @@ const Contact: React.FC = () => {
 										</p>
 										<button
 											type="submit"
-											disabled={isSubmitting}
-											className={`inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all duration-200 ${
+											disabled={isSubmitting}											className={`inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all duration-200 ${
 												isSubmitting
-													? 'bg-gray-400 text-white cursor-not-allowed'
+													? 'bg-cta/20 text-cta/50 cursor-not-allowed'
 													: 'bg-cta hover:bg-cta/90 text-white shadow-lg hover:shadow-xl hover:scale-105'
 											}`}
 										>

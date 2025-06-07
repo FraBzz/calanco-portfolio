@@ -82,13 +82,12 @@ export const CityAutocomplete: React.FC<CityAutocompleteProps> = ({ onCitySelect
               </button>
             ))}
           </div>
-        )}
-        <button
+        )}        <button
           type="submit"
           disabled={isLoading || !selectedCity}
           className={`absolute right-2 top-2 px-4 py-1 rounded text-sm font-medium ${
             isLoading || !selectedCity
-              ? 'bg-gray-300 dark:bg-gray-600 cursor-not-allowed' 
+              ? 'bg-accent/20 text-accent/50 cursor-not-allowed' 
               : 'bg-accent hover:bg-accent/90 text-white'
           }`}
         >

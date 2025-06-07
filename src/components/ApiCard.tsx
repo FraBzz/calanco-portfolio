@@ -4,6 +4,7 @@ import { ChevronDown, ChevronUp } from 'lucide-react';
 import { ApiProject } from '../types';
 import AuthDemo from '../demos/AuthDemo';
 import EcommerceDemo from '../demos/EcommerceDemo';
+import ProductManagementDemo from '../demos/ProductManagementDemo';
 import WeatherDemo from '../demos/WeatherDemo';
 import NotificationDemo from '../demos/NotificationDemo';
 import TextSummarizerDemo from '../demos/TextSummarizerDemo';
@@ -15,13 +16,14 @@ interface ApiCardProps {
 
 const ApiCard: React.FC<ApiCardProps> = ({ project, index }) => {
   const [isDocOpen, setIsDocOpen] = useState(false);
-
   const renderDemo = () => {
     switch (project.id) {
       case 'auth':
         return <AuthDemo />;
       case 'ecommerce':
         return <EcommerceDemo />;
+      case 'product-management':
+        return <ProductManagementDemo />;
       case 'weather':
         return <WeatherDemo />;
       case 'notification':
@@ -46,15 +48,10 @@ const ApiCard: React.FC<ApiCardProps> = ({ project, index }) => {
           <div>
             <h3 className="text-2xl font-bold mb-2">{project.title}</h3>
             <p className="text-gray-600 dark:text-gray-400">{project.description}</p>
-          </div>
-          <motion.button
+          </div>          <motion.button
             onClick={() => setIsDocOpen(!isDocOpen)}
             whileTap={{ scale: 0.97 }}
-            className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-colors ${
-              isDocOpen 
-                ? 'bg-gray-200 dark:bg-gray-700 text-text-light dark:text-text-dark' 
-                : 'bg-accent/10 text-accent'
-            }`}
+            className="flex items-center gap-2 text-sm font-semibold text-accent hover:text-accent2 transition-all duration-200 cursor-pointer border border-accent/30 hover:border-accent/50 rounded-md px-3 py-2 hover:bg-accent/5"
           >
             {isDocOpen ? 'Hide Documentation' : 'Show Documentation'}
             {isDocOpen ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}

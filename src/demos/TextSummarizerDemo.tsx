@@ -90,13 +90,12 @@ const TextSummarizerDemo: React.FC = () => {
             </p>
           )}
         </div>
-        
-        <button
+          <button
           type="submit"
           disabled={isLoading || text.length < 100}
           className={`py-2.5 px-6 rounded-md font-medium transition-colors ${
             isLoading || text.length < 100
-              ? 'bg-gray-400 text-white cursor-not-allowed' 
+              ? 'bg-accent/20 text-accent/50 cursor-not-allowed' 
               : 'bg-accent hover:bg-accent/90 text-white'
           }`}
         >
