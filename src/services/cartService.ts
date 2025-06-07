@@ -16,7 +16,7 @@ export interface CartDto {
 }
 
 export class CartService {
-  private static readonly BASE_URL = 'http://localhost:3000';
+  private static readonly BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000';
   private static readonly EMPTY_CART_ID = '00000000-0000-0000-0000-000000000000';
 
   /**
