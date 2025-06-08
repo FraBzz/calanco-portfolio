@@ -19,7 +19,7 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section className="py-24 sm:py-32 border-b border-separator-light dark:border-separator-dark">
+    <section className="py-24 sm:py-32 border-b border-separator-dark">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           className="max-w-3xl mx-auto text-center"
@@ -40,7 +40,7 @@ const Hero: React.FC = () => {
           
           <motion.p 
             variants={item}
-            className="text-lg sm:text-xl mb-10 text-gray-700 dark:text-gray-300 max-w-2xl mx-auto"
+            className="text-lg sm:text-xl mb-10 text-gray-300 max-w-2xl mx-auto"
           >
             Specialized in building high-performance, secure, and scalable backend solutions that power modern applications.
           </motion.p>
@@ -61,3 +61,5 @@ const Hero: React.FC = () => {
 };
 
 export default Hero;
+
+

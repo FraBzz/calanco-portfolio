@@ -37,7 +37,7 @@ export const CurrentWeather: React.FC<CurrentWeatherProps> = ({ weather }) => {
       <div className="flex flex-col sm:flex-row items-center sm:justify-between">
         <div className="text-center sm:text-left mb-4 sm:mb-0">
           <h3 className="text-xl sm:text-2xl font-bold mb-1">{weather.location}</h3>
-          <p className="text-gray-600 dark:text-gray-400">
+          <p className="text-gray-400">
             Today's weather
           </p>
         </div>
@@ -52,7 +52,7 @@ export const CurrentWeather: React.FC<CurrentWeatherProps> = ({ weather }) => {
           <div className="text-2xl sm:text-3xl font-display font-bold mb-1">
             {weather.temperature}°C
           </div>
-          <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">
+          <div className="text-xs sm:text-sm text-gray-400">
             <span className="sm:hidden">Temp.</span>
             <span className="hidden sm:inline">Temperature</span>
           </div>
@@ -61,7 +61,7 @@ export const CurrentWeather: React.FC<CurrentWeatherProps> = ({ weather }) => {
           <div className="text-2xl sm:text-3xl font-display font-bold mb-1">
             {weather.humidity}%
           </div>
-          <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">
+          <div className="text-xs sm:text-sm text-gray-400">
             <span className="sm:hidden">Humid.</span>
             <span className="hidden sm:inline">Humidity</span>
           </div>
@@ -71,7 +71,7 @@ export const CurrentWeather: React.FC<CurrentWeatherProps> = ({ weather }) => {
             <Wind className="h-4 w-4 sm:h-5 sm:w-5 mr-1" />
             {weather.wind}
           </div>
-          <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">
+          <div className="text-xs sm:text-sm text-gray-400">
             <span className="sm:hidden">Wind</span>
             <span className="hidden sm:inline">Wind (km/h)</span>
           </div>
@@ -80,3 +80,6 @@ export const CurrentWeather: React.FC<CurrentWeatherProps> = ({ weather }) => {
     </motion.div>
   );
 };
+
+
+

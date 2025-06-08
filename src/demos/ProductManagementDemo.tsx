@@ -235,7 +235,7 @@ const ProductManagementDemo: React.FC = () => {
         </h3>
         
         <div className="flex items-center gap-3">
-          <div className="text-xs text-gray-500 dark:text-gray-400 hidden sm:block">
+          <div className="text-xs text-gray-400 hidden sm:block">
             Demo: {DemoLimits.getSessionStats().productsCreated}/{DemoLimits.getSessionStats().maxProducts} products
           </div>
           
@@ -260,7 +260,7 @@ const ProductManagementDemo: React.FC = () => {
                 ? 'bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300 border border-green-200 dark:border-green-800'
                 : actionStatus === 'error'
                 ? 'bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300 border border-red-200 dark:border-red-800'
-                : 'bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800'
+                : 'bg-blue-900/20 text-blue-300 border border-blue-800'
             }`}
           >
             {actionStatus === 'success' && <Check className="h-4 w-4" />}
@@ -288,9 +288,9 @@ const ProductManagementDemo: React.FC = () => {
               className="fixed inset-0 z-50 flex items-center justify-center p-4"
               onClick={resetForm}
             ><div 
-                className="bg-white dark:bg-neutral-800 rounded-lg shadow-xl w-full max-w-md max-h-[90vh] overflow-y-auto"
+                className="bg-neutral-800 rounded-lg shadow-xl w-full max-w-md max-h-[90vh] overflow-y-auto"
                 onClick={(e) => e.stopPropagation()}
-              >                <div className="flex items-center justify-between p-6 border-b border-separator-light dark:border-separator-dark">
+              >                <div className="flex items-center justify-between p-6 border-b border-separator-dark">
                   <h4 className="font-medium text-lg">
                     {formMode === 'create' ? 'Create New Product' : 'Edit Product'}
                   </h4>
@@ -312,7 +312,7 @@ const ProductManagementDemo: React.FC = () => {
                         type="text"
                         value={formData.name}
                         onChange={(e) => handleInputChange('name', e.target.value)}
-                        className="w-full px-3 py-2 border border-separator-light dark:border-separator-dark rounded-md bg-white dark:bg-neutral-700 focus:outline-none focus:ring-2 focus:ring-accent"
+                        className="w-full px-3 py-2 border border-separator-dark rounded-md bg-white dark:bg-neutral-700 focus:outline-none focus:ring-2 focus:ring-accent"
                         placeholder="Enter product name"
                         disabled={actionStatus === 'loading'}
                         autoFocus
@@ -328,7 +328,7 @@ const ProductManagementDemo: React.FC = () => {
                         value={formData.description}
                         onChange={(e) => handleInputChange('description', e.target.value)}
                         rows={3}
-                        className="w-full px-3 py-2 border border-separator-light dark:border-separator-dark rounded-md bg-white dark:bg-neutral-700 focus:outline-none focus:ring-2 focus:ring-accent resize-none"
+                        className="w-full px-3 py-2 border border-separator-dark rounded-md bg-white dark:bg-neutral-700 focus:outline-none focus:ring-2 focus:ring-accent resize-none"
                         placeholder="Enter product description"
                         disabled={actionStatus === 'loading'}
                       />
@@ -345,7 +345,7 @@ const ProductManagementDemo: React.FC = () => {
                         min="0"
                         value={formData.price}
                         onChange={(e) => handleInputChange('price', e.target.value)}
-                        className="w-full px-3 py-2 border border-separator-light dark:border-separator-dark rounded-md bg-white dark:bg-neutral-700 focus:outline-none focus:ring-2 focus:ring-accent"
+                        className="w-full px-3 py-2 border border-separator-dark rounded-md bg-white dark:bg-neutral-700 focus:outline-none focus:ring-2 focus:ring-accent"
                         placeholder="0.00"
                         disabled={actionStatus === 'loading'}
                       />
@@ -375,14 +375,14 @@ const ProductManagementDemo: React.FC = () => {
                         type="button"
                         onClick={resetForm}
                         disabled={actionStatus === 'loading'}
-                        className="px-4 py-2.5 border border-separator-light dark:border-separator-dark rounded-md font-medium hover:bg-gray-50 dark:hover:bg-neutral-700 transition-colors"
+                        className="px-4 py-2.5 border border-separator-dark rounded-md font-medium hover:bg-gray-50 dark:hover:bg-neutral-700 transition-colors"
                       >
                         Cancel
                       </button>
                     </div>
                   </form>
 
-                  <div className="mt-6 bg-gray-100 dark:bg-neutral-700/50 p-3 rounded text-xs text-gray-600 dark:text-gray-400">
+                  <div className="mt-6 bg-neutral-700/50 p-3 rounded text-xs text-gray-400">
                     <p className="font-medium mb-1">API Request Preview:</p>
                     <code className="block overflow-x-auto">
                       {formMode === 'create' ? 'POST' : 'PUT'} /api/products
@@ -403,14 +403,14 @@ const ProductManagementDemo: React.FC = () => {
       </AnimatePresence>
 
       {/* Products List */}
-      <div className="bg-neutral-800 dark:bg-background-dark p-6 rounded-lg">
+      <div className="bg-background-dark p-6 rounded-lg">
           <h4 className="font-medium mb-4 flex items-center gap-2">
             <Package className="h-5 w-5 text-accent" />
             Registered Products ({products.length})
           </h4>
 
           {isLoading ? (
-            <div className="flex flex-col items-center py-8 text-gray-500 dark:text-gray-400">
+            <div className="flex flex-col items-center py-8 text-gray-400">
               <div className="animate-spin h-8 w-8 mb-4 border-2 border-accent border-t-transparent rounded-full"></div>
               <p>Loading products...</p>
             </div>
@@ -421,13 +421,13 @@ const ProductManagementDemo: React.FC = () => {
               <p className="text-sm text-center">{error}</p>
               <button
                 onClick={loadProducts}
-                className="mt-4 py-1.5 px-3 bg-red-100 dark:bg-red-900/20 text-red-600 dark:text-red-400 text-sm font-medium rounded hover:bg-red-200 dark:hover:bg-red-900/40 transition-colors"
+                className="mt-4 py-1.5 px-3 bg-red-900/20 text-red-400 text-sm font-medium rounded hover:bg-red-200 dark:hover:bg-red-900/40 transition-colors"
               >
                 Retry
               </button>
             </div>
           ) : products.length === 0 ? (
-            <div className="text-center py-8 text-gray-500 dark:text-gray-400">
+            <div className="text-center py-8 text-gray-400">
               <Package className="h-12 w-12 mx-auto mb-4 opacity-50" />              <p>No products found.</p>
               <p className="text-sm mt-2">Start by creating your first product.</p>
             </div>          ) : (
@@ -437,12 +437,12 @@ const ProductManagementDemo: React.FC = () => {
                   key={product.id}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="bg-white dark:bg-neutral-800 p-4 rounded-md border border-separator-light dark:border-separator-dark"
+                  className="bg-neutral-800 p-4 rounded-md border border-separator-dark"
                 >
                   <div className="flex justify-between items-start mb-2">
                     <div className="flex-1">
                       <h5 className="font-medium text-lg">{product.name}</h5>
-                      <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
+                      <p className="text-sm text-gray-400 mb-2">
                         {product.description}
                       </p>
                       <div className="flex items-center gap-2">                        <span className="font-display font-bold text-xl text-accent">
@@ -460,7 +460,7 @@ const ProductManagementDemo: React.FC = () => {
                         disabled={actionStatus === 'loading'}                        className={`p-2 rounded transition-colors ${
                           actionStatus === 'loading'
                             ? 'bg-blue-100/30 dark:bg-blue-900/10 text-blue-400/50 dark:text-blue-500/40 cursor-not-allowed'
-                            : 'bg-blue-100 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 hover:bg-blue-200 dark:hover:bg-blue-900/40'
+                            : 'bg-blue-900/20 text-blue-400 hover:bg-blue-200 dark:hover:bg-blue-900/40'
                         }`}
                         title="Edit product"
                       >
@@ -472,7 +472,7 @@ const ProductManagementDemo: React.FC = () => {
                         disabled={actionStatus === 'loading'}                        className={`p-2 rounded transition-colors ${
                           actionStatus === 'loading'
                             ? 'bg-red-100/30 dark:bg-red-900/10 text-red-400/50 dark:text-red-500/40 cursor-not-allowed'
-                            : 'bg-red-100 dark:bg-red-900/20 text-red-600 dark:text-red-400 hover:bg-red-200 dark:hover:bg-red-900/40'
+                            : 'bg-red-900/20 text-red-400 hover:bg-red-200 dark:hover:bg-red-900/40'
                         }`}
                         title="Delete product"
                       >
@@ -489,3 +489,6 @@ const ProductManagementDemo: React.FC = () => {
 };
 
 export default ProductManagementDemo;
+
+
+

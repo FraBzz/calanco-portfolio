@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import { Menu, Moon, Sun, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { CalancoLogo } from '../assets/icons';
@@ -9,21 +9,12 @@ interface LayoutProps {
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
-  const [darkMode, setDarkMode] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
-    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    setDarkMode(isDarkMode);
+    // Always enable dark mode
+    document.documentElement.classList.add('dark');
   }, []);
-
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, [darkMode]);
 
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
@@ -42,11 +33,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       document.body.style.overflow = '';
     };
   }, [isMenuOpen]);
-
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-  };
-
   const closeMenu = () => {
     setIsMenuOpen(false);
   };
@@ -67,10 +53,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       }
     }
   };
-
   return (
-    <div className="min-h-screen bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark">
-      <header className="sticky top-0 z-50 border-b border-separator-light dark:border-separator-dark bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-sm">
+    <div className="min-h-screen bg-background-dark text-text-dark">
+      <header className="sticky top-0 z-50 border-b border-separator-dark bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-sm">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">          <NavLink to="/" className="flex items-center gap-0.5">
             <CalancoLogo size="header" />
             <span className="text-2xl font-display font-black leading-[1] -translate-y-[1px]">
@@ -118,22 +103,12 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               }
             >
               Contact
-            </NavLink>
-          </nav>
+            </NavLink>          </nav>
 
           <div className="flex items-center gap-4">
-            <motion.button
-              onClick={toggleDarkMode}
-              whileTap={{ scale: 0.95 }}
-              className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-background-dark transition-colors"
-              aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
-            >
-              {darkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-            </motion.button>
-
             <button
               onClick={() => setIsMenuOpen(true)}
-              className="md:hidden p-2 hover:bg-gray-100 dark:hover:bg-background-dark rounded-full transition-colors"
+              className="md:hidden p-2 hover:bg-background-dark rounded-full transition-colors"
               aria-label="Open menu"
             >
               <Menu className="h-6 w-6" />
@@ -159,13 +134,13 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               initial="closed"
               animate="open"
               exit="closed"
-              className="fixed top-0 right-0 bottom-0 w-[280px] bg-background-light dark:bg-background-dark z-50 md:hidden"
+              className="fixed top-0 right-0 bottom-0 w-[280px] bg-background-dark z-50 md:hidden"
             >
-              <div className="p-4 border-b border-separator-light dark:border-separator-dark flex justify-between items-center">
+              <div className="p-4 border-b border-separator-dark flex justify-between items-center">
                 <h2 className="font-display font-bold">Navigation</h2>
                 <button
                   onClick={closeMenu}
-                  className="p-2 hover:bg-gray-100 dark:hover:bg-background-dark rounded-full transition-colors"
+                  className="p-2 hover:bg-background-dark rounded-full transition-colors"
                   aria-label="Close menu"
                 >
                   <X className="h-5 w-5" />
@@ -180,20 +155,19 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                     `p-2 rounded-md font-medium transition-colors ${
                       isActive 
                         ? 'bg-accent/10 text-accent' 
-                        : 'hover:bg-gray-100 dark:hover:bg-background-dark'
+                        : 'hover:bg-background-dark'
                     }`
                   }
                 >
                   Home
-                </NavLink>
-                <NavLink 
+                </NavLink>                <NavLink 
                   to="/backend"
                   onClick={closeMenu}
                   className={({ isActive }) => 
                     `p-2 rounded-md font-medium transition-colors ${
                       isActive 
                         ? 'bg-accent/10 text-accent' 
-                        : 'hover:bg-gray-100 dark:hover:bg-background-dark'
+                        : 'hover:bg-background-dark'
                     }`
                   }
                 >
@@ -206,7 +180,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                     `p-2 rounded-md font-medium transition-colors ${
                       isActive 
                         ? 'bg-accent/10 text-accent' 
-                        : 'hover:bg-gray-100 dark:hover:bg-background-dark'
+                        : 'hover:bg-background-dark'
                     }`
                   }
                 >
@@ -219,7 +193,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                     `p-2 rounded-md font-medium transition-colors ${
                       isActive 
                         ? 'bg-accent/10 text-accent' 
-                        : 'hover:bg-gray-100 dark:hover:bg-background-dark'
+                        : 'hover:bg-background-dark'
                     }`
                   }
                 >
@@ -232,7 +206,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                     `p-2 rounded-md font-medium transition-colors ${
                       isActive 
                         ? 'bg-accent/10 text-accent' 
-                        : 'hover:bg-gray-100 dark:hover:bg-background-dark'
+                        : 'hover:bg-background-dark'
                     }`
                   }
                 >
@@ -245,7 +219,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                     `p-2 rounded-md font-medium transition-colors ${
                       isActive 
                         ? 'bg-accent/10 text-accent' 
-                        : 'hover:bg-gray-100 dark:hover:bg-background-dark'
+                        : 'hover:bg-background-dark'
                     }`
                   }
                 >
@@ -260,9 +234,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       <main>
         {children}
       </main>
-      
-      <footer className="border-t border-separator-light dark:border-separator-dark py-8">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-gray-500 dark:text-gray-400">
+        <footer className="border-t border-separator-dark py-8">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-gray-400">
           <p>© {new Date().getFullYear()} Calanco. All rights reserved.</p>
         </div>
       </footer>
@@ -271,3 +244,5 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 };
 
 export default Layout;
+
+

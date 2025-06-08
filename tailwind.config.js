@@ -3,23 +3,19 @@ export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   darkMode: 'class',
   theme: {
-    extend: {
-      colors: {
-        background: {
-          light: '#F5F5DC',
-          dark: '#1A1A18'
-        },
-        text: {
-          light: '#232323',
-          dark: '#E3C198'
-        },
+    extend: {      colors: {
+        // Default colors (sempre dark mode)
+        background: '#1A1A18',
+        text: '#E3C198',
         accent: '#4E342E',
         accent2: '#D7A86E',
         cta: '#0088A8',
-        separator: {
-          light: '#EDEDED',
-          dark: '#2D2D2D'
-        }
+        separator: '#2D2D2D',
+        
+        // Mantengo i vecchi nomi per compatibilità
+        'background-dark': '#1A1A18',
+        'text-dark': '#E3C198',
+        'separator-dark': '#2D2D2D'
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],

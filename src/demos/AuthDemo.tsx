@@ -87,14 +87,14 @@ const AuthDemo: React.FC = () => {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <div className="bg-neutral-800 dark:bg-background-dark p-6 rounded-lg">
-        <div className="flex border-b border-separator-light dark:border-separator-dark mb-6">
+      <div className="bg-background-dark p-6 rounded-lg">
+        <div className="flex border-b border-separator-dark mb-6">
           <button
             onClick={() => setActiveTab('login')}
             className={`pb-3 px-4 font-medium ${
               activeTab === 'login'
                 ? 'border-b-2 border-accent text-accent'
-                : 'text-gray-500 dark:text-gray-400'
+                : 'text-gray-400'
             }`}
           >
             Login
@@ -104,7 +104,7 @@ const AuthDemo: React.FC = () => {
             className={`pb-3 px-4 font-medium ${
               activeTab === 'register'
                 ? 'border-b-2 border-accent text-accent'
-                : 'text-gray-500 dark:text-gray-400'
+                : 'text-gray-400'
             }`}
           >
             Register
@@ -128,7 +128,7 @@ const AuthDemo: React.FC = () => {
                   value={formState.email}
                   onChange={handleChange}
                   placeholder="email@example.com"
-                  className="pl-10 w-full p-2 bg-white dark:bg-neutral-800 border border-separator-light dark:border-separator-dark rounded-md"
+                  className="pl-10 w-full p-2 bg-neutral-800 border border-separator-dark rounded-md"
                   required
                 />
               </div>
@@ -149,7 +149,7 @@ const AuthDemo: React.FC = () => {
                   value={formState.password}
                   onChange={handleChange}
                   placeholder="••••••••"
-                  className="pl-10 w-full p-2 bg-white dark:bg-neutral-800 border border-separator-light dark:border-separator-dark rounded-md"
+                  className="pl-10 w-full p-2 bg-neutral-800 border border-separator-dark rounded-md"
                   required
                 />
               </div>
@@ -186,7 +186,7 @@ const AuthDemo: React.FC = () => {
                 value={formState.name}
                 onChange={handleChange}
                 placeholder="John Doe"
-                className="w-full p-2 bg-white dark:bg-neutral-800 border border-separator-light dark:border-separator-dark rounded-md"
+                className="w-full p-2 bg-neutral-800 border border-separator-dark rounded-md"
                 required
               />
             </div>
@@ -202,7 +202,7 @@ const AuthDemo: React.FC = () => {
                 value={formState.email}
                 onChange={handleChange}
                 placeholder="email@example.com"
-                className="w-full p-2 bg-white dark:bg-neutral-800 border border-separator-light dark:border-separator-dark rounded-md"
+                className="w-full p-2 bg-neutral-800 border border-separator-dark rounded-md"
                 required
               />
             </div>
@@ -218,7 +218,7 @@ const AuthDemo: React.FC = () => {
                 value={formState.password}
                 onChange={handleChange}
                 placeholder="Min. 6 characters"
-                className="w-full p-2 bg-white dark:bg-neutral-800 border border-separator-light dark:border-separator-dark rounded-md"
+                className="w-full p-2 bg-neutral-800 border border-separator-dark rounded-md"
                 required
                 minLength={6}
               />
@@ -245,14 +245,14 @@ const AuthDemo: React.FC = () => {
         )}
       </div>
       
-      <div className="bg-neutral-800 dark:bg-background-dark p-6 rounded-lg">
+      <div className="bg-background-dark p-6 rounded-lg">
         <h4 className="font-medium mb-4">API Response</h4>
         {response ? (
           <>
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="bg-white dark:bg-neutral-800 p-4 rounded-md overflow-x-auto mb-4"
+              className="bg-neutral-800 p-4 rounded-md overflow-x-auto mb-4"
             >
               <pre className="text-sm whitespace-pre-wrap">
                 {JSON.stringify(response, null, 2)}
@@ -266,7 +266,7 @@ const AuthDemo: React.FC = () => {
             </button>
           </>
         ) : (
-          <div className="text-gray-500 dark:text-gray-400 text-sm italic">
+          <div className="text-gray-400 text-sm italic">
             No data yet. Submit the form to see the API response.
           </div>
         )}
@@ -276,3 +276,5 @@ const AuthDemo: React.FC = () => {
 };
 
 export default AuthDemo;
+
+

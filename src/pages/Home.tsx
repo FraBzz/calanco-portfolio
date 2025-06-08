@@ -18,12 +18,11 @@ const Home: React.FC = () => {
     hidden: { opacity: 0, y: 20 },
     show: { opacity: 1, y: 0 }
   };
-
   const stats = [
     { icon: <Calendar className="h-5 w-5" />, label: "Years Experience", value: "5+" },
     { icon: <Code2 className="h-5 w-5" />, label: "Technologies", value: "10+" },
     { icon: <Users className="h-5 w-5" />, label: "Projects Delivered", value: "25+" },
-    { icon: <Coffee className="h-5 w-5" />, label: "Coffee Consumed", value: "∞" }
+    { icon: <Coffee className="h-5 w-5" />, label: "Tea Consumed", value: "∞" }
   ];
 
   const highlights = [
@@ -72,7 +71,7 @@ const Home: React.FC = () => {
               </motion.h1>
                 <motion.p 
                 variants={item}
-                className="text-lg sm:text-xl mb-8 text-text-secondary dark:text-text-secondary-dark max-w-3xl mx-auto leading-relaxed"
+                className="text-lg sm:text-xl mb-8 text-text-dark max-w-3xl mx-auto leading-relaxed"
               >
                 Specialized in building <span className="text-cta font-semibold">high-performance</span>, 
                 <span className="text-accent font-semibold"> secure</span>, and 
@@ -83,13 +82,13 @@ const Home: React.FC = () => {
             {/* Stats Section */}
             <motion.div variants={item} className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
               {stats.map((stat, index) => (
-                <div key={index} className="text-center p-4 bg-white dark:bg-neutral-800 rounded-lg border border-gray-200 dark:border-gray-700">
+                <div key={index} className="text-center p-4 bg-neutral-800 rounded-lg border border-gray-700">
                   <div className="flex justify-center text-accent mb-2">
                     {stat.icon}
                   </div>                  <div className="text-2xl font-bold mb-1">
                     {stat.value}
                   </div>
-                  <div className="text-sm text-text-secondary dark:text-text-secondary-dark">
+                  <div className="text-sm text-text-dark">
                     {stat.label}
                   </div>
                 </div>
@@ -103,13 +102,13 @@ const Home: React.FC = () => {
               <div className="grid sm:grid-cols-3 gap-6">
                 <Link 
                   to="/backend"
-                  className="group bg-white dark:bg-neutral-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all duration-300 hover:border-accent"
+                  className="group bg-neutral-800 p-6 rounded-lg border border-gray-700 hover:shadow-lg transition-all duration-300 hover:border-accent"
                 >
                   <div className="flex flex-col items-center text-center">
                     <div className="bg-accent text-white p-4 rounded-lg mb-4 group-hover:scale-110 transition-transform">
                       <Server className="h-8 w-8" />
                     </div>                    <h3 className="text-lg font-semibold mb-2">Backend</h3>
-                    <p className="text-text-secondary dark:text-text-secondary-dark text-sm mb-4">APIs, microservices, and server-side solutions</p>
+                    <p className="text-text-dark text-sm mb-4">APIs, microservices, and server-side solutions</p>
                     <div className="flex items-center text-accent font-medium">
                       <span>View Projects</span>
                       <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -119,13 +118,13 @@ const Home: React.FC = () => {
                 
                 <Link 
                   to="/frontend"
-                  className="group bg-white dark:bg-neutral-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all duration-300 hover:border-cta"
+                  className="group bg-neutral-800 p-6 rounded-lg border border-gray-700 hover:shadow-lg transition-all duration-300 hover:border-cta"
                 >
                   <div className="flex flex-col items-center text-center">
                     <div className="bg-cta text-white p-4 rounded-lg mb-4 group-hover:scale-110 transition-transform">
                       <LayoutIcon className="h-8 w-8" />
                     </div>                    <h3 className="text-lg font-semibold mb-2">Frontend</h3>
-                    <p className="text-text-secondary dark:text-text-secondary-dark text-sm mb-4">React interfaces and modern web applications</p>
+                    <p className="text-text-dark text-sm mb-4">React interfaces and modern web applications</p>
                     <div className="flex items-center text-cta font-medium">
                       <span>View Projects</span>
                       <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -135,13 +134,13 @@ const Home: React.FC = () => {
                 
                 <Link 
                   to="/mobile"
-                  className="group bg-white dark:bg-neutral-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all duration-300 hover:border-accent2"
+                  className="group bg-neutral-800 p-6 rounded-lg border border-gray-700 hover:shadow-lg transition-all duration-300 hover:border-accent2"
                 >
                   <div className="flex flex-col items-center text-center">
                     <div className="bg-accent2 text-white p-4 rounded-lg mb-4 group-hover:scale-110 transition-transform">
                       <Smartphone className="h-8 w-8" />
                     </div>                    <h3 className="text-lg font-semibold mb-2">Mobile</h3>
-                    <p className="text-text-secondary dark:text-text-secondary-dark text-sm mb-4">Cross-platform apps and mobile solutions</p>
+                    <p className="text-text-dark text-sm mb-4">Cross-platform apps and mobile solutions</p>
                     <div className="flex items-center text-accent2 font-medium">
                       <span>View Projects</span>
                       <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -160,14 +159,14 @@ const Home: React.FC = () => {
                   <motion.div
                     key={index}
                     variants={item}
-                    className="text-center p-6 bg-white dark:bg-neutral-800 rounded-lg border border-gray-200 dark:border-gray-700"
+                    className="text-center p-6 bg-neutral-800 rounded-lg border border-gray-700"
                   >
                     <div className="flex justify-center text-accent mb-4">
                       {highlight.icon}
                     </div>                    <h3 className="text-lg font-semibold mb-2">
                       {highlight.title}
                     </h3>
-                    <p className="text-text-secondary dark:text-text-secondary-dark">
+                    <p className="text-text-dark">
                       {highlight.description}
                     </p>
                   </motion.div>
@@ -202,3 +201,5 @@ const Home: React.FC = () => {
 };
 
 export default Home;
+
+

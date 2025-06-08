@@ -54,7 +54,7 @@ const AboutMe: React.FC = () => {
     { icon: <Calendar className="h-5 w-5" />, label: "Years Experience", value: "5+" },
     { icon: <Code2 className="h-5 w-5" />, label: "Technologies", value: "10+" },
     { icon: <Users className="h-5 w-5" />, label: "Projects", value: "3+" },
-    { icon: <Coffee className="h-5 w-5" />, label: "Coffee Cups", value: "∞" }
+    { icon: <Coffee className="h-5 w-5" />, label: "Tea Cups", value: "∞" }
   ];
 
   return (
@@ -75,7 +75,7 @@ const AboutMe: React.FC = () => {
               <span className="text-accent font-medium">About Me</span>
             </motion.div>            <motion.h2 variants={item} className="text-4xl sm:text-5xl font-display font-bold mb-6 leading-tight">
               Meet the <span className="text-accent">Developer</span>
-            </motion.h2>            <motion.p variants={item} className="text-lg sm:text-xl mb-8 text-text-secondary dark:text-text-secondary-dark leading-relaxed max-w-3xl mx-auto">
+            </motion.h2>            <motion.p variants={item} className="text-lg sm:text-xl mb-8 text-text-dark leading-relaxed max-w-3xl mx-auto">
               I'm <span className="text-accent font-semibold">Francesca Bozzoli</span>, a backend developer with <span className="text-cta font-semibold">5 years of experience</span> focused on building secure, high-performance APIs and backend systems.
             </motion.p>
           </div>
@@ -83,13 +83,13 @@ const AboutMe: React.FC = () => {
           {/* Stats Section */}
           <motion.div variants={item} className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
             {stats.map((stat, index) => (
-              <div key={index} className="text-center p-4 bg-white dark:bg-neutral-800 rounded-lg border border-gray-200 dark:border-gray-700">
+              <div key={index} className="text-center p-4 bg-neutral-800 rounded-lg border border-gray-700">
                 <div className="flex justify-center text-accent mb-2">
                   {stat.icon}
                 </div>                <div className="text-2xl font-bold mb-1">
                   {stat.value}
                 </div>
-                <div className="text-sm text-text-secondary dark:text-text-secondary-dark">
+                <div className="text-sm text-text-dark">
                   {stat.label}
                 </div>
               </div>
@@ -105,7 +105,7 @@ const AboutMe: React.FC = () => {
                 <motion.div
                   key={index}
                   variants={item}
-                  className="bg-white dark:bg-neutral-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow"
+                  className="bg-neutral-800 p-6 rounded-lg border border-gray-700 hover:shadow-lg transition-shadow"
                 >
                   <div className="flex items-start gap-4">
                     <div className={`${area.color} text-white p-3 rounded-lg flex-shrink-0`}>
@@ -114,14 +114,14 @@ const AboutMe: React.FC = () => {
                     <div className="flex-1">                      <h4 className="text-lg font-semibold mb-1">
                         {area.title}
                       </h4>
-                      <p className="text-text-secondary dark:text-text-secondary-dark mb-3">
+                      <p className="text-text-dark mb-3">
                         {area.description}
                       </p>
                       <div className="flex flex-wrap gap-2">
                         {area.technologies.map((tech, techIndex) => (
                           <span
                             key={techIndex}
-                            className="px-2 py-1 bg-gray-100 dark:bg-neutral-700 text-sm rounded-md text-gray-700 dark:text-gray-300"
+                            className="px-2 py-1 bg-neutral-700 text-sm rounded-md text-gray-300"
                           >
                             {tech}
                           </span>
@@ -138,7 +138,7 @@ const AboutMe: React.FC = () => {
           <motion.div variants={item} className="text-center mb-16">            <h3 className="text-2xl font-display font-bold mb-6">
               My Development Philosophy
             </h3>
-            <p className="text-lg sm:text-xl text-text-secondary dark:text-text-secondary-dark leading-relaxed max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl text-text-dark leading-relaxed max-w-3xl mx-auto">
               I'm driven by <span className="text-accent font-semibold">clean architecture</span>, excellent <span className="text-cta font-semibold">developer experience</span>, and solving real-world problems with <span className="text-accent2 font-semibold">reliable software</span>. Every line of code should serve a purpose and contribute to a maintainable, scalable solution.
             </p>
           </motion.div>
@@ -160,3 +160,6 @@ const AboutMe: React.FC = () => {
 };
 
 export default AboutMe;
+
+
+

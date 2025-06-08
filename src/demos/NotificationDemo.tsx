@@ -54,7 +54,7 @@ const NotificationDemo: React.FC = () => {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <div className="bg-neutral-800 dark:bg-background-dark p-6 rounded-lg">
+      <div className="bg-background-dark p-6 rounded-lg">
         <h4 className="font-medium mb-6">Send Notification</h4>
         
         <form onSubmit={handleSubmit}>
@@ -67,7 +67,7 @@ const NotificationDemo: React.FC = () => {
               name="notificationType"
               value={formState.notificationType}
               onChange={handleChange}
-              className="w-full p-2 bg-white dark:bg-neutral-800 border border-separator-light dark:border-separator-dark rounded-md"
+              className="w-full p-2 bg-neutral-800 border border-separator-dark rounded-md"
             >
               <option value="email">Email</option>
               <option value="sms">SMS</option>
@@ -94,7 +94,7 @@ const NotificationDemo: React.FC = () => {
                 value={formState.recipientEmail}
                 onChange={handleChange}
                 placeholder={formState.notificationType === 'sms' ? '+1234567890' : 'recipient@example.com'}
-                className="pl-10 w-full p-2 bg-white dark:bg-neutral-800 border border-separator-light dark:border-separator-dark rounded-md"
+                className="pl-10 w-full p-2 bg-neutral-800 border border-separator-dark rounded-md"
                 required
               />
             </div>
@@ -111,7 +111,7 @@ const NotificationDemo: React.FC = () => {
               value={formState.subject}
               onChange={handleChange}
               placeholder="Notification subject"
-              className="w-full p-2 bg-white dark:bg-neutral-800 border border-separator-light dark:border-separator-dark rounded-md"
+              className="w-full p-2 bg-neutral-800 border border-separator-dark rounded-md"
               required
             />
           </div>
@@ -127,7 +127,7 @@ const NotificationDemo: React.FC = () => {
               onChange={handleChange}
               placeholder="Your notification message..."
               rows={4}
-              className="w-full p-2 bg-white dark:bg-neutral-800 border border-separator-light dark:border-separator-dark rounded-md"
+              className="w-full p-2 bg-neutral-800 border border-separator-dark rounded-md"
               required
             ></textarea>
           </div>
@@ -152,7 +152,7 @@ const NotificationDemo: React.FC = () => {
         </form>
       </div>
       
-      <div className="bg-neutral-800 dark:bg-background-dark p-6 rounded-lg">
+      <div className="bg-background-dark p-6 rounded-lg">
         <h4 className="font-medium mb-4">Notification Preview</h4>
         
         {response ? (
@@ -161,24 +161,24 @@ const NotificationDemo: React.FC = () => {
             animate={{ opacity: 1 }}
             className="space-y-6"
           >
-            <div className="bg-white dark:bg-neutral-800 p-5 rounded-md border border-separator-light dark:border-separator-dark">
+            <div className="bg-neutral-800 p-5 rounded-md border border-separator-dark">
               <div className="flex items-center gap-3 mb-4">
                 <CheckCircle2 className="h-6 w-6 text-green-500" />
                 <div>
                   <h5 className="font-medium">{response.data.notification.subject}</h5>
-                  <p className="text-xs text-gray-500 dark:text-gray-400">
+                  <p className="text-xs text-gray-400">
                     Sent to: {response.data.notification.recipient} • {new Date(response.data.notification.createdAt).toLocaleTimeString()}
                   </p>
                 </div>
               </div>
-              <div className="py-2 px-3 bg-neutral-800 dark:bg-background-dark rounded text-sm">
+              <div className="py-2 px-3 bg-background-dark rounded text-sm">
                 {response.data.notification.content}
               </div>
             </div>
             
             <div>
               <h5 className="text-sm font-medium mb-2">API Response</h5>
-              <div className="bg-gray-100 dark:bg-neutral-800/80 p-3 rounded-md overflow-x-auto">
+              <div className="bg-neutral-800/80 p-3 rounded-md overflow-x-auto">
                 <pre className="text-xs">
                   {JSON.stringify(response, null, 2)}
                 </pre>
@@ -193,7 +193,7 @@ const NotificationDemo: React.FC = () => {
             </button>
           </motion.div>
         ) : (
-          <div className="text-center py-16 text-gray-500 dark:text-gray-400">
+          <div className="text-center py-16 text-gray-400">
             <Bell className="h-12 w-12 mx-auto mb-4 opacity-50" />
             <p>Fill out the form to send a notification and see a preview.</p>
           </div>
@@ -204,3 +204,5 @@ const NotificationDemo: React.FC = () => {
 };
 
 export default NotificationDemo;
+
+
