@@ -31,18 +31,18 @@ const DemoNotice: React.FC<DemoNoticeProps> = ({ demoName, limits }) => {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
-          className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4 mb-6"
+          className="bg-blue-900/20 border border-blue-800 rounded-lg p-4 mb-6"
         >
           <div className="flex items-start gap-3">
-            <Info className="h-5 w-5 text-blue-600 dark:text-blue-400 mt-0.5 flex-shrink-0" />
+            <Info className="h-5 w-5 text-blue-400 mt-0.5 flex-shrink-0" />
             <div className="flex-1">
-              <h5 className="font-medium text-blue-900 dark:text-blue-100 mb-2">
+              <h5 className="font-medium text-blue-100 mb-2">
                 Demo Environment
               </h5>
-              <p className="text-sm text-blue-800 dark:text-blue-200 mb-2">
+              <p className="text-sm text-blue-200 mb-2">
                 This is a portfolio demonstration with the following limitations:
               </p>
-              <ul className="text-sm text-blue-700 dark:text-blue-300 space-y-1">
+              <ul className="text-sm text-blue-300 space-y-1">
                 {limits.map((limit, index) => (
                   <li key={index} className="flex items-center gap-2">
                     <span className="w-1 h-1 bg-blue-400 rounded-full"></span>
@@ -65,3 +65,6 @@ const DemoNotice: React.FC<DemoNoticeProps> = ({ demoName, limits }) => {
 };
 
 export default DemoNotice;
+
+
+

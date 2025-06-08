@@ -41,13 +41,13 @@ const ApiCard: React.FC<ApiCardProps> = ({ project, index }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="bg-white dark:bg-neutral-800 rounded-lg shadow-sm border border-separator-light dark:border-separator-dark overflow-hidden"
+      className="bg-neutral-800 rounded-lg shadow-sm border border-separator-dark overflow-hidden"
     >
       <div className="p-6 sm:p-8">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
           <div>
             <h3 className="text-2xl font-bold mb-2">{project.title}</h3>
-            <p className="text-gray-600 dark:text-gray-400">{project.description}</p>
+            <p className="text-gray-400">{project.description}</p>
           </div>          <motion.button
             onClick={() => setIsDocOpen(!isDocOpen)}
             whileTap={{ scale: 0.97 }}
@@ -69,7 +69,7 @@ const ApiCard: React.FC<ApiCardProps> = ({ project, index }) => {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="border-t border-separator-light dark:border-separator-dark pt-6"
+              className="border-t border-separator-dark pt-6"
             >
               <div className="prose prose-slate dark:prose-invert max-w-none">
                 <h4 className="text-lg font-semibold mb-4">API Documentation</h4>
@@ -125,3 +125,5 @@ const ApiCard: React.FC<ApiCardProps> = ({ project, index }) => {
 };
 
 export default ApiCard;
+
+

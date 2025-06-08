@@ -99,7 +99,7 @@ const Mobile: React.FC = () => {
           >            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
               Mobile <span className="text-accent">Development</span>
             </h1>
-            <p className="text-xl text-text-secondary dark:text-text-secondary-dark mb-8 max-w-3xl mx-auto">
+            <p className="text-xl text-text-dark mb-8 max-w-3xl mx-auto">
               Building <span className="text-cta font-semibold">native-quality</span> mobile applications 
               with React Native and Flutter that deliver exceptional user experiences across platforms.
             </p>
@@ -118,11 +118,11 @@ const Mobile: React.FC = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.15 + index * 0.1 }}
-                className="text-center p-6 bg-white dark:bg-neutral-800 rounded-xl border border-separator-light dark:border-separator-dark"
+                className="text-center p-6 bg-neutral-800 rounded-xl border border-separator-dark"
               >
                 <stat.icon className="h-8 w-8 text-accent mx-auto mb-3" />
                 <div className="text-2xl sm:text-3xl font-bold text-accent mb-1">{stat.value}</div>
-                <div className="text-sm text-text-secondary dark:text-text-secondary-dark">{stat.label}</div>
+                <div className="text-sm text-text-dark">{stat.label}</div>
               </motion.div>
             ))}
           </motion.div>
@@ -144,12 +144,12 @@ const Mobile: React.FC = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-                  className="p-6 bg-white dark:bg-neutral-800 rounded-xl border border-separator-light dark:border-separator-dark hover:border-accent/50 transition-colors group"
+                  className="p-6 bg-neutral-800 rounded-xl border border-separator-dark hover:border-accent/50 transition-colors group"
                 >
                   <h3 className="text-lg font-semibold mb-3 group-hover:text-accent transition-colors">
                     {expertise.title}
                   </h3>
-                  <p className="text-text-secondary dark:text-text-secondary-dark text-sm">
+                  <p className="text-text-dark text-sm">
                     {expertise.description}
                   </p>
                 </motion.div>
@@ -171,7 +171,7 @@ const Mobile: React.FC = () => {
             <h2 className="text-3xl sm:text-4xl font-bold mb-6">
               Featured <span className="text-cta">Apps</span>
             </h2>
-            <p className="text-lg text-text-secondary dark:text-text-secondary-dark max-w-2xl mx-auto">
+            <p className="text-lg text-text-dark max-w-2xl mx-auto">
               A showcase of mobile applications that have delighted users and achieved success in app stores.
             </p>
           </motion.div>          <div className="space-y-8">
@@ -181,10 +181,10 @@ const Mobile: React.FC = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.5 + index * 0.15 }}
-                className={`bg-white dark:bg-neutral-800 rounded-xl shadow-sm border hover:shadow-lg transition-all duration-300 overflow-hidden group ${
+                className={`bg-neutral-800 rounded-xl shadow-sm border hover:shadow-lg transition-all duration-300 overflow-hidden group ${
                   project.featured 
                     ? 'border-accent/30 dark:border-accent/30' 
-                    : 'border-separator-light dark:border-separator-dark hover:border-accent/50'
+                    : 'border-separator-dark hover:border-accent/50'
                 }`}
               >
                 {project.featured && (
@@ -210,7 +210,7 @@ const Mobile: React.FC = () => {
                         )}
                       </div>
                       
-                      <p className="text-text-secondary dark:text-text-secondary-dark mb-6 leading-relaxed">
+                      <p className="text-text-dark mb-6 leading-relaxed">
                         {project.description}
                       </p>
                       
@@ -221,7 +221,7 @@ const Mobile: React.FC = () => {
                             className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${
                               techIndex === 0 
                                 ? 'bg-accent/10 text-accent border border-accent/20' 
-                                : 'bg-background-light dark:bg-background-dark text-text-secondary dark:text-text-secondary-dark border border-separator-light dark:border-separator-dark'
+                                : 'bg-background-dark text-text-dark border border-separator-dark'
                             }`}
                           >
                             {tech}
@@ -247,7 +247,7 @@ const Mobile: React.FC = () => {
                           href={project.github}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex-1 lg:flex-none inline-flex items-center justify-center gap-2 px-4 py-2 bg-background-light dark:bg-background-dark hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg text-sm font-medium transition-colors border border-separator-light dark:border-separator-dark"
+                          className="flex-1 lg:flex-none inline-flex items-center justify-center gap-2 px-4 py-2 bg-background-dark hover:bg-gray-700 rounded-lg text-sm font-medium transition-colors border border-separator-dark"
                         >
                           <Github className="h-4 w-4" />
                           GitHub
@@ -293,7 +293,7 @@ const Mobile: React.FC = () => {
               <h3 className="text-2xl sm:text-3xl font-bold mb-4">
                 Ready to Launch Your <span className="text-accent">Mobile App</span>?
               </h3>
-              <p className="text-text-secondary dark:text-text-secondary-dark mb-8 max-w-2xl mx-auto">
+              <p className="text-text-dark mb-8 max-w-2xl mx-auto">
                 Let's bring your mobile app idea to life. I specialize in creating engaging, 
                 performant apps that users love and app stores approve.
               </p>
@@ -308,7 +308,7 @@ const Mobile: React.FC = () => {
                   href="https://github.com/calanco"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white dark:bg-neutral-800 hover:bg-gray-50 dark:hover:bg-neutral-700 rounded-lg font-semibold transition-colors border border-separator-light dark:border-separator-dark"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-neutral-800 hover:bg-gray-50 dark:hover:bg-neutral-700 rounded-lg font-semibold transition-colors border border-separator-dark"
                 >
                   <Github className="h-4 w-4" />
                   View Code
@@ -323,3 +323,5 @@ const Mobile: React.FC = () => {
 };
 
 export default Mobile;
+
+

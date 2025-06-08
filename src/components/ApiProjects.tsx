@@ -44,7 +44,7 @@ const ApiProjects: React.FC = () => {
           >            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
               Backend <span className="text-accent">Architecture</span>
             </h1>
-            <p className="text-xl text-text-secondary dark:text-text-secondary-dark mb-8 max-w-3xl mx-auto">
+            <p className="text-xl text-text-dark mb-8 max-w-3xl mx-auto">
               Building <span className="text-cta font-semibold">robust</span>, scalable APIs 
               and backend systems that power modern applications with security and performance at the core.
             </p>
@@ -63,11 +63,11 @@ const ApiProjects: React.FC = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.15 + index * 0.1 }}
-                className="text-center p-6 bg-white dark:bg-neutral-800 rounded-xl border border-separator-light dark:border-separator-dark"
+                className="text-center p-6 bg-neutral-800 rounded-xl border border-separator-dark"
               >
                 <stat.icon className="h-8 w-8 text-accent mx-auto mb-3" />
                 <div className="text-2xl sm:text-3xl font-bold text-accent mb-1">{stat.value}</div>
-                <div className="text-sm text-text-secondary dark:text-text-secondary-dark">{stat.label}</div>
+                <div className="text-sm text-text-dark">{stat.label}</div>
               </motion.div>
             ))}
           </motion.div>
@@ -89,12 +89,12 @@ const ApiProjects: React.FC = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-                  className="p-6 bg-white dark:bg-neutral-800 rounded-xl border border-separator-light dark:border-separator-dark hover:border-accent/50 transition-colors group"
+                  className="p-6 bg-neutral-800 rounded-xl border border-separator-dark hover:border-accent/50 transition-colors group"
                 >
                   <h3 className="text-lg font-semibold mb-3 group-hover:text-accent transition-colors">
                     {expertise.title}
                   </h3>
-                  <p className="text-text-secondary dark:text-text-secondary-dark text-sm">
+                  <p className="text-text-dark text-sm">
                     {expertise.description}
                   </p>
                 </motion.div>
@@ -105,7 +105,7 @@ const ApiProjects: React.FC = () => {
       </section>
 
       {/* API Projects Section */}
-      <section className="py-16 border-t border-separator-light dark:border-separator-dark">
+      <section className="py-16 border-t border-separator-dark">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -116,7 +116,7 @@ const ApiProjects: React.FC = () => {
             <h2 className="text-3xl sm:text-4xl font-bold mb-6">
               Interactive <span className="text-cta">API Demos</span>
             </h2>
-            <p className="text-lg text-text-secondary dark:text-text-secondary-dark">
+            <p className="text-lg text-text-dark">
               Explore my API projects with live, interactive demos. Each showcases different backend capabilities and architecture patterns.
             </p>
           </motion.div>
@@ -137,3 +137,5 @@ const ApiProjects: React.FC = () => {
 };
 
 export default ApiProjects;
+
+

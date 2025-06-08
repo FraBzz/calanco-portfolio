@@ -12,7 +12,7 @@ const getStatusColor = (status: OrderStatus): string => {
     case 'pending':
       return 'text-yellow-600 dark:text-yellow-400';
     case 'confirmed':
-      return 'text-blue-600 dark:text-blue-400';
+      return 'text-blue-400';
     case 'processing':
       return 'text-indigo-600 dark:text-indigo-400';
     case 'shipped':
@@ -20,11 +20,11 @@ const getStatusColor = (status: OrderStatus): string => {
     case 'delivered':
       return 'text-green-600 dark:text-green-400';
     case 'cancelled':
-      return 'text-red-600 dark:text-red-400';
+      return 'text-red-400';
     case 'refunded':
       return 'text-orange-600 dark:text-orange-400';
     default:
-      return 'text-gray-600 dark:text-gray-400';
+      return 'text-gray-400';
   }
 };
 
@@ -204,13 +204,13 @@ const EcommerceDemo: React.FC = () => {
   };
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">      <div className="bg-neutral-800 dark:bg-background-dark p-6 rounded-lg">        <h4 className="font-medium mb-4 flex items-center gap-2">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">      <div className="bg-background-dark p-6 rounded-lg">        <h4 className="font-medium mb-4 flex items-center gap-2">
           <Package className="h-5 w-5 text-accent" />
           Available Products ({products.length})
         </h4>
         
         {isLoading ? (
-          <div className="flex flex-col items-center py-8 text-gray-500 dark:text-gray-400">
+          <div className="flex flex-col items-center py-8 text-gray-400">
             <div className="animate-spin h-8 w-8 mb-4 border-2 border-accent border-t-transparent rounded-full"></div>
             <p>Loading products...</p>
           </div>        ) : productsError ? (
@@ -220,7 +220,7 @@ const EcommerceDemo: React.FC = () => {
             <p className="text-sm text-center">{productsError}</p>
             <button
               onClick={() => window.location.reload()}
-              className="mt-4 py-1.5 px-3 bg-red-100 dark:bg-red-900/20 text-red-600 dark:text-red-400 text-sm font-medium rounded hover:bg-red-200 dark:hover:bg-red-900/40 transition-colors"
+              className="mt-4 py-1.5 px-3 bg-red-900/20 text-red-400 text-sm font-medium rounded hover:bg-red-200 dark:hover:bg-red-900/40 transition-colors"
             >
               Retry
             </button>
@@ -238,13 +238,13 @@ const EcommerceDemo: React.FC = () => {
                   <motion.div 
                     key={product.id}
                     whileHover={{ scale: 1.01 }}
-                    className="bg-white dark:bg-neutral-800 p-4 rounded-md border border-separator-light dark:border-separator-dark flex-shrink-0"
+                    className="bg-neutral-800 p-4 rounded-md border border-separator-dark flex-shrink-0"
                   >
                     <div className="flex justify-between items-start mb-2">
                       <h5 className="font-medium">{product.name}</h5>
                       <span className="font-display font-bold">${product.price.toFixed(2)}</span>
                     </div>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
+                    <p className="text-sm text-gray-400 mb-3">
                       {product.description}
                     </p>                    <button
                       onClick={() => addToCart(product)}
@@ -262,14 +262,14 @@ const EcommerceDemo: React.FC = () => {
           </div>
         )}
       </div>
-        <div className="bg-neutral-800 dark:bg-background-dark p-6 rounded-lg">
+        <div className="bg-background-dark p-6 rounded-lg">
         <div className="flex justify-between items-center mb-4">
           <h4 className="font-medium flex items-center gap-2">
             <ShoppingCart className="h-5 w-5 text-accent" />
             Your Cart {cart.length > 0 && `(${cart.reduce((total, item) => total + item.quantity, 0)} items)`}
           </h4>
           
-          <div className="text-xs text-gray-500 dark:text-gray-400 hidden sm:block">
+          <div className="text-xs text-gray-400 hidden sm:block">
             Demo: {cart.reduce((total, item) => total + item.quantity, 0)}/10 items
           </div>
         </div>
@@ -280,7 +280,7 @@ const EcommerceDemo: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             className="bg-red-50 dark:bg-red-900/20 p-3 rounded-md mb-4 border border-red-200 dark:border-red-800"
           >
-            <div className="flex items-center gap-2 text-red-600 dark:text-red-400">
+            <div className="flex items-center gap-2 text-red-400">
               <AlertCircle className="h-4 w-4" />
               <p className="text-sm">{cartError}</p>
             </div>
@@ -296,7 +296,7 @@ const EcommerceDemo: React.FC = () => {
               <div className="bg-green-100 dark:bg-green-800/30 w-16 h-16 rounded-full flex items-center justify-center">
                 <Check className="h-8 w-8 text-green-600 dark:text-green-400" />
               </div>
-            </div>            <h5 className="text-xl font-bold mb-2 text-green-700 dark:text-green-400">Order Complete!</h5>
+            </div>            <h5 className="text-xl font-bold mb-2 text-green-400">Order Complete!</h5>
             {completedOrder ? (
               <div className="text-left mt-4 space-y-2">
                 <p className="text-green-600 dark:text-green-300 text-center mb-4">
@@ -357,7 +357,7 @@ const EcommerceDemo: React.FC = () => {
           >
             <div className="flex justify-center mb-4">
               <div className="bg-red-100 dark:bg-red-800/30 w-16 h-16 rounded-full flex items-center justify-center">
-                <AlertCircle className="h-8 w-8 text-red-600 dark:text-red-400" />
+                <AlertCircle className="h-8 w-8 text-red-400" />
               </div>
             </div>
             <h5 className="text-xl font-bold mb-2 text-red-700 dark:text-red-400">Checkout Failed</h5>
@@ -368,7 +368,7 @@ const EcommerceDemo: React.FC = () => {
         ) : (
           <>
             {cart.length === 0 ? (
-              <div className="text-center py-8 text-gray-500 dark:text-gray-400">
+              <div className="text-center py-8 text-gray-400">
                 <p>Your cart is empty.</p>
                 <p className="text-sm mt-2">Add some products to proceed.</p>
               </div>
@@ -378,11 +378,11 @@ const EcommerceDemo: React.FC = () => {
                   {cart.map(item => (
                     <div 
                       key={item.id}
-                      className="flex justify-between items-center bg-white dark:bg-neutral-800 p-3 rounded-md border border-separator-light dark:border-separator-dark"
+                      className="flex justify-between items-center bg-neutral-800 p-3 rounded-md border border-separator-dark"
                     >
                       <div>
                         <div className="font-medium">{item.name}</div>
-                        <div className="text-sm text-gray-600 dark:text-gray-400">
+                        <div className="text-sm text-gray-400">
                           ${item.price.toFixed(2)} × {item.quantity}
                         </div>
                       </div>
@@ -403,7 +403,7 @@ const EcommerceDemo: React.FC = () => {
                   ))}
                 </div>
                 
-                <div className="border-t border-separator-light dark:border-separator-dark pt-4 mb-6">
+                <div className="border-t border-separator-dark pt-4 mb-6">
                   <div className="flex justify-between items-center mb-6">
                     <span className="font-medium">Total:</span>
                     <span className="font-display font-bold text-lg">${getTotalPrice()}</span>
@@ -420,7 +420,7 @@ const EcommerceDemo: React.FC = () => {
                     {checkoutStatus === 'processing' ? 'Processing...' : 'Checkout'}
                   </button>
                 </div>
-                  <div className="bg-gray-100 dark:bg-neutral-800/80 p-3 rounded text-xs text-gray-600 dark:text-gray-400">
+                  <div className="bg-neutral-800/80 p-3 rounded text-xs text-gray-400">
                   <p className="font-medium mb-1">API Request Preview:</p>
                   <code className="block overflow-x-auto">
                     POST /api/checkout<br/>
@@ -443,3 +443,5 @@ const EcommerceDemo: React.FC = () => {
 };
 
 export default EcommerceDemo;
+
+
