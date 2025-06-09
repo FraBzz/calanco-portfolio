@@ -2,13 +2,13 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import ApiCard from './ApiCard';
 import { apiProjects } from '../data/apiProjects';
-import { Server, Database, Shield, Zap } from 'lucide-react';
+import { Server, Database, Shield, Zap, Github } from 'lucide-react';
 
 const stats = [
-  { label: 'APIs Built', value: '12+', icon: Server },
-  { label: 'Databases', value: '8+', icon: Database },
-  { label: 'Years Experience', value: '5+', icon: Shield },
-  { label: 'Projects Completed', value: '15+', icon: Zap }
+  { label: 'APIs Built', value: '8+', icon: Server },
+  { label: 'Databases', value: '5+', icon: Database },
+  { label: 'Learning Path', value: '5+', icon: Shield },
+  { label: 'Projects Completed', value: '10+', icon: Zap }
 ];
 
 const backendExpertise = [
@@ -120,8 +120,7 @@ const ApiProjects: React.FC = () => {
               Explore my API projects with live, interactive demos. Each showcases different backend capabilities and architecture patterns.
             </p>
           </motion.div>
-          
-          <div className="space-y-24">
+            <div className="space-y-24">
             {apiProjects.map((project, index) => (
               <ApiCard 
                 key={project.id}
@@ -130,6 +129,41 @@ const ApiProjects: React.FC = () => {
               />
             ))}
           </div>
+
+          {/* CTA Section */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.8 }}
+            className="text-center mt-20"
+          >
+            <div className="bg-gradient-to-r from-accent/10 to-accent2/10 rounded-2xl p-8 sm:p-12 border border-accent/20">
+              <h3 className="text-2xl sm:text-3xl font-bold mb-4">
+                Ready to Build Something <span className="text-accent">Powerful</span>?
+              </h3>
+              <p className="text-text-dark mb-8 max-w-2xl mx-auto">
+                These APIs demonstrate just a fraction of what's possible with modern backend architecture. 
+                Let's create robust, scalable solutions that will power your next big idea.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <a
+                  href="/contact"
+                  className="inline-flex items-center justify-center px-6 py-3 bg-cta text-white hover:bg-cta/90 rounded-lg font-semibold transition-colors"
+                >
+                  Start a Project
+                </a>
+                <a
+                  href="https://github.com/calanco"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-neutral-800 hover:bg-gray-50 dark:hover:bg-neutral-700 rounded-lg font-semibold transition-colors border border-separator-dark"
+                >
+                  <Github className="h-4 w-4" />
+                  View GitHub
+                </a>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </section>
     </>

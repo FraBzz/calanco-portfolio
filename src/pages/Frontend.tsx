@@ -1,21 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Github, ExternalLink, Code, Users, Zap, Star } from 'lucide-react';
-
-interface Project {
-  title: string;
-  description: string;
-  stack: string[];
-  github?: string;
-  demo?: string;
-  featured?: boolean;
-}
+import { Github, Code, Users, Zap, Star, Sun, Moon, Palette, Move3D, Copy, Check } from 'lucide-react';
 
 const stats = [
-  { label: 'Projects Built', value: '25+', icon: Code },
-  { label: 'React Components', value: '200+', icon: Zap },
-  { label: 'Happy Clients', value: '15+', icon: Users },
-  { label: 'GitHub Stars', value: '150+', icon: Star }
+  { label: 'Projects Built', value: '10+', icon: Code },
+  { label: 'React Components', value: '50+', icon: Zap },
+  { label: 'Hours Coding', value: '100+', icon: Users },
+  { label: 'Technologies Used', value: '10+', icon: Star }
 ];
 
 const techHighlights = [
@@ -37,35 +28,283 @@ const techHighlights = [
   }
 ];
 
-const projects: Project[] = [
+// Interactive Demos Components
+const ThemeToggleDemo: React.FC = () => {
+  const [isDark, setIsDark] = useState(true);
+  
+  return (
+    <div className="space-y-4">
+      <div className="flex items-center justify-between">
+        <span className="text-sm font-medium">Theme Mode</span>
+        <motion.button
+          onClick={() => setIsDark(!isDark)}
+          className={`relative w-14 h-7 rounded-full transition-colors duration-300 ${
+            isDark ? 'bg-accent' : 'bg-gray-300'
+          }`}
+          whileTap={{ scale: 0.95 }}
+        >
+          <motion.div
+            className="absolute top-1 left-1 w-5 h-5 bg-white rounded-full shadow-md flex items-center justify-center"
+            animate={{ x: isDark ? 24 : 0 }}
+            transition={{ type: "spring", stiffness: 500, damping: 30 }}
+          >
+            {isDark ? (
+              <Moon className="h-3 w-3 text-accent" />
+            ) : (
+              <Sun className="h-3 w-3 text-yellow-500" />
+            )}
+          </motion.div>
+        </motion.button>
+      </div>
+      
+      <motion.div 
+        className={`p-4 rounded-lg border transition-all duration-300 ${
+          isDark 
+            ? 'bg-neutral-800 border-separator-dark text-white' 
+            : 'bg-white border-gray-200 text-gray-900'
+        }`}
+        animate={{ 
+          backgroundColor: isDark ? '#262626' : '#ffffff',
+          borderColor: isDark ? '#404040' : '#e5e7eb'
+        }}
+      >
+        <h4 className={`font-semibold mb-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+          Sample Component
+        </h4>
+        <p className={`text-sm ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
+          This component automatically adapts to the theme changes with smooth animations.
+        </p>
+      </motion.div>
+    </div>
+  );
+};
+
+const ComponentShowcase: React.FC = () => {
+  const [activeVariant, setActiveVariant] = useState('primary');
+  
+  const variants = [
+    { name: 'primary', label: 'Primary', class: 'bg-accent text-white hover:bg-accent/90' },
+    { name: 'secondary', label: 'Secondary', class: 'bg-neutral-800 text-white hover:bg-neutral-700 border border-separator-dark' },
+    { name: 'outline', label: 'Outline', class: 'border-2 border-accent text-accent hover:bg-accent hover:text-white' },
+    { name: 'ghost', label: 'Ghost', class: 'text-accent hover:bg-accent/10' }
+  ];
+
+  return (
+    <div className="space-y-4">
+      <div className="grid grid-cols-2 gap-2">
+        {variants.map((variant) => (
+          <motion.button
+            key={variant.name}
+            onClick={() => setActiveVariant(variant.name)}
+            className={`px-3 py-2 rounded-lg text-sm font-medium transition-all ${
+              activeVariant === variant.name 
+                ? 'bg-accent text-white' 
+                : 'bg-neutral-800 text-gray-300 hover:bg-neutral-700'
+            }`}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            {variant.label}
+          </motion.button>
+        ))}
+      </div>
+      
+      <div className="flex flex-col gap-3">
+        <motion.button
+          key={activeVariant}
+          className={`px-4 py-2 rounded-lg font-medium transition-all ${
+            variants.find(v => v.name === activeVariant)?.class
+          }`}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+        >
+          {variants.find(v => v.name === activeVariant)?.label} Button
+        </motion.button>
+        
+        <motion.div 
+          className="p-3 bg-neutral-800 rounded-lg border border-separator-dark"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.1 }}
+        >
+          <div className="flex items-center gap-2 mb-2">
+            <Palette className="h-4 w-4 text-accent" />
+            <span className="text-sm font-medium">Component Variant</span>
+          </div>
+          <code className="text-xs text-gray-300">
+            className="{variants.find(v => v.name === activeVariant)?.class}"
+          </code>
+        </motion.div>
+      </div>
+    </div>
+  );
+};
+
+const DragDropDemo: React.FC = () => {
+  const [items, setItems] = useState([
+    { id: 1, text: 'Design System', status: 'todo' },
+    { id: 2, text: 'Component Library', status: 'in-progress' },
+    { id: 3, text: 'Performance Optimization', status: 'done' }
+  ]);
+  const [draggedItem, setDraggedItem] = useState<number | null>(null);
+
+  const columns = [
+    { id: 'todo', title: 'To Do', color: 'border-gray-500' },
+    { id: 'in-progress', title: 'In Progress', color: 'border-yellow-500' },
+    { id: 'done', title: 'Done', color: 'border-green-500' }
+  ];
+
+  const handleDragStart = (itemId: number) => {
+    setDraggedItem(itemId);
+  };
+
+  const handleDrop = (newStatus: string) => {
+    if (draggedItem) {
+      setItems(items.map(item => 
+        item.id === draggedItem ? { ...item, status: newStatus } : item
+      ));
+      setDraggedItem(null);
+    }
+  };
+
+  return (
+    <div className="space-y-4">
+      <div className="flex items-center gap-2 text-sm text-gray-300">
+        <Move3D className="h-4 w-4" />
+        <span>Drag items between columns</span>
+      </div>
+      
+      <div className="grid grid-cols-3 gap-3">
+        {columns.map((column) => (
+          <div
+            key={column.id}
+            className={`p-3 rounded-lg border-2 border-dashed transition-colors ${
+              column.color
+            } bg-neutral-800/50`}
+            onDragOver={(e) => e.preventDefault()}
+            onDrop={() => handleDrop(column.id)}
+          >
+            <h4 className="text-xs font-semibold mb-3 text-center">
+              {column.title}
+            </h4>
+            <div className="space-y-2">
+              {items
+                .filter(item => item.status === column.id)
+                .map((item) => (
+                  <motion.div
+                    key={item.id}
+                    draggable
+                    onDragStart={() => handleDragStart(item.id)}
+                    className="p-2 bg-neutral-700 rounded-md text-xs cursor-move hover:bg-neutral-600 transition-colors"
+                    whileHover={{ scale: 1.02 }}
+                    whileDrag={{ scale: 0.95, rotate: 5 }}
+                  >
+                    {item.text}
+                  </motion.div>
+                ))
+              }
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const CopyToClipboardDemo: React.FC = () => {
+  const [copied, setCopied] = useState<string | null>(null);
+  
+  const codeSnippets = [
+    { 
+      id: 'react-hook', 
+      title: 'React Hook', 
+      code: `const [state, setState] = useState(null);`
+    },
+    { 
+      id: 'api-call', 
+      title: 'API Call', 
+      code: `const data = await fetch('/api/data').then(r => r.json());`
+    }
+  ];
+
+  const copyToClipboard = async (text: string, id: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopied(id);
+      setTimeout(() => setCopied(null), 2000);
+    } catch (err) {
+      console.error('Failed to copy text: ', err);
+    }
+  };
+
+  return (
+    <div className="space-y-3">
+      {codeSnippets.map((snippet) => (
+        <div key={snippet.id} className="relative">
+          <div className="bg-neutral-900 rounded-lg p-3 border border-separator-dark">
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-xs font-medium text-gray-300">{snippet.title}</span>
+              <motion.button
+                onClick={() => copyToClipboard(snippet.code, snippet.id)}
+                className="p-1 rounded hover:bg-neutral-700 transition-colors"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                {copied === snippet.id ? (
+                  <Check className="h-4 w-4 text-green-500" />
+                ) : (
+                  <Copy className="h-4 w-4 text-gray-400" />
+                )}
+              </motion.button>
+            </div>
+            <code className="text-xs text-gray-300 font-mono block overflow-x-auto">
+              {snippet.code}
+            </code>
+          </div>
+          {copied === snippet.id && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0 }}
+              className="absolute -top-8 right-0 bg-green-500 text-white text-xs px-2 py-1 rounded"
+            >
+              Copied!
+            </motion.div>
+          )}
+        </div>
+      ))}
+    </div>
+  );
+};
+
+const frontendDemos = [
   {
-    title: 'E-commerce Dashboard',
-    description: 'A comprehensive dashboard for managing products, orders, and customer data with real-time analytics and beautiful visualizations.',
-    stack: ['React', 'TypeScript', 'Tailwind CSS', 'React Query', 'Chart.js'],
-    github: 'https://github.com/calanco/ecommerce-dashboard',
-    demo: 'https://dashboard.calanco.dev',
+    title: 'Dynamic Theme System',
+    description: 'Smooth theme transitions with React state management and CSS custom properties for seamless user experience.',
+    component: ThemeToggleDemo,
+    stack: ['React Hooks', 'Framer Motion', 'CSS Variables'],
     featured: true
   },
   {
-    title: 'Task Management System',
-    description: 'Collaborative task management platform with real-time updates, team features, and advanced project planning capabilities.',
-    stack: ['Next.js', 'TypeScript', 'Prisma', 'tRPC', 'TailwindCSS'],
-    github: 'https://github.com/calanco/task-manager',
-    demo: 'https://tasks.calanco.dev',
+    title: 'Component Variants',
+    description: 'Interactive design system showcase demonstrating different button variants and their corresponding CSS classes.',
+    component: ComponentShowcase,
+    stack: ['Design Systems', 'Tailwind CSS', 'Component API'],
     featured: true
   },
   {
-    title: 'Portfolio Builder',
-    description: 'Dynamic portfolio builder allowing designers and developers to create stunning portfolio websites with drag-and-drop functionality.',
-    stack: ['React', 'TypeScript', 'Framer Motion', 'Zustand'],
-    github: 'https://github.com/calanco/portfolio-builder'
+    title: 'Drag & Drop Interface',
+    description: 'Mini Kanban board with smooth drag-and-drop functionality, demonstrating advanced interaction patterns.',
+    component: DragDropDemo,
+    stack: ['Drag & Drop API', 'State Management', 'Framer Motion']
   },
   {
-    title: 'Weather Analytics',
-    description: 'Weather tracking application with detailed analytics, forecasts, and beautiful data visualizations.',
-    stack: ['Vue.js', 'TypeScript', 'D3.js', 'OpenWeather API'],
-    github: 'https://github.com/calanco/weather-analytics',
-    demo: 'https://weather.calanco.dev'
+    title: 'Copy to Clipboard',
+    description: 'Code snippet sharing with visual feedback and smooth animations for better developer experience.',
+    component: CopyToClipboardDemo,
+    stack: ['Clipboard API', 'User Feedback', 'Micro-interactions']
   }
 ];
 
@@ -86,11 +325,11 @@ const Frontend: React.FC = () => {
             transition={{ duration: 0.5 }}
             className="max-w-4xl mx-auto text-center mb-16"
           >            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
-              Frontend <span className="text-accent">Excellence</span>
+              Frontend <span className="text-accent">Development</span>
             </h1>
             <p className="text-xl text-text-dark mb-8 max-w-3xl mx-auto">
-              Crafting modern, <span className="text-cta font-semibold">performant</span> web applications 
-              with React, TypeScript, and cutting-edge tools that deliver exceptional user experiences.
+              Exploring modern <span className="text-cta font-semibold">frontend</span> technologies 
+              and building user interfaces with React, TypeScript, and contemporary development practices.
             </p>
           </motion.div>
 
@@ -146,9 +385,7 @@ const Frontend: React.FC = () => {
             </div>
           </motion.div>
         </div>
-      </section>
-
-      {/* Projects Section */}
+      </section>      {/* Interactive Demos Section */}
       <section className="py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
@@ -158,53 +395,45 @@ const Frontend: React.FC = () => {
             className="text-center mb-16"
           >
             <h2 className="text-3xl sm:text-4xl font-bold mb-6">
-              Featured <span className="text-cta">Projects</span>
+              Interactive <span className="text-cta">Demos</span>
             </h2>
             <p className="text-lg text-text-dark max-w-2xl mx-auto">
-              A selection of my best frontend work, showcasing modern React development and innovative solutions.
+              Try these live demonstrations showcasing modern frontend techniques and user interactions.
             </p>
           </motion.div>
-            <div className="space-y-8">
-            {projects.map((project, index) => (
-              <motion.div
-                key={project.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.5 + index * 0.15 }}
-                className={`bg-neutral-800 rounded-xl shadow-sm border hover:shadow-lg transition-all duration-300 overflow-hidden group ${
-                  project.featured 
-                    ? 'border-accent/30 dark:border-accent/30' 
-                    : 'border-separator-dark hover:border-accent/50'
-                }`}
-              >
-                {project.featured && (
-                  <div className="bg-gradient-to-r from-accent to-accent2 px-4 py-2">
-                    <span className="text-white text-sm font-medium flex items-center gap-2">
-                      <Star className="h-4 w-4" />
-                      Featured Project
-                    </span>
-                  </div>
-                )}
-                
-                <div className="p-6 sm:p-8">
-                  <div className="flex flex-col lg:flex-row justify-between items-start gap-6">
-                    <div className="flex-1">
-                      <h3 className="text-2xl font-bold mb-3 group-hover:text-accent transition-colors">
-                        {project.title}
-                      </h3>
-                      <p className="text-text-dark mb-6 leading-relaxed">
-                        {project.description}
-                      </p>
-                      
-                      <div className="flex flex-wrap gap-2 mb-6">
-                        {project.stack.map((tech, techIndex) => (
+            <div className="grid lg:grid-cols-2 gap-8">
+            {frontendDemos.map((demo, index) => {
+              const DemoComponent = demo.component;
+              return (
+                <motion.div
+                  key={demo.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.5 + index * 0.15 }}
+                  className={`bg-neutral-800 rounded-xl shadow-sm border hover:shadow-lg transition-all duration-300 overflow-hidden group ${
+                    demo.featured 
+                      ? 'border-accent/30' 
+                      : 'border-separator-dark hover:border-accent/50'
+                  }`}
+                >
+                  <div className="p-6">
+                    <div className="mb-6">                      <div className="flex items-center gap-3 mb-3">
+                        <h3 className="text-xl font-bold">
+                          {demo.title}
+                        </h3>
+                        {demo.featured && (
+                          <span className="px-2 py-1 bg-accent/10 text-accent text-xs font-medium rounded-full border border-accent/20">
+                            Featured
+                          </span>
+                        )}
+                      </div>
+                      <p className="text-text-dark mb-4 text-sm leading-relaxed">
+                        {demo.description}
+                      </p>                      <div className="flex flex-wrap gap-2 mb-4">
+                        {demo.stack.map((tech) => (
                           <span
                             key={tech}
-                            className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${
-                              techIndex === 0 
-                                ? 'bg-accent/10 text-accent border border-accent/20' 
-                                : 'bg-background-dark text-text-dark border border-separator-dark'
-                            }`}
+                            className="px-2 py-1 rounded-full text-xs font-medium bg-background-dark text-text-dark border border-separator-dark"
                           >
                             {tech}
                           </span>
@@ -212,37 +441,15 @@ const Frontend: React.FC = () => {
                       </div>
                     </div>
                     
-                    <div className="flex gap-3 lg:flex-col lg:w-auto w-full">
-                      {project.github && (
-                        <a
-                          href={project.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex-1 lg:flex-none inline-flex items-center justify-center gap-2 px-4 py-2 bg-background-dark hover:bg-gray-700 rounded-lg text-sm font-medium transition-colors border border-separator-dark"
-                        >
-                          <Github className="h-4 w-4" />
-                          GitHub
-                        </a>
-                      )}
-                      {project.demo && (
-                        <a
-                          href={project.demo}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex-1 lg:flex-none inline-flex items-center justify-center gap-2 px-4 py-2 bg-cta text-white hover:bg-cta/90 rounded-lg text-sm font-medium transition-colors"
-                        >
-                          <ExternalLink className="h-4 w-4" />
-                          Live Demo
-                        </a>
-                      )}
+                    {/* Interactive Demo Area */}
+                    <div className="bg-neutral-900 rounded-lg p-4 border border-separator-dark">
+                      <DemoComponent />
                     </div>
                   </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* CTA Section */}
+                </motion.div>
+              );
+            })}
+          </div>{/* CTA Section */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -251,11 +458,11 @@ const Frontend: React.FC = () => {
           >
             <div className="bg-gradient-to-r from-accent/10 to-accent2/10 rounded-2xl p-8 sm:p-12 border border-accent/20">
               <h3 className="text-2xl sm:text-3xl font-bold mb-4">
-                Ready to Build Something <span className="text-accent">Amazing</span>?
+                Impressed by the <span className="text-accent">Interactions</span>?
               </h3>
               <p className="text-text-dark mb-8 max-w-2xl mx-auto">
-                Let's collaborate on your next frontend project. I bring expertise in modern React development 
-                and a passion for creating exceptional user experiences.
+                These are just small examples of what's possible with modern frontend development. 
+                Let's build something extraordinary together with React, TypeScript, and cutting-edge UX patterns.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a

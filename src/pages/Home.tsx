@@ -21,7 +21,7 @@ const Home: React.FC = () => {
   const stats = [
     { icon: <Calendar className="h-5 w-5" />, label: "Years Experience", value: "5+" },
     { icon: <Code2 className="h-5 w-5" />, label: "Technologies", value: "10+" },
-    { icon: <Users className="h-5 w-5" />, label: "Projects Delivered", value: "25+" },
+    { icon: <Users className="h-5 w-5" />, label: "Projects Delivered", value: "15+" },
     { icon: <Coffee className="h-5 w-5" />, label: "Tea Consumed", value: "∞" }
   ];
 
@@ -75,7 +75,7 @@ const Home: React.FC = () => {
               >
                 Specialized in building <span className="text-cta font-semibold">high-performance</span>, 
                 <span className="text-accent font-semibold"> secure</span>, and 
-                <span className="text-accent2 font-semibold"> scalable solutions</span> across backend, frontend, and mobile platforms.
+                <span className="text-accent2 font-semibold"> scalable solutions</span> across backend and frontend platforms.
               </motion.p>
             </div>
 
@@ -95,11 +95,10 @@ const Home: React.FC = () => {
               ))}
             </motion.div>
 
-            {/* Navigation Cards */}
-            <motion.div variants={item} className="mb-16">              <h2 className="text-2xl font-display font-bold text-center mb-8">
+            {/* Navigation Cards */}            <motion.div variants={item} className="mb-16">              <h2 className="text-2xl font-display font-bold text-center mb-8">
                 Explore My Work
               </h2>
-              <div className="grid sm:grid-cols-3 gap-6">
+              <div className="grid sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
                 <Link 
                   to="/backend"
                   className="group bg-neutral-800 p-6 rounded-lg border border-gray-700 hover:shadow-lg transition-all duration-300 hover:border-accent"
@@ -132,7 +131,7 @@ const Home: React.FC = () => {
                   </div>
                 </Link>
                 
-                <Link 
+                {/* <Link 
                   to="/mobile"
                   className="group bg-neutral-800 p-6 rounded-lg border border-gray-700 hover:shadow-lg transition-all duration-300 hover:border-accent2"
                 >
@@ -146,7 +145,7 @@ const Home: React.FC = () => {
                       <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
                     </div>
                   </div>
-                </Link>
+                </Link> */}
               </div>
             </motion.div>
 
