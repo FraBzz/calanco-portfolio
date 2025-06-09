@@ -153,7 +153,7 @@ const ApiProjects: React.FC = () => {
                   Start a Project
                 </a>
                 <a
-                  href="https://github.com/calanco"
+                  href="https://github.com/FraBzz"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-neutral-800 hover:bg-gray-50 dark:hover:bg-neutral-700 rounded-lg font-semibold transition-colors border border-separator-dark"

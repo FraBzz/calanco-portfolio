@@ -168,7 +168,6 @@ const DragDropDemo: React.FC = () => {
       setDraggedItem(null);
     }
   };
-
   return (
     <div className="space-y-4">
       <div className="flex items-center gap-2 text-sm text-gray-300">
@@ -176,17 +175,17 @@ const DragDropDemo: React.FC = () => {
         <span>Drag items between columns</span>
       </div>
       
-      <div className="grid grid-cols-3 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
         {columns.map((column) => (
           <div
             key={column.id}
-            className={`p-3 rounded-lg border-2 border-dashed transition-colors ${
+            className={`p-2 sm:p-3 rounded-lg border-2 border-dashed transition-colors ${
               column.color
-            } bg-neutral-800/50`}
+            } bg-neutral-800/50 min-h-[100px]`}
             onDragOver={(e) => e.preventDefault()}
             onDrop={() => handleDrop(column.id)}
           >
-            <h4 className="text-xs font-semibold mb-3 text-center">
+            <h4 className="text-xs font-semibold mb-2 sm:mb-3 text-center">
               {column.title}
             </h4>
             <div className="space-y-2">
@@ -197,7 +196,7 @@ const DragDropDemo: React.FC = () => {
                     key={item.id}
                     draggable
                     onDragStart={() => handleDragStart(item.id)}
-                    className="p-2 bg-neutral-700 rounded-md text-xs cursor-move hover:bg-neutral-600 transition-colors"
+                    className="p-2 bg-neutral-700 rounded-md text-xs cursor-move hover:bg-neutral-600 transition-colors break-words leading-tight"
                     whileHover={{ scale: 1.02 }}
                     whileDrag={{ scale: 0.95, rotate: 5 }}
                   >
@@ -472,7 +471,7 @@ const Frontend: React.FC = () => {
                   Start a Project
                 </a>
                 <a
-                  href="https://github.com/calanco"
+                  href="https://github.com/FraBzz"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-neutral-800 hover:bg-gray-50 dark:hover:bg-neutral-700 rounded-lg font-semibold transition-colors border border-separator-dark"

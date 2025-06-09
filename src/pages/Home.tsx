@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, Layout as LayoutIcon, Server, Smartphone, Calendar, Code2, Users, Coffee, Star, Shield, Zap } from 'lucide-react';
+import { ArrowRight, Layout as LayoutIcon, Server, Calendar, Code2, Users, Coffee, Star, Shield, Zap } from 'lucide-react';
 import React from 'react';
 import { Link } from 'react-router-dom';
 

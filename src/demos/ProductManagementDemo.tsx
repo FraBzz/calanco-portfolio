@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Plus, Edit, Trash2, Package, Check, AlertCircle, X, DollarSign, FileText, Save } from 'lucide-react';
 import { ProductsService, type Product, type CreateProductDto, type UpdateProductDto } from '../services';
 import { DemoLimits } from '../utils/demoLimits';
-import DemoNotice from '../components/DemoNotice';
 
 type FormMode = 'create' | 'edit' | 'view';
 type ActionStatus = 'idle' | 'loading' | 'success' | 'error';
@@ -432,17 +431,16 @@ const ProductManagementDemo: React.FC = () => {
               <p className="text-sm mt-2">Start by creating your first product.</p>
             </div>          ) : (
             <div className="max-h-96 overflow-y-auto space-y-3 pr-2 custom-scrollbar">
-              {products.map(product => (
-                <motion.div
+              {products.map(product => (                <motion.div
                   key={product.id}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   className="bg-neutral-800 p-4 rounded-md border border-separator-dark"
                 >
-                  <div className="flex justify-between items-start mb-2">
-                    <div className="flex-1">
-                      <h5 className="font-medium text-lg">{product.name}</h5>
-                      <p className="text-sm text-gray-400 mb-2">
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-3">
+                    <div className="flex-1 min-w-0">
+                      <h5 className="font-medium text-lg break-words">{product.name}</h5>
+                      <p className="text-sm text-gray-400 mb-2 break-words">
                         {product.description}
                       </p>
                       <div className="flex items-center gap-2">                        <span className="font-display font-bold text-xl text-accent">
@@ -454,10 +452,10 @@ const ProductManagementDemo: React.FC = () => {
                       </div>
                     </div>
                     
-                    <div className="flex gap-2 ml-4">
+                    <div className="flex gap-2 self-start sm:ml-4">
                       <button
                         onClick={() => handleEdit(product)}
-                        disabled={actionStatus === 'loading'}                        className={`p-2 rounded transition-colors ${
+                        disabled={actionStatus === 'loading'}                        className={`p-2 rounded transition-colors flex-shrink-0 ${
                           actionStatus === 'loading'
                             ? 'bg-blue-100/30 dark:bg-blue-900/10 text-blue-400/50 dark:text-blue-500/40 cursor-not-allowed'
                             : 'bg-blue-900/20 text-blue-400 hover:bg-blue-200 dark:hover:bg-blue-900/40'
@@ -469,7 +467,7 @@ const ProductManagementDemo: React.FC = () => {
                       
                       <button
                         onClick={() => handleDelete(product)}
-                        disabled={actionStatus === 'loading'}                        className={`p-2 rounded transition-colors ${
+                        disabled={actionStatus === 'loading'}                        className={`p-2 rounded transition-colors flex-shrink-0 ${
                           actionStatus === 'loading'
                             ? 'bg-red-100/30 dark:bg-red-900/10 text-red-400/50 dark:text-red-500/40 cursor-not-allowed'
                             : 'bg-red-900/20 text-red-400 hover:bg-red-200 dark:hover:bg-red-900/40'

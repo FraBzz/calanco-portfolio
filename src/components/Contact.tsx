@@ -15,8 +15,8 @@ const contactMethods = [
 		icon: Github,
 		title: 'GitHub',
 		description: 'Check out my code and projects',
-		value: 'github.com/calanco',
-		href: 'https://github.com/calanco',
+		value: 'github.com/FraBzz',
+		href: 'https://github.com/FraBzz',
 	},
 	{
 		icon: MapPin,

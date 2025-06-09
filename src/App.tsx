@@ -6,7 +6,7 @@ import Backend from './pages/Backend';
 import Contact from './pages/Contact';
 import Frontend from './pages/Frontend';
 import Home from './pages/Home';
-import Mobile from './pages/Mobile';
+// import Mobile from './pages/Mobile';
 
 function App() {
   const location = useLocation();
