@@ -6,7 +6,7 @@ import Backend from './pages/Backend';
 import Contact from './pages/Contact';
 import Frontend from './pages/Frontend';
 import Home from './pages/Home';
-import Mobile from './pages/Mobile';
+// import Mobile from './pages/Mobile';
 
 function App() {
   const location = useLocation();
@@ -18,7 +18,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/backend" element={<Backend />} />
           <Route path="/frontend" element={<Frontend />} />
-          <Route path="/mobile" element={<Mobile />} />
+          {/* <Route path="/mobile" element={<Mobile />} /> */}
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />
         </Routes>

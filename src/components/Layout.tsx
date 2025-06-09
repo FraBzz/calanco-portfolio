@@ -54,65 +54,78 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     }
   };
   return (
-    <div className="min-h-screen bg-background-dark text-text-dark">
-      <header className="sticky top-0 z-50 border-b border-separator-dark bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-sm">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">          <NavLink to="/" className="flex items-center gap-0.5">
-            <CalancoLogo size="header" />
-            <span className="text-2xl font-display font-black leading-[1] -translate-y-[1px]">
-              calanco
-            </span>
-          </NavLink>
-
-          <nav className="hidden md:flex items-center gap-6">
-            <NavLink 
-              to="/backend"
-              className={({ isActive }) => 
-                `font-medium transition-colors ${isActive ? 'text-accent' : 'hover:text-accent'}`
-              }
-            >
-              Backend
+    <div className="min-h-screen bg-background-dark text-text-dark">      <header className="sticky top-0 z-50 border-b border-separator-dark bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-sm">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          {/* Mobile Layout */}
+          <div className="flex justify-between items-center md:hidden">            <NavLink to="/" className="flex items-center gap-0.5">
+              <CalancoLogo size="header" />
+              <span className="text-2xl font-display font-black leading-[1] -translate-y-[1px]">
+                calanco<span className="text-accent">.dev</span>
+              </span>
             </NavLink>
-            <NavLink 
-              to="/frontend"
-              className={({ isActive }) => 
-                `font-medium transition-colors ${isActive ? 'text-accent' : 'hover:text-accent'}`
-              }
-            >
-              Frontend
-            </NavLink>
-            <NavLink 
-              to="/mobile"
-              className={({ isActive }) => 
-                `font-medium transition-colors ${isActive ? 'text-accent' : 'hover:text-accent'}`
-              }
-            >
-              Mobile
-            </NavLink>
-            <NavLink 
-              to="/about"
-              className={({ isActive }) => 
-                `font-medium transition-colors ${isActive ? 'text-accent' : 'hover:text-accent'}`
-              }
-            >
-              About
-            </NavLink>
-            <NavLink 
-              to="/contact"
-              className={({ isActive }) => 
-                `font-medium transition-colors ${isActive ? 'text-accent' : 'hover:text-accent'}`
-              }
-            >
-              Contact
-            </NavLink>          </nav>
-
-          <div className="flex items-center gap-4">
             <button
               onClick={() => setIsMenuOpen(true)}
-              className="md:hidden p-2 hover:bg-background-dark rounded-full transition-colors"
+              className="p-2 hover:bg-background-dark rounded-full transition-colors"
               aria-label="Open menu"
             >
               <Menu className="h-6 w-6" />
             </button>
+          </div>
+
+          {/* Desktop Layout */}
+          <div className="hidden md:grid grid-cols-3 items-center">            <NavLink to="/" className="flex items-center gap-0.5 justify-self-start">
+              <CalancoLogo size="header" />
+              <span className="text-2xl font-display font-black leading-[1] -translate-y-[1px]">
+                calanco<span className="text-accent">.dev</span>
+              </span>
+            </NavLink>
+
+            <nav className="flex items-center gap-6 justify-self-center">
+              <NavLink 
+                to="/backend"
+                className={({ isActive }) => 
+                  `font-medium transition-colors ${isActive ? 'text-accent' : 'hover:text-accent'}`
+                }
+              >
+                Backend
+              </NavLink>
+              <NavLink 
+                to="/frontend"
+                className={({ isActive }) => 
+                  `font-medium transition-colors ${isActive ? 'text-accent' : 'hover:text-accent'}`
+                }
+              >
+                Frontend
+              </NavLink>
+              {/* <NavLink 
+                to="/mobile"
+                className={({ isActive }) => 
+                  `font-medium transition-colors ${isActive ? 'text-accent' : 'hover:text-accent'}`
+                }
+              >
+                Mobile
+              </NavLink> */}
+              <NavLink 
+                to="/about"
+                className={({ isActive }) => 
+                  `font-medium transition-colors ${isActive ? 'text-accent' : 'hover:text-accent'}`
+                }
+              >
+                About
+              </NavLink>
+              <NavLink 
+                to="/contact"
+                className={({ isActive }) => 
+                  `font-medium transition-colors ${isActive ? 'text-accent' : 'hover:text-accent'}`
+                }
+              >
+                Contact
+              </NavLink>
+            </nav>
+
+            <div className="justify-self-end">
+              {/* Placeholder for potential future desktop actions */}
+            </div>
           </div>
         </div>
       </header>
@@ -186,7 +199,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 >
                   Frontend
                 </NavLink>
-                <NavLink 
+                {/* <NavLink 
                   to="/mobile"
                   onClick={closeMenu}
                   className={({ isActive }) => 
@@ -198,7 +211,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                   }
                 >
                   Mobile
-                </NavLink>
+                </NavLink> */}
                 <NavLink 
                   to="/about"
                   onClick={closeMenu}
