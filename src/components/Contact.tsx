@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Send, Check, Github, Mail, MapPin } from 'lucide-react';
+import { Send, Check, Github, Mail, MapPin, AlertCircle } from 'lucide-react';
 import { CalancoLogo } from '../assets/icons';
+import { ContactService } from '../services';
 
 const contactMethods = [
 	{
@@ -35,27 +36,37 @@ const Contact: React.FC = () => {
 	});
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const [isSubmitted, setIsSubmitted] = useState(false);
+	const [error, setError] = useState<string | null>(null);
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
 		const { name, value } = e.target;
 		setFormState((prev) => ({ ...prev, [name]: value }));
+		if (error) setError(null);
 	};
 
-	const handleSubmit = (e: React.FormEvent) => {
+	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
 		setIsSubmitting(true);
+		setError(null);
 
-		// Simulate form submission
-		setTimeout(() => {
+		try {
+			const result = await ContactService.submitContactForm(formState);
+			
+			if (result.success) {
+				setIsSubmitted(true);
+				setFormState({ name: '', email: '', message: '' });
+				
+				setTimeout(() => {
+					setIsSubmitted(false);
+				}, 6000);
+			} else {
+				setError(result.message);
+			}
+		} catch (error) {
+			setError('An unexpected error occurred. Please try again.');
+		} finally {
 			setIsSubmitting(false);
-			setIsSubmitted(true);
-			setFormState({ name: '', email: '', message: '' });
-
-			// Reset success message after 5 seconds
-			setTimeout(() => {
-				setIsSubmitted(false);
-			}, 5000);
-		}, 1500);
+		}
 	};
 
 	return (
@@ -164,9 +175,18 @@ const Contact: React.FC = () => {
 										<h3 className="font-semibold mb-1">Message sent successfully!</h3>
 										<p className="text-sm">I'll get back to you within 24 hours.</p>
 									</div>
-								</motion.div>
-							) : (
+								</motion.div>							) : (
 								<form onSubmit={handleSubmit} className="space-y-6">
+									{error && (
+										<motion.div
+											initial={{ opacity: 0, y: -10 }}
+											animate={{ opacity: 1, y: 0 }}
+											className="flex items-center gap-3 p-4 bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300 rounded-lg border border-red-200 dark:border-red-800"
+										>
+											<AlertCircle className="h-5 w-5 flex-shrink-0" />
+											<p className="text-sm">{error}</p>
+										</motion.div>
+									)}
 									<div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
 										<div>
 											<label
