@@ -7,7 +7,7 @@ export default {
         // Default colors (sempre dark mode)
         background: '#1A1A18',
         text: '#E3C198',
-        accent: '#4E342E',
+        accent: '#5c3c24',
         accent2: '#D7A86E',
         cta: '#0088A8',
         separator: '#2D2D2D',
