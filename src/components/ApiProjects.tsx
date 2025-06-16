@@ -1,36 +1,39 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation, Trans } from 'react-i18next';
 import ApiCard from './ApiCard';
-import { apiProjects } from '../data/apiProjects';
+import { createTranslatedApiProjects } from '../data/translatedApiProjects';
 import { Server, Database, Shield, Zap, Github } from 'lucide-react';
 
-const stats = [
-  { label: 'APIs Built', value: '8+', icon: Server },
-  { label: 'Databases', value: '5+', icon: Database },
-  { label: 'Learning Path', value: '5+', icon: Shield },
-  { label: 'Projects Completed', value: '10+', icon: Zap }
-];
-
-const backendExpertise = [
-  {
-    title: 'API Development',
-    description: 'RESTful APIs, authentication systems, and integration with third-party services'
-  },
-  {
-    title: 'Database Design',
-    description: 'MySQL, PostgreSQL and MongoDB database design, optimization, and data modeling'
-  },
-  {
-    title: 'Web Agency Experience',
-    description: '5+ years developing scalable solutions for diverse client projects'
-  },
-  {
-    title: 'Full-Stack Integration',
-    description: 'Seamless frontend-backend integration and deployment strategies'
-  }
-];
-
 const ApiProjects: React.FC = () => {
+  const { t } = useTranslation('common');
+  const apiProjects = createTranslatedApiProjects(t);
+  
+  const stats = [
+    { label: t('backend.stats.apis'), value: '8+', icon: Server },
+    { label: t('backend.stats.databases'), value: '5+', icon: Database },
+    { label: t('backend.stats.learning'), value: '5+', icon: Shield },
+    { label: t('backend.stats.projects'), value: '10+', icon: Zap }
+  ];
+
+  const backendExpertise = [
+    {
+      title: t('backend.expertise.api_dev.title'),
+      description: t('backend.expertise.api_dev.description')
+    },
+    {
+      title: t('backend.expertise.database.title'),
+      description: t('backend.expertise.database.description')
+    },
+    {
+      title: t('backend.expertise.agency.title'),
+      description: t('backend.expertise.agency.description')
+    },
+    {
+      title: t('backend.expertise.integration.title'),
+      description: t('backend.expertise.integration.description')
+    }
+  ];
   return (
     <>
       {/* Hero Section */}
@@ -42,11 +45,16 @@ const ApiProjects: React.FC = () => {
             transition={{ duration: 0.5 }}
             className="max-w-4xl mx-auto text-center mb-16"
           >            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
-              Backend <span className="text-accent">Architecture</span>
+              <Trans 
+                i18nKey="backend.title"
+                components={{ 1: <span className="text-accent" /> }}
+              />
             </h1>
             <p className="text-xl text-text-dark mb-8 max-w-3xl mx-auto">
-              Building <span className="text-cta font-semibold">robust</span>, scalable APIs 
-              and backend systems that power modern applications with security and performance at the core.
+              <Trans 
+                i18nKey="backend.description"
+                components={{ 1: <span className="text-cta" /> }}
+              />
             </p>
           </motion.div>
 
@@ -78,9 +86,11 @@ const ApiProjects: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
             className="mb-20"
-          >
-            <h2 className="text-3xl font-bold text-center mb-12">
-              Backend <span className="text-accent2">Expertise</span>
+          >            <h2 className="text-3xl font-bold text-center mb-12">
+              <Trans 
+                i18nKey="backend.expertise.title"
+                components={{ 1: <span className="text-accent2" /> }}
+              />
             </h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {backendExpertise.map((expertise, index) => (
@@ -112,12 +122,14 @@ const ApiProjects: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.5 }}
             className="max-w-3xl mx-auto text-center mb-16"
-          >
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6">
-              Interactive <span className="text-cta">API Demos</span>
+          >            <h2 className="text-3xl sm:text-4xl font-bold mb-6">
+              <Trans 
+                i18nKey="backend.api_showcase"
+                components={{ 1: <span className="text-cta" /> }}
+              />
             </h2>
             <p className="text-lg text-text-dark">
-              Explore my API projects with live, interactive demos. Each showcases different backend capabilities and architecture patterns.
+              {t('backend.demo_description')}
             </p>
           </motion.div>
             <div className="space-y-24">
@@ -137,20 +149,21 @@ const ApiProjects: React.FC = () => {
             transition={{ duration: 0.5, delay: 0.8 }}
             className="text-center mt-20"
           >
-            <div className="bg-gradient-to-r from-accent/10 to-accent2/10 rounded-2xl p-8 sm:p-12 border border-accent/20">
-              <h3 className="text-2xl sm:text-3xl font-bold mb-4">
-                Ready to Build Something <span className="text-accent">Powerful</span>?
+            <div className="bg-gradient-to-r from-accent/10 to-accent2/10 rounded-2xl p-8 sm:p-12 border border-accent/20">              <h3 className="text-2xl sm:text-3xl font-bold mb-4">
+                <Trans 
+                  i18nKey="backend.cta.title"
+                  components={{ 1: <span className="text-accent" /> }}
+                />
               </h3>
               <p className="text-text-dark mb-8 max-w-2xl mx-auto">
-                These APIs demonstrate just a fraction of what's possible with modern backend architecture. 
-                Let's create robust, scalable solutions that will power your next big idea.
+                {t('backend.cta.description')}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
                   href="/contact"
                   className="inline-flex items-center justify-center px-6 py-3 bg-cta text-white hover:bg-cta/90 rounded-lg font-semibold transition-colors"
                 >
-                  Start a Project
+                  {t('backend.cta.start_project')}
                 </a>
                 <a
                   href="https://github.com/FraBzz"
@@ -159,7 +172,7 @@ const ApiProjects: React.FC = () => {
                   className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-neutral-800 hover:bg-gray-50 dark:hover:bg-neutral-700 rounded-lg font-semibold transition-colors border border-separator-dark"
                 >
                   <Github className="h-4 w-4" />
-                  View GitHub
+                  {t('backend.cta.view_github')}
                 </a>
               </div>
             </div>

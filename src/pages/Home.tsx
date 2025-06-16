@@ -2,8 +2,10 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Layout as LayoutIcon, Server, Calendar, Code2, Users, Coffee, Star, Shield, Zap } from 'lucide-react';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation, Trans } from 'react-i18next';
 
 const Home: React.FC = () => {
+  const { t } = useTranslation('common');
   const container = {
     hidden: { opacity: 0 },
     show: {
@@ -17,29 +19,27 @@ const Home: React.FC = () => {
   const item = {
     hidden: { opacity: 0, y: 20 },
     show: { opacity: 1, y: 0 }
-  };
-  const stats = [
-    { icon: <Calendar className="h-5 w-5" />, label: "Years Experience", value: "5+" },
-    { icon: <Code2 className="h-5 w-5" />, label: "Technologies", value: "10+" },
-    { icon: <Users className="h-5 w-5" />, label: "Projects Delivered", value: "15+" },
-    { icon: <Coffee className="h-5 w-5" />, label: "Tea Consumed", value: "∞" }
+  };  const stats = [
+    { icon: <Calendar className="h-5 w-5" />, label: t('home.stats.experience'), value: "5+" },
+    { icon: <Code2 className="h-5 w-5" />, label: t('home.stats.technologies'), value: "10+" },
+    { icon: <Users className="h-5 w-5" />, label: t('home.stats.projects'), value: "15+" },
+    { icon: <Coffee className="h-5 w-5" />, label: t('home.stats.tea'), value: "∞" }
   ];
-
   const highlights = [
     {
       icon: <Shield className="h-6 w-6" />,
-      title: "Security First",
-      description: "Built-in security practices and authentication systems"
+      title: t('home.highlights.security.title'),
+      description: t('home.highlights.security.description')
     },
     {
       icon: <Zap className="h-6 w-6" />,
-      title: "High Performance",
-      description: "Optimized APIs handling thousands of requests per second"
+      title: t('home.highlights.performance.title'),
+      description: t('home.highlights.performance.description')
     },
     {
       icon: <Star className="h-6 w-6" />,
-      title: "Quality Code",
-      description: "Clean architecture, comprehensive testing, and documentation"
+      title: t('home.highlights.quality.title'),
+      description: t('home.highlights.quality.description')
     }
   ];
 
@@ -59,23 +59,32 @@ const Home: React.FC = () => {
             initial="hidden"
             animate="show"
           >
-            {/* Header */}
-            <div className="text-center mb-16">
+            {/* Header */}            <div className="text-center mb-16">
               <motion.div variants={item} className="inline-block mb-6 py-1 px-4 bg-accent/10 rounded-full">
-                <span className="text-accent font-medium">Full-Stack Developer</span>
+                <span className="text-accent font-medium">{t('home.badge')}</span>
               </motion.div>              <motion.h1 
                 variants={item}
                 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold mb-6 leading-tight"
               >
-                Crafting <span className="text-accent">robust APIs</span> for real-world needs
+                <Trans 
+                  i18nKey="home.title"
+                  components={{
+                    1: <span className="text-accent" />
+                  }}
+                />
               </motion.h1>
-                <motion.p 
+              <motion.p 
                 variants={item}
                 className="text-lg sm:text-xl mb-8 text-text-dark max-w-3xl mx-auto leading-relaxed"
               >
-                Specialized in building <span className="text-cta font-semibold">high-performance</span>, 
-                <span className="text-accent font-semibold"> secure</span>, and 
-                <span className="text-accent2 font-semibold"> scalable solutions</span> across backend and frontend platforms.
+                <Trans 
+                  i18nKey="home.subtitle"
+                  components={{
+                    1: <span className="text-cta font-semibold" />,
+                    2: <span className="text-accent font-semibold" />,
+                    3: <span className="text-accent2 font-semibold" />
+                  }}
+                />
               </motion.p>
             </div>
 
@@ -93,10 +102,9 @@ const Home: React.FC = () => {
                   </div>
                 </div>
               ))}
-            </motion.div>
-
-            {/* Navigation Cards */}            <motion.div variants={item} className="mb-16">              <h2 className="text-2xl font-display font-bold text-center mb-8">
-                Explore My Work
+            </motion.div>            <motion.div variants={item} className="mb-16">
+              <h2 className="text-2xl font-display font-bold text-center mb-8">
+                {t('home.explore_work')}
               </h2>
               <div className="grid sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
                 <Link 
@@ -106,10 +114,11 @@ const Home: React.FC = () => {
                   <div className="flex flex-col items-center text-center">
                     <div className="bg-accent text-white p-4 rounded-lg mb-4 group-hover:scale-110 transition-transform">
                       <Server className="h-8 w-8" />
-                    </div>                    <h3 className="text-lg font-semibold mb-2">Backend</h3>
-                    <p className="text-text-dark text-sm mb-4">APIs, microservices, and server-side solutions</p>
+                    </div>
+                    <h3 className="text-lg font-semibold mb-2">{t('home.backend_card.title')}</h3>
+                    <p className="text-text-dark text-sm mb-4">{t('home.backend_card.description')}</p>
                     <div className="flex items-center text-accent font-medium">
-                      <span>View Projects</span>
+                      <span>{t('home.backend_card.cta')}</span>
                       <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
                     </div>
                   </div>
@@ -122,36 +131,19 @@ const Home: React.FC = () => {
                   <div className="flex flex-col items-center text-center">
                     <div className="bg-cta text-white p-4 rounded-lg mb-4 group-hover:scale-110 transition-transform">
                       <LayoutIcon className="h-8 w-8" />
-                    </div>                    <h3 className="text-lg font-semibold mb-2">Frontend</h3>
-                    <p className="text-text-dark text-sm mb-4">React interfaces and modern web applications</p>
+                    </div>
+                    <h3 className="text-lg font-semibold mb-2">{t('home.frontend_card.title')}</h3>
+                    <p className="text-text-dark text-sm mb-4">{t('home.frontend_card.description')}</p>
                     <div className="flex items-center text-cta font-medium">
-                      <span>View Projects</span>
+                      <span>{t('home.frontend_card.cta')}</span>
                       <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
                     </div>
                   </div>
                 </Link>
-                
-                {/* <Link 
-                  to="/mobile"
-                  className="group bg-neutral-800 p-6 rounded-lg border border-gray-700 hover:shadow-lg transition-all duration-300 hover:border-accent2"
-                >
-                  <div className="flex flex-col items-center text-center">
-                    <div className="bg-accent2 text-white p-4 rounded-lg mb-4 group-hover:scale-110 transition-transform">
-                      <Smartphone className="h-8 w-8" />
-                    </div>                    <h3 className="text-lg font-semibold mb-2">Mobile</h3>
-                    <p className="text-text-dark text-sm mb-4">Cross-platform apps and mobile solutions</p>
-                    <div className="flex items-center text-accent2 font-medium">
-                      <span>View Projects</span>
-                      <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                    </div>
-                  </div>
-                </Link> */}
               </div>
-            </motion.div>
-
-            {/* Highlights Section */}
-            <motion.div variants={item} className="mb-16">              <h2 className="text-2xl font-display font-bold text-center mb-8">
-                What Sets Me Apart
+            </motion.div>            <motion.div variants={item} className="mb-16">
+              <h2 className="text-2xl font-display font-bold text-center mb-8">
+                {t('home.highlights.title')}
               </h2>
               <div className="grid md:grid-cols-3 gap-6">
                 {highlights.map((highlight, index) => (
@@ -162,7 +154,8 @@ const Home: React.FC = () => {
                   >
                     <div className="flex justify-center text-accent mb-4">
                       {highlight.icon}
-                    </div>                    <h3 className="text-lg font-semibold mb-2">
+                    </div>
+                    <h3 className="text-lg font-semibold mb-2">
                       {highlight.title}
                     </h3>
                     <p className="text-text-dark">
@@ -171,28 +164,25 @@ const Home: React.FC = () => {
                   </motion.div>
                 ))}
               </div>
-            </motion.div>
-
-            {/* CTA Section */}
-            <motion.div variants={item} className="text-center">
+            </motion.div>            <motion.div variants={item} className="text-center">
               <div className="space-y-4">
                 <Link 
                   to="/about" 
                   className="inline-block text-accent hover:text-accent/80 text-lg font-medium transition-colors"
                 >
-                  Learn more about my journey →
+                  {t('home.cta.learn_more')}
                 </Link>
                 <div>
                   <Link 
                     to="/contact"
                     className="inline-flex items-center gap-2 px-8 py-4 bg-cta hover:bg-cta/90 text-white font-medium rounded-lg transition-colors shadow-lg hover:shadow-xl"
                   >
-                    Let's Work Together
+                    {t('home.cta.work_together')}
                     <ArrowRight className="h-5 w-5" />
                   </Link>
                 </div>
               </div>
-            </motion.div>          </motion.div>
+            </motion.div></motion.div>
         </div>
       </section>
     </motion.div>

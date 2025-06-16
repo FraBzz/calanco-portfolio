@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { Github, Code, Users, Zap, Star, Sun, Moon, Palette, Move3D, Copy, Check } from 'lucide-react';
 
 const stats = [

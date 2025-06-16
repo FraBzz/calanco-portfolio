@@ -1,22 +1,13 @@
 import { ApiProject } from '../types';
+import { TFunction } from 'i18next';
 
-export const apiProjects: ApiProject[] = [
+export const createTranslatedApiProjects = (t: TFunction): ApiProject[] => [
   {
     id: 'product-management',
-    title: 'Product Management API',
-    description: 'Administrative REST API for comprehensive product lifecycle management with full CRUD operations, built with modern TypeScript architecture.',
+    title: t('backend.projects.product_management.title'),
+    description: t('backend.projects.product_management.description'),
     stack: ['NestJS', 'TypeScript', 'Supabase', 'PostgreSQL', 'Class Validator', 'Swagger/OpenAPI', 'UUID', 'Jest'],
-    features: [
-      'Create new products with validation',
-      'Retrieve all products or by ID',
-      'Update existing products (full/partial)',
-      'Delete products with existence verification',
-      'UUID-based product identification',
-      'Input validation and sanitization',
-      'Auto-generated API documentation',
-      'Comprehensive error handling',
-      'TypeScript-first development'
-    ],
+    features: t('backend.projects.product_management.features', { returnObjects: true }) as string[],
     endpoints: [
       { method: 'POST', path: '/api/products' },
       { method: 'GET', path: '/api/products' },
@@ -24,19 +15,18 @@ export const apiProjects: ApiProject[] = [
       { method: 'PUT', path: '/api/products/{id}' },
       { method: 'PATCH', path: '/api/products/{id}' },
       { method: 'DELETE', path: '/api/products/{id}' }
-    ],
-    exampleResponse: {
+    ],    exampleResponse: {
       "type": "success",
       "status": 201,
-      "message": "Product created successfully",
+      "message": t('backend.responses.product_created'),
       "data": {
         "id": "550e8400-e29b-41d4-a716-446655440000",
         "name": "Wireless Bluetooth Headphones",
         "description": "High-quality wireless headphones with noise cancellation",
         "price": 199.99,
-        // "category": "Electronics",
-        // "stock": 50,
-        // "sku": "WBH-001",
+        "category": "Electronics",
+        "stock": 50,
+        "sku": "WBH-001",
         "createdAt": "2025-06-07T10:30:00Z",
         "updatedAt": "2025-06-07T10:30:00Z"
       },
@@ -45,20 +35,10 @@ export const apiProjects: ApiProject[] = [
   },
   {
     id: 'ecommerce',
-    title: 'E-commerce Cart API',
-    description: 'Comprehensive shopping cart management system with product catalog, inventory tracking, and order processing capabilities.',
+    title: t('backend.projects.ecommerce.title'),
+    description: t('backend.projects.ecommerce.description'),
     stack: ['NestJS', 'TypeScript', 'Supabase', 'PostgreSQL', 'UUID', 'Class Validator', 'Swagger/OpenAPI', 'Jest'],
-    features: [
-      'Add products to cart with quantity validation',
-      'Remove products from cart',
-      'Update product quantities',
-      'Calculate cart totals and taxes',
-      'Apply discount codes and promotions',
-      'Inventory management and stock checking',
-      'Persistent cart storage',
-      'Real-time price calculations',
-      'Order processing workflow'
-    ],
+    features: t('backend.projects.ecommerce.features', { returnObjects: true }) as string[],
     endpoints: [
       { method: 'POST', path: '/api/cart/add' },
       { method: 'GET', path: '/api/cart/{id}' },
@@ -66,11 +46,10 @@ export const apiProjects: ApiProject[] = [
       { method: 'DELETE', path: '/api/cart/{id}/remove' },
       { method: 'POST', path: '/api/orders/create' },
       { method: 'GET', path: '/api/orders/{id}' }
-    ],
-    exampleResponse: {
+    ],    exampleResponse: {
       "type": "success",
       "status": 200,
-      "message": "Item added to cart successfully",
+      "message": t('backend.responses.item_added_cart'),
       "data": {
         "id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
         "lines": [
@@ -85,22 +64,10 @@ export const apiProjects: ApiProject[] = [
   },
   {
     id: 'weather',
-    title: 'Weather Forecast API',
-    description: 'Real-time weather information service with current conditions and multi-day forecasts, integrating external weather data providers.',
+    title: t('backend.projects.weather.title'),
+    description: t('backend.projects.weather.description'),
     stack: ['NestJS', 'TypeScript', 'Axios/HttpModule', 'WeatherAPI.com', 'Class Validator', 'Class Transformer', 'Swagger/OpenAPI', 'RxJS', 'Jest'],
-    features: [
-      'Current weather conditions by city',
-      'Multi-day weather forecasts (up to 7 days)',
-      'Weather condition mapping and normalization',
-      'Dynamic weather advice generation',
-      'Temperature, humidity, and wind data',
-      'Query parameter validation and transformation',
-      'External API integration with error handling',
-      'Comprehensive API documentation',
-      'Provider pattern for external services',
-      'Environment-based configuration',
-      'Unit testing coverage'
-    ],
+    features: t('backend.projects.weather.features', { returnObjects: true }) as string[],
     endpoints: [
       { method: 'GET', path: '/api/weather?city={cityName}&days={number}' }
     ],
@@ -125,11 +92,10 @@ export const apiProjects: ApiProject[] = [
             "minTemp": 15,
             "condition": "cloudy"
           }
-        ],
-        "advice": "Perfect day to be outside!"
+        ],        "advice": t('backend.responses.perfect_day')
       },
       "status": 200,
-      "message": "Weather data retrieved successfully",
+      "message": t('backend.responses.weather_retrieved'),
       "timestamp": "2025-06-07T10:30:00Z"
     }
   }
