@@ -203,13 +203,87 @@
     }
   },
   "frontend": {
-    "title": "Frontend Projects", 
+    "title": "Frontend Projects",
     "subtitle": "Modern Web Applications",
     "description": "Discover my frontend work showcasing modern React applications with beautiful, responsive designs.",
     "projects_showcase": "Projects Showcase",
     "responsive_design": "Responsive Design",
     "modern_ui": "Modern UI/UX",
-    "performance": "Optimized Performance"
+    "performance": "Optimized Performance",
+    "hero": {
+      "title": "Frontend <1>Development</1>",
+      "description": "Exploring modern <1>frontend</1> technologies and building user interfaces with React, TypeScript, and contemporary development practices."
+    },
+    "stats": {
+      "projects_built": "Projects Built",
+      "react_components": "React Components",
+      "hours_coding": "Hours Coding",
+      "technologies_used": "Technologies Used"
+    },
+    "expertise": {
+      "title": "Technical <1>Expertise</1>",
+      "react": {
+        "title": "React Expertise",
+        "description": "Building scalable applications with hooks, context, and modern patterns"
+      },
+      "typescript": {
+        "title": "TypeScript Focus",
+        "description": "Type-safe development for better maintainability and developer experience"
+      },
+      "performance": {
+        "title": "Performance First",
+        "description": "Optimized bundles, lazy loading, and efficient state management"
+      },
+      "tooling": {
+        "title": "Modern Tooling",
+        "description": "Vite, Next.js, and cutting-edge development tools"
+      }
+    },
+    "demos": {
+      "title": "Interactive <1>Demos</1>",
+      "description": "Try these live demonstrations showcasing modern frontend techniques and user interactions.",
+      "theme_system": {
+        "title": "Dynamic Theme System",
+        "description": "Smooth theme transitions with React state management and CSS custom properties for seamless user experience."
+      },
+      "component_variants": {
+        "title": "Component Variants",
+        "description": "Interactive design system showcase demonstrating different button variants and their corresponding CSS classes."
+      },
+      "drag_drop": {
+        "title": "Drag & Drop Interface",
+        "description": "Mini Kanban board with smooth drag-and-drop functionality, demonstrating advanced interaction patterns."
+      },
+      "copy_clipboard": {
+        "title": "Copy to Clipboard",
+        "description": "Code snippet sharing with visual feedback and smooth animations for better developer experience."
+      },
+      "theme_mode": "Theme Mode",
+      "sample_component": "Sample Component",
+      "sample_description": "This component automatically adapts to the theme changes with smooth animations.",
+      "primary": "Primary",
+      "secondary": "Secondary",
+      "outline": "Outline",
+      "ghost": "Ghost",
+      "component_variant": "Component Variant",
+      "drag_items": "Drag items between columns",
+      "todo": "To Do",
+      "in_progress": "In Progress",
+      "done": "Done",
+      "design_system": "Design System",
+      "component_library": "Component Library",
+      "performance_optimization": "Performance Optimization",
+      "react_hook": "React Hook",
+      "api_call": "API Call",
+      "copied": "Copied!",
+      "featured": "Featured"
+    },
+    "cta": {
+      "title": "Impressed by the <1>Interactions</1>?",
+      "description": "These are just small examples of what's possible with modern frontend development. Let's build something extraordinary together with React, TypeScript, and cutting-edge UX patterns.",
+      "start_project": "Start a Project",
+      "view_github": "View GitHub"
+    }
   },  "contact": {
     "title": "Get In Touch",
     "subtitle": "Let's discuss your next project",

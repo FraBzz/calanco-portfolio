@@ -30,7 +30,7 @@ const AboutMe: React.FC = () => {
     },
     {
       icon: <Monitor className="h-8 w-8" />,
-      title: t('about.expertise.frontend.title'), 
+      title: t('about.expertise.frontend.title'),
       description: t('about.expertise.frontend.description'),
       technologies: ["React", "Tailwind CSS", "TypeScript"],
       color: "bg-cta"
@@ -73,15 +73,15 @@ const AboutMe: React.FC = () => {
           <div className="text-center mb-16">
             <motion.div variants={item} className="inline-block mb-6 py-1 px-4 bg-accent/10 rounded-full">
               <span className="text-accent font-medium">{t('about.intro.badge')}</span>
-            </motion.div>            
+            </motion.div>
             <motion.h2 variants={item} className="text-4xl sm:text-5xl font-display font-bold mb-6 leading-tight">
-              <Trans 
+              <Trans
                 i18nKey="about.intro.title"
                 components={{ 1: <span className="text-accent" /> }}
               />
-            </motion.h2>            
+            </motion.h2>
             <motion.p variants={item} className="text-lg sm:text-xl mb-8 text-text-dark leading-relaxed max-w-3xl mx-auto">
-              <Trans 
+              <Trans
                 i18nKey="about.intro.description"
                 components={{
                   1: <span className="text-accent font-semibold" />,
@@ -97,7 +97,8 @@ const AboutMe: React.FC = () => {
               <div key={index} className="text-center p-4 bg-neutral-800 rounded-lg border border-gray-700">
                 <div className="flex justify-center text-accent mb-2">
                   {stat.icon}
-                </div>                <div className="text-2xl font-bold mb-1">
+                </div>
+                <div className="text-2xl font-bold mb-1">
                   {stat.value}
                 </div>
                 <div className="text-sm text-text-dark">
@@ -107,7 +108,9 @@ const AboutMe: React.FC = () => {
             ))}
           </motion.div>
 
-          {/* Skills Grid */}          <motion.div variants={item} className="mb-16">            <h3 className="text-2xl font-display font-bold text-center mb-8">
+          {/* Skills Grid */}
+          <motion.div variants={item} className="mb-16">
+            <h3 className="text-2xl font-display font-bold text-center mb-8">
               {t('about.expertise.title')}
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -121,7 +124,8 @@ const AboutMe: React.FC = () => {
                     <div className={`${area.color} text-white p-3 rounded-lg flex-shrink-0`}>
                       {area.icon}
                     </div>
-                    <div className="flex-1">                      <h4 className="text-lg font-semibold mb-1">
+                    <div className="flex-1">
+                      <h4 className="text-lg font-semibold mb-1">
                         {area.title}
                       </h4>
                       <p className="text-text-dark mb-3">
@@ -142,12 +146,14 @@ const AboutMe: React.FC = () => {
                 </motion.div>
               ))}
             </div>
-          </motion.div>          {/* Philosophy Section */}
-          <motion.div variants={item} className="text-center mb-16">            <h3 className="text-2xl font-display font-bold mb-6">
+          </motion.div>
+          {/* Philosophy Section */}
+          <motion.div variants={item} className="text-center mb-16">
+            <h3 className="text-2xl font-display font-bold mb-6">
               {t('about.philosophy.title')}
             </h3>
             <p className="text-lg sm:text-xl text-text-dark leading-relaxed max-w-3xl mx-auto">
-              <Trans 
+              <Trans
                 i18nKey="about.philosophy.description"
                 components={{
                   1: <span className="text-accent font-semibold" />,
@@ -158,7 +164,7 @@ const AboutMe: React.FC = () => {
             </p>
           </motion.div>          {/* CTA Section */}
           <motion.div variants={item} className="text-center">
-            <Link 
+            <Link
               to="/contact"
               className="inline-flex items-center gap-2 px-8 py-4 bg-cta hover:bg-cta/90 text-white font-medium rounded-lg transition-colors shadow-lg hover:shadow-xl"
             >

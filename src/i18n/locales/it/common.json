@@ -209,7 +209,81 @@
     "projects_showcase": "Vetrina Progetti",
     "responsive_design": "Design Responsive",
     "modern_ui": "UI/UX Moderna",
-    "performance": "Performance Ottimizzate"
+    "performance": "Performance Ottimizzate",
+    "hero": {
+      "title": "Sviluppo <1>Frontend</1>",
+      "description": "Esplorando tecnologie <1>frontend moderne</1> e costruendo interfacce utente con React, TypeScript e pratiche di sviluppo contemporanee."
+    },
+    "stats": {
+      "projects_built": "Progetti Costruiti",
+      "react_components": "Componenti React",
+      "hours_coding": "Ore di Coding",
+      "technologies_used": "Tecnologie Utilizzate"
+    },
+    "expertise": {
+      "title": "Competenza <1>Tecnica</1>",
+      "react": {
+        "title": "Expertise React",
+        "description": "Costruzione di applicazioni scalabili con hooks, context e pattern moderni"
+      },
+      "typescript": {
+        "title": "Focus TypeScript",
+        "description": "Sviluppo type-safe per maggiore manutenibilità ed esperienza sviluppatore"
+      },
+      "performance": {
+        "title": "Performance Prima di Tutto",
+        "description": "Bundle ottimizzati, lazy loading e gestione efficiente dello stato"
+      },
+      "tooling": {
+        "title": "Tooling Moderno",
+        "description": "Vite, Next.js e strumenti di sviluppo all'avanguardia"
+      }
+    },
+    "demos": {
+      "title": "Demo <1>Interattive</1>",
+      "description": "Prova queste dimostrazioni dal vivo che mostrano tecniche frontend moderne e interazioni utente.",
+      "theme_system": {
+        "title": "Sistema Tema Dinamico",
+        "description": "Transizioni fluide del tema con gestione dello stato React e proprietà CSS personalizzate per un'esperienza utente senza soluzione di continuità."
+      },
+      "component_variants": {
+        "title": "Varianti Componenti",
+        "description": "Vetrina interattiva del design system che dimostra diverse varianti di pulsanti e le loro classi CSS corrispondenti."
+      },
+      "drag_drop": {
+        "title": "Interfaccia Drag & Drop",
+        "description": "Mini bacheca Kanban con funzionalità drag-and-drop fluida, dimostrando pattern di interazione avanzati."
+      },
+      "copy_clipboard": {
+        "title": "Copia negli Appunti",
+        "description": "Condivisione di snippet di codice con feedback visivo e animazioni fluide per una migliore esperienza sviluppatore."
+      },
+      "theme_mode": "Modalità Tema",
+      "sample_component": "Componente di Esempio",
+      "sample_description": "Questo componente si adatta automaticamente ai cambiamenti del tema con animazioni fluide.",
+      "primary": "Primario",
+      "secondary": "Secondario",
+      "outline": "Contorno",
+      "ghost": "Fantasma",
+      "component_variant": "Variante Componente",
+      "drag_items": "Trascina gli elementi tra le colonne",
+      "todo": "Da Fare",
+      "in_progress": "In Corso",
+      "done": "Completato",
+      "design_system": "Sistema di Design",
+      "component_library": "Libreria Componenti",
+      "performance_optimization": "Ottimizzazione Performance",
+      "react_hook": "React Hook",
+      "api_call": "Chiamata API",
+      "copied": "Copiato!",
+      "featured": "In Evidenza"
+    },
+    "cta": {
+      "title": "Impressionato dalle <1>Interazioni</1>?",
+      "description": "Questi sono solo piccoli esempi di ciò che è possibile con lo sviluppo frontend moderno. Costruiamo qualcosa di straordinario insieme con React, TypeScript e pattern UX all'avanguardia.",
+      "start_project": "Inizia un Progetto",
+      "view_github": "Vedi GitHub"
+    }
   },  "contact": {
     "title": "Mettiti in Contatto",
     "subtitle": "Parliamo del tuo prossimo progetto",
