@@ -1,34 +1,36 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Send, Check, Github, Mail, MapPin, AlertCircle } from 'lucide-react';
+import { useTranslation, Trans } from 'react-i18next';
 import { CalancoLogo } from '../assets/icons';
 import { ContactService } from '../services';
 
-const contactMethods = [
-	{
-		icon: Mail,
-		title: 'Email',
-		description: 'Best for detailed project discussions',
-		value: 'contact@calanco.dev',
-		href: 'mailto:contact@calanco.dev',
-	},
-	{
-		icon: Github,
-		title: 'GitHub',
-		description: 'Check out my code and projects',
-		value: 'github.com/FraBzz',
-		href: 'https://github.com/FraBzz',
-	},
-	{
-		icon: MapPin,
-		title: 'Location',
-		description: 'Available for remote work worldwide',
-		value: 'Remote / Italy',
-		href: null,
-	},
-];
-
 const Contact: React.FC = () => {
+	const { t } = useTranslation('contact');
+	
+	const contactMethods = [
+		{
+			icon: Mail,
+			title: t('methods.email.title'),
+			description: t('methods.email.description'),
+			value: t('methods.email.value'),
+			href: 'mailto:contact@calanco.dev',
+		},
+		{
+			icon: Github,
+			title: t('methods.github.title'),
+			description: t('methods.github.description'),
+			value: t('methods.github.value'),
+			href: 'https://github.com/FraBzz',
+		},
+		{
+			icon: MapPin,
+			title: t('methods.location.title'),
+			description: t('methods.location.description'),
+			value: t('methods.location.value'),
+			href: null,
+		},
+	];
 	const [formState, setFormState] = useState({
 		name: '',
 		email: '',
@@ -58,12 +60,11 @@ const Contact: React.FC = () => {
 				
 				setTimeout(() => {
 					setIsSubmitted(false);
-				}, 6000);
-			} else {
+				}, 6000);			} else {
 				setError(result.message);
 			}
 		} catch (error) {
-			setError('An unexpected error occurred. Please try again.');
+			setError(t('form.unexpected_error'));
 		} finally {
 			setIsSubmitting(false);
 		}
@@ -78,14 +79,19 @@ const Contact: React.FC = () => {
 						initial={{ opacity: 0, y: 20 }}
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.5 }}
-						className="max-w-4xl mx-auto text-center mb-20"
-					>            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
-              Let's <span className="text-accent">Connect</span>
+						className="max-w-4xl mx-auto text-center mb-20"					>            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
+              <Trans 
+                i18nKey="hero.title"
+                ns="contact"
+                components={{ 1: <span className="text-accent" /> }}
+              />
             </h1>
 						<p className="text-xl text-text-dark mb-8 max-w-3xl mx-auto">
-							Ready to bring your project to life? Let's discuss how we can work together to build
-							<span className="text-cta font-semibold"> exceptional</span> solutions that exceed your
-							expectations.
+							<Trans 
+								i18nKey="hero.description"
+								ns="contact"
+								components={{ 1: <span className="text-cta font-semibold" /> }}
+							/>
 						</p>
 					</motion.div>
 
@@ -98,9 +104,11 @@ const Contact: React.FC = () => {
 					>
 						{contactMethods.map((method, index) => {
 							const Component = method.href ? 'a' : 'div';
+							// Usa una key stabile invece del title che cambia con la lingua
+							const stableKey = index === 0 ? 'email' : index === 1 ? 'github' : 'location';
 							return (
 								<motion.div
-									key={method.title}
+									key={stableKey}
 									initial={{ opacity: 0, y: 20 }}
 									animate={{ opacity: 1, y: 0 }}
 									transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
@@ -149,13 +157,16 @@ const Contact: React.FC = () => {
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.5, delay: 0.3 }}
-							className="text-center mb-12"
-						>
+							className="text-center mb-12"						>
 							<h2 className="text-3xl font-bold mb-4">
-								Send a <span className="text-cta">Message</span>
+								<Trans 
+									i18nKey="form.title"
+									ns="contact"
+									components={{ 1: <span className="text-cta" /> }}
+								/>
 							</h2>
 							<p className="text-text-dark">
-								Ready to start your project? Drop me a message and let's discuss your requirements.
+								{t('form.description')}
 							</p>
 						</motion.div>
 						<motion.div
@@ -168,14 +179,13 @@ const Contact: React.FC = () => {
 								<motion.div
 									initial={{ opacity: 0, scale: 0.9 }}
 									animate={{ opacity: 1, scale: 1 }}
-									className="flex items-center justify-center p-8 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300 rounded-lg"
-								>
+									className="flex items-center justify-center p-8 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300 rounded-lg"								>
 									<Check className="h-6 w-6 mr-3" />
 									<div className="text-center">
-										<h3 className="font-semibold mb-1">Message sent successfully!</h3>
-										<p className="text-sm">I'll get back to you within 24 hours.</p>
+										<h3 className="font-semibold mb-1">{t('form.success')}</h3>
+										<p className="text-sm">{t('form.success_description')}</p>
 									</div>
-								</motion.div>							) : (
+								</motion.div>) : (
 								<form onSubmit={handleSubmit} className="space-y-6">
 									{error && (
 										<motion.div
@@ -188,12 +198,11 @@ const Contact: React.FC = () => {
 										</motion.div>
 									)}
 									<div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-										<div>
-											<label
+										<div>											<label
 												htmlFor="name"
 												className="block text-sm font-medium mb-2 text-text-primary dark:text-text-primary-dark"
 											>
-												Full Name *
+												{t('form.name')} *
 											</label>
 											<input
 												type="text"
@@ -203,15 +212,14 @@ const Contact: React.FC = () => {
 												onChange={handleChange}
 												required
 												className="w-full p-3 bg-background-dark border border-separator-dark rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-colors"
-												placeholder="Your full name"
+												placeholder={t('form.name_placeholder')}
 											/>
 										</div>
-										<div>
-											<label
+										<div>											<label
 												htmlFor="email"
 												className="block text-sm font-medium mb-2 text-text-primary dark:text-text-primary-dark"
 											>
-												Email Address *
+												{t('form.email')} *
 											</label>
 											<input
 												type="email"
@@ -221,17 +229,16 @@ const Contact: React.FC = () => {
 												onChange={handleChange}
 												required
 												className="w-full p-3 bg-background-dark border border-separator-dark rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-colors"
-												placeholder="your.email@example.com"
+												placeholder={t('form.email_placeholder')}
 											/>
 										</div>
 									</div>
 
-									<div>
-										<label
+									<div>										<label
 											htmlFor="message"
 											className="block text-sm font-medium mb-2 text-text-primary dark:text-text-primary-dark"
 										>
-											Project Details *
+											{t('form.message')} *
 										</label>
 										<textarea
 											id="message"
@@ -241,13 +248,11 @@ const Contact: React.FC = () => {
 											required
 											rows={6}
 											className="w-full p-3 bg-background-dark border border-separator-dark rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-colors resize-vertical"
-											placeholder="Tell me about your project, timeline, and requirements..."
+											placeholder={t('form.message_placeholder')}
 										></textarea>
-									</div>
-
-									<div className="flex flex-col sm:flex-row gap-4 justify-between items-center">
+									</div>									<div className="flex flex-col sm:flex-row gap-4 justify-between items-center">
 										<p className="text-sm text-text-dark">
-											* Required fields
+											{t('form.required_fields')}
 										</p>
 										<button
 											type="submit"
@@ -256,15 +261,14 @@ const Contact: React.FC = () => {
 													? 'bg-cta/20 text-cta/50 cursor-not-allowed'
 													: 'bg-cta hover:bg-cta/90 text-white shadow-lg hover:shadow-xl hover:scale-105'
 											}`}
-										>
-											{isSubmitting ? (
+										>											{isSubmitting ? (
 												<>
 													<div className="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent"></div>
-													Sending...
+													{t('form.sending')}
 												</>
 											) : (
 												<>
-													Send Message
+													{t('form.send')}
 													<Send className="h-4 w-4" />
 												</>
 											)}
@@ -283,20 +287,19 @@ const Contact: React.FC = () => {
 										<div className="w-48 h-48 flex items-center justify-center">
 											<CalancoLogo size="4xl" className="w-full h-full drop-shadow-2xl filter brightness-110" />
 										</div>
-									</div>
-									<h3 className="text-3xl font-bold mb-3">Prefer a Quick Chat?</h3>
-									<div className="text-xl text-accent font-bold tracking-wide mb-2">POWERED BY CALANCO</div>
-									<div className="text-sm text-text-dark italic">Premium Development & Design</div>
+									</div>									<h3 className="text-3xl font-bold mb-3">{t('cta.title')}</h3>
+									<div className="text-xl text-accent font-bold tracking-wide mb-2">{t('cta.powered_by')}</div>
+									<div className="text-sm text-text-dark italic">{t('cta.premium_dev')}</div>
 								</div>
 								<p className="text-text-dark mb-6">
-									Sometimes a direct conversation is the best way to understand your needs.
+									{t('cta.description')}
 								</p>
 								<a
 									href="mailto:contact@calanco.dev?subject=Quick%20Chat%20Request"
 									className="inline-flex items-center gap-2 px-6 py-3 bg-accent text-white hover:bg-accent/90 rounded-lg font-semibold transition-colors"
 								>
 									<Mail className="h-4 w-4" />
-									Schedule a Call
+									{t('cta.schedule_call')}
 								</a>
 							</div>
 						</motion.div>

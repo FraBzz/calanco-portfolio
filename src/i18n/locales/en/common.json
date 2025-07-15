@@ -1,0 +1,15 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "backend": "Backend",
+    "frontend": "Frontend",
+    "contact": "Contact"
+  },
+  "common": {
+    "language": "Language",
+    "loading": "Loading...",
+    "error": "Error",
+    "close": "Close"
+  }
+}

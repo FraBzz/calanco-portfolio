@@ -2,8 +2,10 @@ import { motion } from "framer-motion";
 import { Send, Code2, Database, Smartphone, Monitor, Server, Calendar, Coffee, Users } from "lucide-react";
 import React from "react";
 import { Link } from "react-router-dom";
+import { useTranslation, Trans } from "react-i18next";
 
 const AboutMe: React.FC = () => {
+  const { t } = useTranslation('about');
   const container = {
     hidden: { opacity: 0 },
     show: {
@@ -18,43 +20,42 @@ const AboutMe: React.FC = () => {
     hidden: { opacity: 0, y: 20 },
     show: { opacity: 1, y: 0 }
   };
-
   const skillAreas = [
     {
       icon: <Server className="h-8 w-8" />,
-      title: "Backend Development",
-      description: "APIs & Microservices",
+      title: t('expertise.backend.title'),
+      description: t('expertise.backend.description'),
       technologies: [".NET", "Express.js", "NestJS"],
       color: "bg-accent"
     },
     {
       icon: <Monitor className="h-8 w-8" />,
-      title: "Frontend Development", 
-      description: "Modern Web Interfaces",
+      title: t('expertise.frontend.title'),
+      description: t('expertise.frontend.description'),
       technologies: ["React", "Tailwind CSS", "TypeScript"],
       color: "bg-cta"
     },
     {
       icon: <Smartphone className="h-8 w-8" />,
-      title: "Mobile & Desktop",
-      description: "Cross-platform Apps",
+      title: t('expertise.mobile.title'),
+      description: t('expertise.mobile.description'),
       technologies: ["React Native", "Electron"],
       color: "bg-accent2"
     },
     {
       icon: <Database className="h-8 w-8" />,
-      title: "Database Management",
-      description: "SQL & NoSQL Solutions",
+      title: t('expertise.database.title'),
+      description: t('expertise.database.description'),
       technologies: ["PostgreSQL", "SQL Server", "MongoDB"],
       color: "bg-green-600"
     }
   ];
 
   const stats = [
-    { icon: <Calendar className="h-5 w-5" />, label: "Years Experience", value: "5+" },
-    { icon: <Code2 className="h-5 w-5" />, label: "Technologies", value: "10+" },
-    { icon: <Users className="h-5 w-5" />, label: "Projects", value: "3+" },
-    { icon: <Coffee className="h-5 w-5" />, label: "Tea Cups", value: "∞" }
+    { icon: <Calendar className="h-5 w-5" />, label: t('stats.experience'), value: "5+" },
+    { icon: <Code2 className="h-5 w-5" />, label: t('stats.technologies'), value: "10+" },
+    { icon: <Users className="h-5 w-5" />, label: t('stats.projects'), value: "3+" },
+    { icon: <Coffee className="h-5 w-5" />, label: t('stats.tea'), value: "∞" }
   ];
 
   return (
@@ -68,15 +69,27 @@ const AboutMe: React.FC = () => {
           initial="hidden"
           animate="show"
           className="max-w-4xl mx-auto"
-        >
-          {/* Header Section */}
+        >          {/* Header Section */}
           <div className="text-center mb-16">
             <motion.div variants={item} className="inline-block mb-6 py-1 px-4 bg-accent/10 rounded-full">
-              <span className="text-accent font-medium">About Me</span>
-            </motion.div>            <motion.h2 variants={item} className="text-4xl sm:text-5xl font-display font-bold mb-6 leading-tight">
-              Meet the <span className="text-accent">Developer</span>
-            </motion.h2>            <motion.p variants={item} className="text-lg sm:text-xl mb-8 text-text-dark leading-relaxed max-w-3xl mx-auto">
-              I'm <span className="text-accent font-semibold">Francesca Bozzoli</span>, a backend developer with <span className="text-cta font-semibold">5 years of experience</span> focused on building secure, high-performance APIs and backend systems.
+              <span className="text-accent font-medium">{t('intro.badge')}</span>
+            </motion.div>
+            <motion.h2 variants={item} className="text-4xl sm:text-5xl font-display font-bold mb-6 leading-tight">
+              <Trans
+                i18nKey="intro.title"
+                ns="about"
+                components={{ 1: <span className="text-accent" /> }}
+              />
+            </motion.h2>
+            <motion.p variants={item} className="text-lg sm:text-xl mb-8 text-text-dark leading-relaxed max-w-3xl mx-auto">
+              <Trans
+                i18nKey="intro.description"
+                ns="about"
+                components={{
+                  1: <span className="text-accent font-semibold" />,
+                  2: <span className="text-cta font-semibold" />
+                }}
+              />
             </motion.p>
           </div>
 
@@ -86,7 +99,8 @@ const AboutMe: React.FC = () => {
               <div key={index} className="text-center p-4 bg-neutral-800 rounded-lg border border-gray-700">
                 <div className="flex justify-center text-accent mb-2">
                   {stat.icon}
-                </div>                <div className="text-2xl font-bold mb-1">
+                </div>
+                <div className="text-2xl font-bold mb-1">
                   {stat.value}
                 </div>
                 <div className="text-sm text-text-dark">
@@ -97,8 +111,9 @@ const AboutMe: React.FC = () => {
           </motion.div>
 
           {/* Skills Grid */}
-          <motion.div variants={item} className="mb-16">            <h3 className="text-2xl font-display font-bold text-center mb-8">
-              Areas of Expertise
+          <motion.div variants={item} className="mb-16">
+            <h3 className="text-2xl font-display font-bold text-center mb-8">
+              {t('expertise.title')}
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {skillAreas.map((area, index) => (
@@ -111,7 +126,8 @@ const AboutMe: React.FC = () => {
                     <div className={`${area.color} text-white p-3 rounded-lg flex-shrink-0`}>
                       {area.icon}
                     </div>
-                    <div className="flex-1">                      <h4 className="text-lg font-semibold mb-1">
+                    <div className="flex-1">
+                      <h4 className="text-lg font-semibold mb-1">
                         {area.title}
                       </h4>
                       <p className="text-text-dark mb-3">
@@ -133,23 +149,29 @@ const AboutMe: React.FC = () => {
               ))}
             </div>
           </motion.div>
-
           {/* Philosophy Section */}
-          <motion.div variants={item} className="text-center mb-16">            <h3 className="text-2xl font-display font-bold mb-6">
-              My Development Philosophy
+          <motion.div variants={item} className="text-center mb-16">
+            <h3 className="text-2xl font-display font-bold mb-6">
+              {t('philosophy.title')}
             </h3>
             <p className="text-lg sm:text-xl text-text-dark leading-relaxed max-w-3xl mx-auto">
-              I'm driven by <span className="text-accent font-semibold">clean architecture</span>, excellent <span className="text-cta font-semibold">developer experience</span>, and solving real-world problems with <span className="text-accent2 font-semibold">reliable software</span>. Every line of code should serve a purpose and contribute to a maintainable, scalable solution.
+              <Trans
+                i18nKey="philosophy.description"
+                ns="about"
+                components={{
+                  1: <span className="text-accent font-semibold" />,
+                  2: <span className="text-cta font-semibold" />,
+                  3: <span className="text-accent2 font-semibold" />
+                }}
+              />
             </p>
-          </motion.div>
-
-          {/* CTA Section */}
+          </motion.div>          {/* CTA Section */}
           <motion.div variants={item} className="text-center">
-            <Link 
+            <Link
               to="/contact"
               className="inline-flex items-center gap-2 px-8 py-4 bg-cta hover:bg-cta/90 text-white font-medium rounded-lg transition-colors shadow-lg hover:shadow-xl"
             >
-              Let's Work Together
+              {t('work_together')}
               <Send className="h-5 w-5" />
             </Link>
           </motion.div>

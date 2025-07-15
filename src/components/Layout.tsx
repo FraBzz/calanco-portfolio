@@ -2,7 +2,9 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { CalancoLogo } from '../assets/icons';
+import LanguageSelector from './LanguageSelector';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -10,6 +12,7 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { t } = useTranslation('common');
 
   useEffect(() => {
     // Always enable dark mode
@@ -78,16 +81,14 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               <span className="text-2xl font-display font-black leading-[1] -translate-y-[1px]">
                 calanco<span className="text-accent">.dev</span>
               </span>
-            </NavLink>
-
-            <nav className="flex items-center gap-6 justify-self-center">
+            </NavLink>            <nav className="flex items-center gap-6 justify-self-center">
               <NavLink 
                 to="/backend"
                 className={({ isActive }) => 
                   `font-medium transition-colors ${isActive ? 'text-accent' : 'hover:text-accent'}`
                 }
               >
-                Backend
+                {t('nav.backend')}
               </NavLink>
               <NavLink 
                 to="/frontend"
@@ -95,23 +96,15 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                   `font-medium transition-colors ${isActive ? 'text-accent' : 'hover:text-accent'}`
                 }
               >
-                Frontend
+                {t('nav.frontend')}
               </NavLink>
-              {/* <NavLink 
-                to="/mobile"
-                className={({ isActive }) => 
-                  `font-medium transition-colors ${isActive ? 'text-accent' : 'hover:text-accent'}`
-                }
-              >
-                Mobile
-              </NavLink> */}
               <NavLink 
                 to="/about"
                 className={({ isActive }) => 
                   `font-medium transition-colors ${isActive ? 'text-accent' : 'hover:text-accent'}`
                 }
               >
-                About
+                {t('nav.about')}
               </NavLink>
               <NavLink 
                 to="/contact"
@@ -119,12 +112,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                   `font-medium transition-colors ${isActive ? 'text-accent' : 'hover:text-accent'}`
                 }
               >
-                Contact
+                {t('nav.contact')}
               </NavLink>
-            </nav>
-
-            <div className="justify-self-end">
-              {/* Placeholder for potential future desktop actions */}
+            </nav>            <div className="justify-self-end">
+              <LanguageSelector />
             </div>
           </div>
         </div>
@@ -148,16 +139,18 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               animate="open"
               exit="closed"
               className="fixed top-0 right-0 bottom-0 w-[280px] bg-background-dark z-50 md:hidden"
-            >
-              <div className="p-4 border-b border-separator-dark flex justify-between items-center">
+            >              <div className="p-4 border-b border-separator-dark flex justify-between items-center">
                 <h2 className="font-display font-bold">Navigation</h2>
-                <button
-                  onClick={closeMenu}
-                  className="p-2 hover:bg-background-dark rounded-full transition-colors"
-                  aria-label="Close menu"
-                >
-                  <X className="h-5 w-5" />
-                </button>
+                <div className="flex items-center gap-2">
+                  <LanguageSelector />
+                  <button
+                    onClick={closeMenu}
+                    className="p-2 hover:bg-background-dark rounded-full transition-colors"
+                    aria-label="Close menu"
+                  >
+                    <X className="h-5 w-5" />
+                  </button>
+                </div>
               </div>
               
               <nav className="p-4 flex flex-col gap-4">
@@ -172,8 +165,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                     }`
                   }
                 >
-                  Home
-                </NavLink>                <NavLink 
+                  {t('nav.home')}
+                </NavLink>
+                <NavLink 
                   to="/backend"
                   onClick={closeMenu}
                   className={({ isActive }) => 
@@ -184,7 +178,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                     }`
                   }
                 >
-                  Backend
+                  {t('nav.backend')}
                 </NavLink>
                 <NavLink 
                   to="/frontend"
@@ -197,21 +191,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                     }`
                   }
                 >
-                  Frontend
+                  {t('nav.frontend')}
                 </NavLink>
-                {/* <NavLink 
-                  to="/mobile"
-                  onClick={closeMenu}
-                  className={({ isActive }) => 
-                    `p-2 rounded-md font-medium transition-colors ${
-                      isActive 
-                        ? 'bg-accent/10 text-accent' 
-                        : 'hover:bg-background-dark'
-                    }`
-                  }
-                >
-                  Mobile
-                </NavLink> */}
                 <NavLink 
                   to="/about"
                   onClick={closeMenu}
@@ -223,7 +204,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                     }`
                   }
                 >
-                  About
+                  {t('nav.about')}
                 </NavLink>
                 <NavLink 
                   to="/contact"
@@ -236,7 +217,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                     }`
                   }
                 >
-                  Contact
+                  {t('nav.contact')}
                 </NavLink>
               </nav>
             </motion.div>

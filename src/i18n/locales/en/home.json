@@ -1,0 +1,41 @@
+{
+  "badge": "Full-Stack Developer",
+  "title": "Crafting <1>robust APIs</1> for real-world needs",
+  "subtitle": "Specialized in building <1>high-performance</1>, <2>secure</2>, and <3>scalable solutions</3> across backend and frontend platforms.",
+  "stats": {
+    "experience": "Years Experience",
+    "technologies": "Technologies", 
+    "projects": "Projects Delivered",
+    "tea": "Tea Consumed"
+  },
+  "explore_work": "Explore My Work",
+  "backend_card": {
+    "title": "Backend",
+    "description": "APIs, microservices, and server-side solutions",
+    "cta": "View Projects"
+  },
+  "frontend_card": {
+    "title": "Frontend", 
+    "description": "React interfaces and modern web applications",
+    "cta": "View Projects"
+  },
+  "highlights": {
+    "title": "What Sets Me Apart",
+    "security": {
+      "title": "Security First",
+      "description": "Built-in security practices and authentication systems"
+    },
+    "performance": {
+      "title": "High Performance", 
+      "description": "Optimized APIs handling thousands of requests per second"
+    },
+    "quality": {
+      "title": "Quality Code",
+      "description": "Clean architecture, comprehensive testing, and documentation"
+    }
+  },
+  "cta": {
+    "learn_more": "Learn more about my journey →",
+    "work_together": "Let's Work Together"
+  }
+}

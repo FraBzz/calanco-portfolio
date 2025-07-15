@@ -1,0 +1,15 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "Chi Sono",
+    "backend": "Backend",
+    "frontend": "Frontend", 
+    "contact": "Contatti"
+  },
+  "common": {
+    "language": "Lingua",
+    "loading": "Caricamento...",
+    "error": "Errore",
+    "close": "Chiudi"
+  }
+}

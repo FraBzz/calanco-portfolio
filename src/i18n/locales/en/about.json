@@ -1,0 +1,61 @@
+{
+  "title": "About Me",
+  "subtitle": "Full-Stack Developer & API Architect",
+  "description": "Passionate developer with expertise in building scalable backend systems and modern frontend applications.",
+  "bio": "I'm a dedicated full-stack developer with 5+ years of experience crafting robust, scalable solutions. My journey began with a fascination for problem-solving through code, and it has evolved into a passion for creating systems that make a real difference.",
+  "skills": {
+    "backend": "Backend Development", 
+    "backend_desc": "APIs & Microservices",
+    "frontend": "Frontend Development",
+    "frontend_desc": "Modern Web Interfaces", 
+    "mobile": "Mobile & Desktop",
+    "mobile_desc": "Cross-platform Apps",
+    "database": "Database Management",
+    "database_desc": "SQL & NoSQL Solutions"
+  },
+  "experience": {
+    "title": "Professional Journey",
+    "freelancer": "Freelance Developer",
+    "freelancer_period": "2019 - Present",
+    "freelancer_desc": "Building custom solutions for startups and established businesses",
+    "fullstack": "Full-Stack Developer",
+    "fullstack_period": "2020 - Present", 
+    "fullstack_desc": "Developing end-to-end applications with modern tech stacks"
+  },
+  "cta": "Ready to collaborate? Let's build something amazing together.",
+  "stats": {
+    "experience": "Years Experience",
+    "technologies": "Technologies", 
+    "projects": "Projects",
+    "tea": "Tea Cups"
+  },
+  "expertise": {
+    "title": "Areas of Expertise",
+    "backend": {
+      "title": "Backend Development",
+      "description": "APIs & Microservices"
+    },
+    "frontend": {
+      "title": "Frontend Development", 
+      "description": "Modern Web Interfaces"
+    },
+    "mobile": {
+      "title": "Mobile & Desktop",
+      "description": "Cross-platform Apps"
+    },
+    "database": {
+      "title": "Database Management",
+      "description": "SQL & NoSQL Solutions"
+    }
+  },
+  "philosophy": {
+    "title": "My Development Philosophy",
+    "description": "I'm driven by <1>clean architecture</1>, excellent <2>developer experience</2>, and solving real-world problems with <3>reliable software</3>. Every line of code should serve a purpose and contribute to a maintainable, scalable solution."
+  },
+  "intro": {
+    "badge": "About Me",
+    "title": "Meet the <1>Developer</1>",
+    "description": "I'm <1>Francesca Bozzoli</1>, a backend developer with <2>5 years of experience</2> focused on building secure, high-performance APIs and backend systems."
+  },
+  "work_together": "Let's Work Together"
+}

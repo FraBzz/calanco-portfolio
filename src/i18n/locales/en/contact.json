@@ -1,0 +1,55 @@
+{
+  "title": "Get In Touch",
+  "subtitle": "Let's discuss your next project",
+  "description": "Ready to bring your ideas to life? I'd love to hear about your project and discuss how we can work together.",
+  "hero": {
+    "title": "Let's <1>Connect</1>",
+    "description": "Ready to bring your project to life? Let's discuss how we can work together to build <1>exceptional</1> solutions that exceed your expectations."
+  },
+  "methods": {
+    "email": {
+      "title": "Email",
+      "description": "Best for detailed project discussions",
+      "value": "contact@calanco.dev"
+    },
+    "github": {
+      "title": "GitHub",
+      "description": "Check out my code and projects",
+      "value": "github.com/FraBzz"
+    },
+    "location": {
+      "title": "Location",
+      "description": "Available for remote work worldwide",
+      "value": "Remote / Italy"
+    }
+  },
+  "form": {
+    "title": "Send a <1>Message</1>",
+    "description": "Ready to start your project? Drop me a message and let's discuss your requirements.",
+    "name": "Name",
+    "name_placeholder": "Your name",
+    "email": "Email",
+    "email_placeholder": "your.email@example.com",
+    "message": "Message",
+    "message_placeholder": "Tell me about your project, timeline, and requirements...",
+    "required_fields": "* Required fields",
+    "send": "Send Message",
+    "sending": "Sending...",
+    "success": "Message sent successfully!",
+    "success_description": "I'll get back to you within 24 hours.",
+    "error": "Failed to send message. Please try again.",
+    "unexpected_error": "An unexpected error occurred. Please try again."
+  },
+  "cta": {
+    "title": "Prefer a Quick Chat?",
+    "powered_by": "POWERED BY CALANCO",
+    "premium_dev": "Premium Development & Design",
+    "description": "Sometimes a direct conversation is the best way to understand your needs.",
+    "schedule_call": "Schedule a Call"
+  },
+  "info": {
+    "email_me": "Email me directly",
+    "response_time": "I typically respond within 24 hours",
+    "availability": "Available for freelance projects"
+  }
+}

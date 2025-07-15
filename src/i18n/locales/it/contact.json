@@ -1,0 +1,55 @@
+{
+  "title": "Mettiti in Contatto",
+  "subtitle": "Parliamo del tuo prossimo progetto",
+  "description": "Pronto a dare vita alle tue idee? Mi piacerebbe sentire del tuo progetto e discutere come possiamo lavorare insieme.",
+  "hero": {
+    "title": "Mettiamoci in <1>Contatto</1>",
+    "description": "Pronto a dare vita al tuo progetto? Discutiamo di come possiamo lavorare insieme per costruire soluzioni <1>eccezionali</1> che superano le tue aspettative."
+  },
+  "methods": {
+    "email": {
+      "title": "Email",
+      "description": "Ideale per discussioni dettagliate sui progetti",
+      "value": "contact@calanco.dev"
+    },
+    "github": {
+      "title": "GitHub",
+      "description": "Dai un'occhiata al mio codice e ai miei progetti",
+      "value": "github.com/FraBzz"
+    },
+    "location": {
+      "title": "Posizione",
+      "description": "Disponibile per lavoro remoto in tutto il mondo",
+      "value": "Remoto / Italia"
+    }
+  },
+  "form": {
+    "title": "Invia un <1>Messaggio</1>",
+    "description": "Pronto per iniziare il tuo progetto? Scrivimi un messaggio e discutiamo dei tuoi requisiti.",
+    "name": "Nome",
+    "name_placeholder": "Il tuo nome",
+    "email": "Email",
+    "email_placeholder": "tua.email@esempio.com",
+    "message": "Messaggio",
+    "message_placeholder": "Raccontami del tuo progetto, tempistiche e requisiti...",
+    "required_fields": "* Campi obbligatori",
+    "send": "Invia Messaggio",
+    "sending": "Invio in corso...",
+    "success": "Messaggio inviato con successo!",
+    "success_description": "Ti risponderò entro 24 ore.",
+    "error": "Invio fallito. Riprova.",
+    "unexpected_error": "Si è verificato un errore imprevisto. Riprova."
+  },
+  "cta": {
+    "title": "Preferisci una Chiacchierata Veloce?",
+    "powered_by": "POWERED BY CALANCO",
+    "premium_dev": "Premium Development & Design",
+    "description": "A volte una conversazione diretta è il modo migliore per capire le tue esigenze.",
+    "schedule_call": "Pianifica una Chiamata"
+  },
+  "info": {
+    "email_me": "Scrivimi direttamente",
+    "response_time": "Di solito rispondo entro 24 ore",
+    "availability": "Disponibile per progetti freelance"
+  }
+}

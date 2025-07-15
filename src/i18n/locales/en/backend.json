@@ -1,0 +1,103 @@
+{
+  "title": "Backend <1>Architecture</1>",
+  "subtitle": "Server-side Solutions & APIs",
+  "description": "Building <1>robust</1>, scalable APIs and backend systems that power modern applications with security and performance at the core.",
+  "api_showcase": "Interactive <1>API Demos</1>",
+  "demo_note": "Interactive Demo",
+  "demo_description": "Explore my API projects with live, interactive demos. Each showcases different backend capabilities and architecture patterns.",
+  "view_demo": "View Demo",
+  "learn_more": "Learn More",
+  "technologies_used": "Technologies Used",
+  "features": "Key Features",
+  "show_documentation": "Show Documentation",
+  "hide_documentation": "Hide Documentation",
+  "api_documentation": "API Documentation",
+  "sample_endpoints": "Sample Endpoints",
+  "example_response": "Example Response",
+  "stats": {
+    "apis": "APIs Built",
+    "databases": "Databases",
+    "learning": "Learning Path",
+    "projects": "Projects Completed"
+  },
+  "expertise": {
+    "title": "Backend <1>Expertise</1>",
+    "api_dev": {
+      "title": "API Development",
+      "description": "RESTful APIs, authentication systems, and integration with third-party services"
+    },
+    "database": {
+      "title": "Database Design",
+      "description": "MySQL, PostgreSQL and MongoDB database design, optimization, and data modeling"
+    },
+    "agency": {
+      "title": "Web Agency Experience",
+      "description": "5+ years developing scalable solutions for diverse client projects"
+    },
+    "integration": {
+      "title": "Full-Stack Integration",
+      "description": "Seamless frontend-backend integration and deployment strategies"
+    }
+  },
+  "cta": {
+    "title": "Ready to Build Something <1>Powerful</1>?",
+    "description": "These APIs demonstrate just a fraction of what's possible with modern backend architecture. Let's create robust, scalable solutions that will power your next big idea.",
+    "start_project": "Start a Project",
+    "view_github": "View GitHub"
+  },
+  "projects": {
+    "product_management": {
+      "title": "Product Management API",
+      "description": "Administrative REST API for comprehensive product lifecycle management with full CRUD operations, built with modern TypeScript architecture.",
+      "features": [
+        "Create new products with validation",
+        "Retrieve all products or by ID",
+        "Update existing products (full/partial)",
+        "Delete products with existence verification",
+        "UUID-based product identification",
+        "Input validation and sanitization",
+        "Auto-generated API documentation",
+        "Comprehensive error handling",
+        "TypeScript-first development"
+      ]
+    },
+    "ecommerce": {
+      "title": "E-commerce Cart API",
+      "description": "Comprehensive shopping cart management system with product catalog, inventory tracking, and order processing capabilities.",
+      "features": [
+        "Add products to cart with quantity validation",
+        "Remove products from cart",
+        "Update product quantities",
+        "Calculate cart totals and taxes",
+        "Apply discount codes and promotions",
+        "Inventory management and stock checking",
+        "Persistent cart storage",
+        "Real-time price calculations",
+        "Order processing workflow"
+      ]
+    },
+    "weather": {
+      "title": "Weather Forecast API",
+      "description": "Real-time weather information service with current conditions and multi-day forecasts, integrating external weather data providers.",
+      "features": [
+        "Current weather conditions by city",
+        "Multi-day weather forecasts (up to 7 days)",
+        "Weather condition mapping and normalization",
+        "Dynamic weather advice generation",
+        "Temperature, humidity, and wind data",
+        "Query parameter validation and transformation",
+        "External API integration with error handling",
+        "Comprehensive API documentation",
+        "Provider pattern for external services",
+        "Environment-based configuration",
+        "Unit testing coverage"
+      ]
+    }
+  },
+  "responses": {
+    "product_created": "Product created successfully",
+    "item_added_cart": "Item added to cart successfully",
+    "weather_retrieved": "Weather data retrieved successfully",
+    "perfect_day": "Perfect day to be outside!"
+  }
+}

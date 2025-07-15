@@ -1,0 +1,61 @@
+{
+  "title": "Chi Sono",
+  "subtitle": "Sviluppatrice Full-Stack & Architetto API",
+  "description": "Sviluppatrice appassionato con esperienza nella costruzione di sistemi backend scalabili e applicazioni frontend moderne.",
+  "bio": "Sono uno sviluppatrice full-stack dedicato con oltre 5 anni di esperienza nella creazione di soluzioni robuste e scalabili. Il mio percorso è iniziato con la fascinazione per la risoluzione di problemi attraverso il codice, ed è evoluto in una passione per la creazione di sistemi che fanno davvero la differenza.",
+  "skills": {
+    "backend": "Sviluppo Backend",
+    "backend_desc": "API & Microservizi", 
+    "frontend": "Sviluppo Frontend",
+    "frontend_desc": "Interfacce Web Moderne",
+    "mobile": "Mobile & Desktop", 
+    "mobile_desc": "App Cross-platform",
+    "database": "Gestione Database",
+    "database_desc": "Soluzioni SQL & NoSQL"
+  },
+  "experience": {
+    "title": "Percorso Professionale",
+    "freelancer": "Sviluppatore Freelance",
+    "freelancer_period": "2019 - Presente",
+    "freelancer_desc": "Costruzione di soluzioni personalizzate per startup e aziende consolidate",
+    "fullstack": "Sviluppatore Full-Stack", 
+    "fullstack_period": "2020 - Presente",
+    "fullstack_desc": "Sviluppo di applicazioni end-to-end con stack tecnologici moderni"
+  },
+  "cta": "Pronto a collaborare? Costruiamo qualcosa di straordinario insieme.",
+  "stats": {
+    "experience": "Anni di Esperienza",
+    "technologies": "Tecnologie", 
+    "projects": "Progetti",
+    "tea": "Tazze di Tè"
+  },
+  "expertise": {
+    "title": "Aree di Competenza",
+    "backend": {
+      "title": "Sviluppo Backend",
+      "description": "API & Microservizi"
+    },
+    "frontend": {
+      "title": "Sviluppo Frontend", 
+      "description": "Interfacce Web Moderne"
+    },
+    "mobile": {
+      "title": "Mobile & Desktop",
+      "description": "App Cross-platform"
+    },
+    "database": {
+      "title": "Gestione Database",
+      "description": "Soluzioni SQL & NoSQL"
+    }
+  },
+  "philosophy": {
+    "title": "La Mia Filosofia di Sviluppo",
+    "description": "Sono guidata da <1>architettura pulita</1>, eccellente <2>esperienza di sviluppo</2>, e risoluzione di problemi del mondo reale con <3>software affidabile</3>. Ogni riga di codice dovrebbe servire uno scopo e contribuire a una soluzione mantenibile e scalabile."
+  },
+  "intro": {
+    "badge": "Chi Sono",
+    "title": "Incontra la <1>Sviluppatrice</1>",
+    "description": "Sono <1>Francesca Bozzoli</1>, una sviluppatrice backend con <2>5 anni di esperienza</2> focalizzato sulla costruzione di API sicure e ad alte prestazioni e sistemi backend."
+  },
+  "work_together": "Lavoriamo Insieme"
+}
