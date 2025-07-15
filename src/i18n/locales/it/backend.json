@@ -1,0 +1,103 @@
+{
+  "title": "Architettura <1>Backend</1>",
+  "subtitle": "Soluzioni Server-side & API",
+  "description": "Costruzione di API <1>robuste</1> e scalabili e sistemi backend che alimentano applicazioni moderne con sicurezza e prestazioni al centro.",
+  "api_showcase": "Demo <1>API Interattive</1>",
+  "demo_note": "Demo Interattiva",
+  "demo_description": "Esplora i miei progetti API con demo dal vivo e interattive. Ognuna mostra diverse capacità backend e pattern architetturali.",
+  "view_demo": "Vedi Demo",
+  "learn_more": "Scopri di Più",
+  "technologies_used": "Tecnologie Utilizzate",
+  "features": "Caratteristiche Principali",
+  "show_documentation": "Mostra Documentazione",
+  "hide_documentation": "Nascondi Documentazione",
+  "api_documentation": "Documentazione API",
+  "sample_endpoints": "Endpoint di Esempio",
+  "example_response": "Risposta di Esempio",
+  "stats": {
+    "apis": "API Create",
+    "databases": "Database",
+    "learning": "Percorso di Apprendimento",
+    "projects": "Progetti Completati"
+  },
+  "expertise": {
+    "title": "Competenze <1>Backend</1>",
+    "api_dev": {
+      "title": "Sviluppo API",
+      "description": "API RESTful, sistemi di autenticazione e integrazione con servizi di terze parti"
+    },
+    "database": {
+      "title": "Design Database",
+      "description": "Progettazione, ottimizzazione e modellazione dati per MySQL, PostgreSQL e MongoDB"
+    },
+    "agency": {
+      "title": "Esperienza Web Agency",
+      "description": "5+ anni di sviluppo di soluzioni scalabili per progetti clienti diversificati"
+    },
+    "integration": {
+      "title": "Integrazione Full-Stack",
+      "description": "Integrazione seamless frontend-backend e strategie di deployment"
+    }
+  },
+  "cta": {
+    "title": "Pronto a Costruire Qualcosa di <1>Potente</1>?",
+    "description": "Queste API dimostrano solo una frazione di ciò che è possibile con l'architettura backend moderna. Creiamo soluzioni robuste e scalabili che alimenteranno la tua prossima grande idea.",
+    "start_project": "Inizia un Progetto",
+    "view_github": "Vedi GitHub"
+  },
+  "projects": {
+    "product_management": {
+      "title": "API Gestione Prodotti",
+      "description": "API REST amministrativa per la gestione completa del ciclo di vita dei prodotti con operazioni CRUD complete, costruita con architettura TypeScript moderna.",
+      "features": [
+        "Crea nuovi prodotti con validazione",
+        "Recupera tutti i prodotti o per ID",
+        "Aggiorna prodotti esistenti (completo/parziale)",
+        "Elimina prodotti con verifica esistenza",
+        "Identificazione prodotti basata su UUID",
+        "Validazione e sanitizzazione input",
+        "Documentazione API auto-generata",
+        "Gestione errori completa",
+        "Sviluppo TypeScript-first"
+      ]
+    },
+    "ecommerce": {
+      "title": "API Carrello E-commerce",
+      "description": "Sistema completo di gestione carrello della spesa con catalogo prodotti, tracciamento inventario e capacità di elaborazione ordini.",
+      "features": [
+        "Aggiungi prodotti al carrello con validazione quantità",
+        "Rimuovi prodotti dal carrello",
+        "Aggiorna quantità prodotti",
+        "Calcola totali carrello e tasse",
+        "Applica codici sconto e promozioni",
+        "Gestione inventario e controllo scorte",
+        "Archiviazione carrello persistente",
+        "Calcoli prezzi in tempo reale",
+        "Workflow elaborazione ordini"
+      ]
+    },
+    "weather": {
+      "title": "API Previsioni Meteo",
+      "description": "Servizio informazioni meteo in tempo reale con condizioni attuali e previsioni multi-giorno, integrando fornitori dati meteo esterni.",
+      "features": [
+        "Condizioni meteo attuali per città",
+        "Previsioni meteo multi-giorno (fino a 7 giorni)",
+        "Mappatura e normalizzazione condizioni meteo",
+        "Generazione consigli meteo dinamici",
+        "Dati temperatura, umidità e vento",
+        "Validazione e trasformazione parametri query",
+        "Integrazione API esterne con gestione errori",
+        "Documentazione API completa",
+        "Pattern provider per servizi esterni",
+        "Configurazione basata su ambiente",
+        "Copertura test unitari"
+      ]
+    }
+  },
+  "responses": {
+    "product_created": "Prodotto creato con successo",
+    "item_added_cart": "Articolo aggiunto al carrello con successo",
+    "weather_retrieved": "Dati meteo recuperati con successo",
+    "perfect_day": "Giornata perfetta per stare all'aperto!"
+  }
+}

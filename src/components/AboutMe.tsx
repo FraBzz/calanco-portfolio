@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useTranslation, Trans } from "react-i18next";
 
 const AboutMe: React.FC = () => {
-  const { t } = useTranslation('common');
+  const { t } = useTranslation('about');
   const container = {
     hidden: { opacity: 0 },
     show: {
@@ -23,39 +23,39 @@ const AboutMe: React.FC = () => {
   const skillAreas = [
     {
       icon: <Server className="h-8 w-8" />,
-      title: t('about.expertise.backend.title'),
-      description: t('about.expertise.backend.description'),
+      title: t('expertise.backend.title'),
+      description: t('expertise.backend.description'),
       technologies: [".NET", "Express.js", "NestJS"],
       color: "bg-accent"
     },
     {
       icon: <Monitor className="h-8 w-8" />,
-      title: t('about.expertise.frontend.title'),
-      description: t('about.expertise.frontend.description'),
+      title: t('expertise.frontend.title'),
+      description: t('expertise.frontend.description'),
       technologies: ["React", "Tailwind CSS", "TypeScript"],
       color: "bg-cta"
     },
     {
       icon: <Smartphone className="h-8 w-8" />,
-      title: t('about.expertise.mobile.title'),
-      description: t('about.expertise.mobile.description'),
+      title: t('expertise.mobile.title'),
+      description: t('expertise.mobile.description'),
       technologies: ["React Native", "Electron"],
       color: "bg-accent2"
     },
     {
       icon: <Database className="h-8 w-8" />,
-      title: t('about.expertise.database.title'),
-      description: t('about.expertise.database.description'),
+      title: t('expertise.database.title'),
+      description: t('expertise.database.description'),
       technologies: ["PostgreSQL", "SQL Server", "MongoDB"],
       color: "bg-green-600"
     }
   ];
 
   const stats = [
-    { icon: <Calendar className="h-5 w-5" />, label: t('about.stats.experience'), value: "5+" },
-    { icon: <Code2 className="h-5 w-5" />, label: t('about.stats.technologies'), value: "10+" },
-    { icon: <Users className="h-5 w-5" />, label: t('about.stats.projects'), value: "3+" },
-    { icon: <Coffee className="h-5 w-5" />, label: t('about.stats.tea'), value: "∞" }
+    { icon: <Calendar className="h-5 w-5" />, label: t('stats.experience'), value: "5+" },
+    { icon: <Code2 className="h-5 w-5" />, label: t('stats.technologies'), value: "10+" },
+    { icon: <Users className="h-5 w-5" />, label: t('stats.projects'), value: "3+" },
+    { icon: <Coffee className="h-5 w-5" />, label: t('stats.tea'), value: "∞" }
   ];
 
   return (
@@ -72,17 +72,19 @@ const AboutMe: React.FC = () => {
         >          {/* Header Section */}
           <div className="text-center mb-16">
             <motion.div variants={item} className="inline-block mb-6 py-1 px-4 bg-accent/10 rounded-full">
-              <span className="text-accent font-medium">{t('about.intro.badge')}</span>
+              <span className="text-accent font-medium">{t('intro.badge')}</span>
             </motion.div>
             <motion.h2 variants={item} className="text-4xl sm:text-5xl font-display font-bold mb-6 leading-tight">
               <Trans
-                i18nKey="about.intro.title"
+                i18nKey="intro.title"
+                ns="about"
                 components={{ 1: <span className="text-accent" /> }}
               />
             </motion.h2>
             <motion.p variants={item} className="text-lg sm:text-xl mb-8 text-text-dark leading-relaxed max-w-3xl mx-auto">
               <Trans
-                i18nKey="about.intro.description"
+                i18nKey="intro.description"
+                ns="about"
                 components={{
                   1: <span className="text-accent font-semibold" />,
                   2: <span className="text-cta font-semibold" />
@@ -111,7 +113,7 @@ const AboutMe: React.FC = () => {
           {/* Skills Grid */}
           <motion.div variants={item} className="mb-16">
             <h3 className="text-2xl font-display font-bold text-center mb-8">
-              {t('about.expertise.title')}
+              {t('expertise.title')}
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {skillAreas.map((area, index) => (
@@ -150,11 +152,12 @@ const AboutMe: React.FC = () => {
           {/* Philosophy Section */}
           <motion.div variants={item} className="text-center mb-16">
             <h3 className="text-2xl font-display font-bold mb-6">
-              {t('about.philosophy.title')}
+              {t('philosophy.title')}
             </h3>
             <p className="text-lg sm:text-xl text-text-dark leading-relaxed max-w-3xl mx-auto">
               <Trans
-                i18nKey="about.philosophy.description"
+                i18nKey="philosophy.description"
+                ns="about"
                 components={{
                   1: <span className="text-accent font-semibold" />,
                   2: <span className="text-cta font-semibold" />,
@@ -168,7 +171,7 @@ const AboutMe: React.FC = () => {
               to="/contact"
               className="inline-flex items-center gap-2 px-8 py-4 bg-cta hover:bg-cta/90 text-white font-medium rounded-lg transition-colors shadow-lg hover:shadow-xl"
             >
-              {t('about.work_together')}
+              {t('work_together')}
               <Send className="h-5 w-5" />
             </Link>
           </motion.div>

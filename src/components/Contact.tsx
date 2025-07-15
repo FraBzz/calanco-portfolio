@@ -6,28 +6,28 @@ import { CalancoLogo } from '../assets/icons';
 import { ContactService } from '../services';
 
 const Contact: React.FC = () => {
-	const { t } = useTranslation('common');
+	const { t } = useTranslation('contact');
 	
 	const contactMethods = [
 		{
 			icon: Mail,
-			title: t('contact.methods.email.title'),
-			description: t('contact.methods.email.description'),
-			value: t('contact.methods.email.value'),
+			title: t('methods.email.title'),
+			description: t('methods.email.description'),
+			value: t('methods.email.value'),
 			href: 'mailto:contact@calanco.dev',
 		},
 		{
 			icon: Github,
-			title: t('contact.methods.github.title'),
-			description: t('contact.methods.github.description'),
-			value: t('contact.methods.github.value'),
+			title: t('methods.github.title'),
+			description: t('methods.github.description'),
+			value: t('methods.github.value'),
 			href: 'https://github.com/FraBzz',
 		},
 		{
 			icon: MapPin,
-			title: t('contact.methods.location.title'),
-			description: t('contact.methods.location.description'),
-			value: t('contact.methods.location.value'),
+			title: t('methods.location.title'),
+			description: t('methods.location.description'),
+			value: t('methods.location.value'),
 			href: null,
 		},
 	];
@@ -64,7 +64,7 @@ const Contact: React.FC = () => {
 				setError(result.message);
 			}
 		} catch (error) {
-			setError(t('contact.form.unexpected_error'));
+			setError(t('form.unexpected_error'));
 		} finally {
 			setIsSubmitting(false);
 		}
@@ -81,13 +81,15 @@ const Contact: React.FC = () => {
 						transition={{ duration: 0.5 }}
 						className="max-w-4xl mx-auto text-center mb-20"					>            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
               <Trans 
-                i18nKey="contact.hero.title"
+                i18nKey="hero.title"
+                ns="contact"
                 components={{ 1: <span className="text-accent" /> }}
               />
             </h1>
 						<p className="text-xl text-text-dark mb-8 max-w-3xl mx-auto">
 							<Trans 
-								i18nKey="contact.hero.description"
+								i18nKey="hero.description"
+								ns="contact"
 								components={{ 1: <span className="text-cta font-semibold" /> }}
 							/>
 						</p>
@@ -102,9 +104,11 @@ const Contact: React.FC = () => {
 					>
 						{contactMethods.map((method, index) => {
 							const Component = method.href ? 'a' : 'div';
+							// Usa una key stabile invece del title che cambia con la lingua
+							const stableKey = index === 0 ? 'email' : index === 1 ? 'github' : 'location';
 							return (
 								<motion.div
-									key={method.title}
+									key={stableKey}
 									initial={{ opacity: 0, y: 20 }}
 									animate={{ opacity: 1, y: 0 }}
 									transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
@@ -156,12 +160,13 @@ const Contact: React.FC = () => {
 							className="text-center mb-12"						>
 							<h2 className="text-3xl font-bold mb-4">
 								<Trans 
-									i18nKey="contact.form.title"
+									i18nKey="form.title"
+									ns="contact"
 									components={{ 1: <span className="text-cta" /> }}
 								/>
 							</h2>
 							<p className="text-text-dark">
-								{t('contact.form.description')}
+								{t('form.description')}
 							</p>
 						</motion.div>
 						<motion.div
@@ -177,8 +182,8 @@ const Contact: React.FC = () => {
 									className="flex items-center justify-center p-8 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300 rounded-lg"								>
 									<Check className="h-6 w-6 mr-3" />
 									<div className="text-center">
-										<h3 className="font-semibold mb-1">{t('contact.form.success')}</h3>
-										<p className="text-sm">{t('contact.form.success_description')}</p>
+										<h3 className="font-semibold mb-1">{t('form.success')}</h3>
+										<p className="text-sm">{t('form.success_description')}</p>
 									</div>
 								</motion.div>) : (
 								<form onSubmit={handleSubmit} className="space-y-6">
@@ -197,7 +202,7 @@ const Contact: React.FC = () => {
 												htmlFor="name"
 												className="block text-sm font-medium mb-2 text-text-primary dark:text-text-primary-dark"
 											>
-												{t('contact.form.name')} *
+												{t('form.name')} *
 											</label>
 											<input
 												type="text"
@@ -207,14 +212,14 @@ const Contact: React.FC = () => {
 												onChange={handleChange}
 												required
 												className="w-full p-3 bg-background-dark border border-separator-dark rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-colors"
-												placeholder={t('contact.form.name_placeholder')}
+												placeholder={t('form.name_placeholder')}
 											/>
 										</div>
 										<div>											<label
 												htmlFor="email"
 												className="block text-sm font-medium mb-2 text-text-primary dark:text-text-primary-dark"
 											>
-												{t('contact.form.email')} *
+												{t('form.email')} *
 											</label>
 											<input
 												type="email"
@@ -224,7 +229,7 @@ const Contact: React.FC = () => {
 												onChange={handleChange}
 												required
 												className="w-full p-3 bg-background-dark border border-separator-dark rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-colors"
-												placeholder={t('contact.form.email_placeholder')}
+												placeholder={t('form.email_placeholder')}
 											/>
 										</div>
 									</div>
@@ -233,7 +238,7 @@ const Contact: React.FC = () => {
 											htmlFor="message"
 											className="block text-sm font-medium mb-2 text-text-primary dark:text-text-primary-dark"
 										>
-											{t('contact.form.message')} *
+											{t('form.message')} *
 										</label>
 										<textarea
 											id="message"
@@ -243,11 +248,11 @@ const Contact: React.FC = () => {
 											required
 											rows={6}
 											className="w-full p-3 bg-background-dark border border-separator-dark rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-colors resize-vertical"
-											placeholder={t('contact.form.message_placeholder')}
+											placeholder={t('form.message_placeholder')}
 										></textarea>
 									</div>									<div className="flex flex-col sm:flex-row gap-4 justify-between items-center">
 										<p className="text-sm text-text-dark">
-											{t('contact.form.required_fields')}
+											{t('form.required_fields')}
 										</p>
 										<button
 											type="submit"
@@ -259,11 +264,11 @@ const Contact: React.FC = () => {
 										>											{isSubmitting ? (
 												<>
 													<div className="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent"></div>
-													{t('contact.form.sending')}
+													{t('form.sending')}
 												</>
 											) : (
 												<>
-													{t('contact.form.send')}
+													{t('form.send')}
 													<Send className="h-4 w-4" />
 												</>
 											)}
@@ -282,19 +287,19 @@ const Contact: React.FC = () => {
 										<div className="w-48 h-48 flex items-center justify-center">
 											<CalancoLogo size="4xl" className="w-full h-full drop-shadow-2xl filter brightness-110" />
 										</div>
-									</div>									<h3 className="text-3xl font-bold mb-3">{t('contact.cta.title')}</h3>
-									<div className="text-xl text-accent font-bold tracking-wide mb-2">{t('contact.cta.powered_by')}</div>
-									<div className="text-sm text-text-dark italic">{t('contact.cta.premium_dev')}</div>
+									</div>									<h3 className="text-3xl font-bold mb-3">{t('cta.title')}</h3>
+									<div className="text-xl text-accent font-bold tracking-wide mb-2">{t('cta.powered_by')}</div>
+									<div className="text-sm text-text-dark italic">{t('cta.premium_dev')}</div>
 								</div>
 								<p className="text-text-dark mb-6">
-									{t('contact.cta.description')}
+									{t('cta.description')}
 								</p>
 								<a
 									href="mailto:contact@calanco.dev?subject=Quick%20Chat%20Request"
 									className="inline-flex items-center gap-2 px-6 py-3 bg-accent text-white hover:bg-accent/90 rounded-lg font-semibold transition-colors"
 								>
 									<Mail className="h-4 w-4" />
-									{t('contact.cta.schedule_call')}
+									{t('cta.schedule_call')}
 								</a>
 							</div>
 						</motion.div>

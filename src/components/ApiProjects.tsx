@@ -6,32 +6,32 @@ import { createTranslatedApiProjects } from '../data/translatedApiProjects';
 import { Server, Database, Shield, Zap, Github } from 'lucide-react';
 
 const ApiProjects: React.FC = () => {
-  const { t } = useTranslation('common');
+  const { t } = useTranslation('backend');
   const apiProjects = createTranslatedApiProjects(t);
   
   const stats = [
-    { label: t('backend.stats.apis'), value: '8+', icon: Server },
-    { label: t('backend.stats.databases'), value: '5+', icon: Database },
-    { label: t('backend.stats.learning'), value: '5+', icon: Shield },
-    { label: t('backend.stats.projects'), value: '10+', icon: Zap }
+    { label: t('stats.apis'), value: '8+', icon: Server },
+    { label: t('stats.databases'), value: '5+', icon: Database },
+    { label: t('stats.learning'), value: '5+', icon: Shield },
+    { label: t('stats.projects'), value: '10+', icon: Zap }
   ];
 
   const backendExpertise = [
     {
-      title: t('backend.expertise.api_dev.title'),
-      description: t('backend.expertise.api_dev.description')
+      title: t('expertise.api_dev.title'),
+      description: t('expertise.api_dev.description')
     },
     {
-      title: t('backend.expertise.database.title'),
-      description: t('backend.expertise.database.description')
+      title: t('expertise.database.title'),
+      description: t('expertise.database.description')
     },
     {
-      title: t('backend.expertise.agency.title'),
-      description: t('backend.expertise.agency.description')
+      title: t('expertise.agency.title'),
+      description: t('expertise.agency.description')
     },
     {
-      title: t('backend.expertise.integration.title'),
-      description: t('backend.expertise.integration.description')
+      title: t('expertise.integration.title'),
+      description: t('expertise.integration.description')
     }
   ];
   return (
@@ -46,13 +46,15 @@ const ApiProjects: React.FC = () => {
             className="max-w-4xl mx-auto text-center mb-16"
           >            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
               <Trans 
-                i18nKey="backend.title"
+                i18nKey="title"
+                ns="backend"
                 components={{ 1: <span className="text-accent" /> }}
               />
             </h1>
             <p className="text-xl text-text-dark mb-8 max-w-3xl mx-auto">
               <Trans 
-                i18nKey="backend.description"
+                i18nKey="description"
+                ns="backend"
                 components={{ 1: <span className="text-cta" /> }}
               />
             </p>
@@ -88,7 +90,8 @@ const ApiProjects: React.FC = () => {
             className="mb-20"
           >            <h2 className="text-3xl font-bold text-center mb-12">
               <Trans 
-                i18nKey="backend.expertise.title"
+                i18nKey="expertise.title"
+                ns="backend"
                 components={{ 1: <span className="text-accent2" /> }}
               />
             </h2>
@@ -124,12 +127,13 @@ const ApiProjects: React.FC = () => {
             className="max-w-3xl mx-auto text-center mb-16"
           >            <h2 className="text-3xl sm:text-4xl font-bold mb-6">
               <Trans 
-                i18nKey="backend.api_showcase"
+                i18nKey="api_showcase"
+                ns="backend"
                 components={{ 1: <span className="text-cta" /> }}
               />
             </h2>
             <p className="text-lg text-text-dark">
-              {t('backend.demo_description')}
+              {t('demo_description')}
             </p>
           </motion.div>
             <div className="space-y-24">
@@ -151,19 +155,20 @@ const ApiProjects: React.FC = () => {
           >
             <div className="bg-gradient-to-r from-accent/10 to-accent2/10 rounded-2xl p-8 sm:p-12 border border-accent/20">              <h3 className="text-2xl sm:text-3xl font-bold mb-4">
                 <Trans 
-                  i18nKey="backend.cta.title"
+                  i18nKey="cta.title"
+                  ns="backend"
                   components={{ 1: <span className="text-accent" /> }}
                 />
               </h3>
               <p className="text-text-dark mb-8 max-w-2xl mx-auto">
-                {t('backend.cta.description')}
+                {t('cta.description')}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
                   href="/contact"
                   className="inline-flex items-center justify-center px-6 py-3 bg-cta text-white hover:bg-cta/90 rounded-lg font-semibold transition-colors"
                 >
-                  {t('backend.cta.start_project')}
+                  {t('cta.start_project')}
                 </a>
                 <a
                   href="https://github.com/FraBzz"
@@ -172,7 +177,7 @@ const ApiProjects: React.FC = () => {
                   className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-neutral-800 hover:bg-gray-50 dark:hover:bg-neutral-700 rounded-lg font-semibold transition-colors border border-separator-dark"
                 >
                   <Github className="h-4 w-4" />
-                  {t('backend.cta.view_github')}
+                  {t('cta.view_github')}
                 </a>
               </div>
             </div>

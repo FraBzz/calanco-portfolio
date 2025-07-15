@@ -4,10 +4,10 @@ import { TFunction } from 'i18next';
 export const createTranslatedApiProjects = (t: TFunction): ApiProject[] => [
   {
     id: 'product-management',
-    title: t('backend.projects.product_management.title'),
-    description: t('backend.projects.product_management.description'),
+    title: t('projects.product_management.title'),
+    description: t('projects.product_management.description'),
     stack: ['NestJS', 'TypeScript', 'Supabase', 'PostgreSQL', 'Class Validator', 'Swagger/OpenAPI', 'UUID', 'Jest'],
-    features: t('backend.projects.product_management.features', { returnObjects: true }) as string[],
+    features: t('projects.product_management.features', { returnObjects: true }) as string[],
     endpoints: [
       { method: 'POST', path: '/api/products' },
       { method: 'GET', path: '/api/products' },
@@ -18,7 +18,7 @@ export const createTranslatedApiProjects = (t: TFunction): ApiProject[] => [
     ],    exampleResponse: {
       "type": "success",
       "status": 201,
-      "message": t('backend.responses.product_created'),
+      "message": t('responses.product_created'),
       "data": {
         "id": "550e8400-e29b-41d4-a716-446655440000",
         "name": "Wireless Bluetooth Headphones",
@@ -35,10 +35,10 @@ export const createTranslatedApiProjects = (t: TFunction): ApiProject[] => [
   },
   {
     id: 'ecommerce',
-    title: t('backend.projects.ecommerce.title'),
-    description: t('backend.projects.ecommerce.description'),
+    title: t('projects.ecommerce.title'),
+    description: t('projects.ecommerce.description'),
     stack: ['NestJS', 'TypeScript', 'Supabase', 'PostgreSQL', 'UUID', 'Class Validator', 'Swagger/OpenAPI', 'Jest'],
-    features: t('backend.projects.ecommerce.features', { returnObjects: true }) as string[],
+    features: t('projects.ecommerce.features', { returnObjects: true }) as string[],
     endpoints: [
       { method: 'POST', path: '/api/cart/add' },
       { method: 'GET', path: '/api/cart/{id}' },
@@ -49,7 +49,7 @@ export const createTranslatedApiProjects = (t: TFunction): ApiProject[] => [
     ],    exampleResponse: {
       "type": "success",
       "status": 200,
-      "message": t('backend.responses.item_added_cart'),
+      "message": t('responses.item_added_cart'),
       "data": {
         "id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
         "lines": [
@@ -64,10 +64,10 @@ export const createTranslatedApiProjects = (t: TFunction): ApiProject[] => [
   },
   {
     id: 'weather',
-    title: t('backend.projects.weather.title'),
-    description: t('backend.projects.weather.description'),
+    title: t('projects.weather.title'),
+    description: t('projects.weather.description'),
     stack: ['NestJS', 'TypeScript', 'Axios/HttpModule', 'WeatherAPI.com', 'Class Validator', 'Class Transformer', 'Swagger/OpenAPI', 'RxJS', 'Jest'],
-    features: t('backend.projects.weather.features', { returnObjects: true }) as string[],
+    features: t('projects.weather.features', { returnObjects: true }) as string[],
     endpoints: [
       { method: 'GET', path: '/api/weather?city={cityName}&days={number}' }
     ],
@@ -92,10 +92,10 @@ export const createTranslatedApiProjects = (t: TFunction): ApiProject[] => [
             "minTemp": 15,
             "condition": "cloudy"
           }
-        ],        "advice": t('backend.responses.perfect_day')
+        ],        "advice": t('responses.perfect_day')
       },
       "status": 200,
-      "message": t('backend.responses.weather_retrieved'),
+      "message": t('responses.weather_retrieved'),
       "timestamp": "2025-06-07T10:30:00Z"
     }
   }

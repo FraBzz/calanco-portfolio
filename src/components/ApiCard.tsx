@@ -16,7 +16,7 @@ interface ApiCardProps {
 }
 
 const ApiCard: React.FC<ApiCardProps> = ({ project, index }) => {
-  const { t } = useTranslation('common');
+  const { t } = useTranslation('backend');
   const [isDocOpen, setIsDocOpen] = useState(false);
   const renderDemo = () => {
     switch (project.id) {
@@ -55,7 +55,7 @@ const ApiCard: React.FC<ApiCardProps> = ({ project, index }) => {
             whileTap={{ scale: 0.97 }}
             className="flex items-center gap-2 text-sm font-semibold text-accent hover:text-accent2 transition-all duration-200 cursor-pointer border border-accent/30 hover:border-accent/50 rounded-md px-3 py-2 hover:bg-accent/5"
           >
-            {isDocOpen ? t('backend.hide_documentation') : t('backend.show_documentation')}
+            {isDocOpen ? t('hide_documentation') : t('show_documentation')}
             {isDocOpen ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
           </motion.button>
         </div>
@@ -73,11 +73,11 @@ const ApiCard: React.FC<ApiCardProps> = ({ project, index }) => {
               transition={{ duration: 0.3 }}
               className="border-t border-separator-dark pt-6"
             >              <div className="prose prose-slate dark:prose-invert max-w-none">
-                <h4 className="text-lg font-semibold mb-4">{t('backend.api_documentation')}</h4>
+                <h4 className="text-lg font-semibold mb-4">{t('api_documentation')}</h4>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <h5 className="text-base font-medium mb-2">{t('backend.technologies_used')}</h5>
+                    <h5 className="text-base font-medium mb-2">{t('technologies_used')}</h5>
                     <ul className="list-disc pl-5 space-y-1">
                       {project.stack.map((tech, i) => (
                         <li key={i}>{tech}</li>
@@ -86,7 +86,7 @@ const ApiCard: React.FC<ApiCardProps> = ({ project, index }) => {
                   </div>
                   
                   <div>
-                    <h5 className="text-base font-medium mb-2">{t('backend.features')}</h5>
+                    <h5 className="text-base font-medium mb-2">{t('features')}</h5>
                     <ul className="list-disc pl-5 space-y-1">
                       {project.features.map((feature, i) => (
                         <li key={i}>{feature}</li>
@@ -96,7 +96,7 @@ const ApiCard: React.FC<ApiCardProps> = ({ project, index }) => {
                 </div>
                 
                 <div className="mt-6">
-                  <h5 className="text-base font-medium mb-2">{t('backend.sample_endpoints')}</h5>
+                  <h5 className="text-base font-medium mb-2">{t('sample_endpoints')}</h5>
                   <div className="bg-gray-100 dark:bg-background-dark p-4 rounded-md overflow-x-auto">
                     <pre className="text-sm">
                       {project.endpoints.map((endpoint, i) => (
@@ -108,7 +108,7 @@ const ApiCard: React.FC<ApiCardProps> = ({ project, index }) => {
                   </div>
                 </div>
                   <div className="mt-6">
-                  <h5 className="text-base font-medium mb-2">{t('backend.example_response')}</h5>
+                  <h5 className="text-base font-medium mb-2">{t('example_response')}</h5>
                   <div className="bg-gray-100 dark:bg-background-dark p-4 rounded-md overflow-x-auto">
                     <pre className="text-sm">
                       {JSON.stringify(project.exampleResponse, null, 2)}

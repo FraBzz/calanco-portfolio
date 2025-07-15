@@ -1,0 +1,41 @@
+{
+  "badge": "Sviluppatore Full-Stack",
+  "title": "Creo <1>API robuste</1> per esigenze reali",
+  "subtitle": "Specializzato nella costruzione di soluzioni <1>ad alte prestazioni</1>, <2>sicure</2> e <3>scalabili</3> per piattaforme backend e frontend.",
+  "stats": {
+    "experience": "Anni di Esperienza",
+    "technologies": "Tecnologie",
+    "projects": "Progetti Completati", 
+    "tea": "Tè Consumato"
+  },
+  "explore_work": "Esplora il Mio Lavoro",
+  "backend_card": {
+    "title": "Backend",
+    "description": "API, microservizi e soluzioni server-side",
+    "cta": "Vedi Progetti"
+  },
+  "frontend_card": {
+    "title": "Frontend",
+    "description": "Interfacce React e applicazioni web moderne", 
+    "cta": "Vedi Progetti"
+  },
+  "highlights": {
+    "title": "Cosa Mi Distingue",
+    "security": {
+      "title": "Sicurezza Prima di Tutto",
+      "description": "Pratiche di sicurezza integrate e sistemi di autenticazione"
+    },
+    "performance": {
+      "title": "Alte Prestazioni",
+      "description": "API ottimizzate che gestiscono migliaia di richieste al secondo"
+    },
+    "quality": {
+      "title": "Codice di Qualità", 
+      "description": "Architettura pulita, test completi e documentazione"
+    }
+  },
+  "cta": {
+    "learn_more": "Scopri di più sul mio percorso →",
+    "work_together": "Lavoriamo Insieme"
+  }
+}

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { useTranslation, Trans } from 'react-i18next';
 
 const Home: React.FC = () => {
-  const { t } = useTranslation('common');
+  const { t } = useTranslation('home');
   const container = {
     hidden: { opacity: 0 },
     show: {
@@ -20,26 +20,26 @@ const Home: React.FC = () => {
     hidden: { opacity: 0, y: 20 },
     show: { opacity: 1, y: 0 }
   };  const stats = [
-    { icon: <Calendar className="h-5 w-5" />, label: t('home.stats.experience'), value: "5+" },
-    { icon: <Code2 className="h-5 w-5" />, label: t('home.stats.technologies'), value: "10+" },
-    { icon: <Users className="h-5 w-5" />, label: t('home.stats.projects'), value: "15+" },
-    { icon: <Coffee className="h-5 w-5" />, label: t('home.stats.tea'), value: "∞" }
+    { icon: <Calendar className="h-5 w-5" />, label: t('stats.experience'), value: "5+" },
+    { icon: <Code2 className="h-5 w-5" />, label: t('stats.technologies'), value: "10+" },
+    { icon: <Users className="h-5 w-5" />, label: t('stats.projects'), value: "15+" },
+    { icon: <Coffee className="h-5 w-5" />, label: t('stats.tea'), value: "∞" }
   ];
   const highlights = [
     {
       icon: <Shield className="h-6 w-6" />,
-      title: t('home.highlights.security.title'),
-      description: t('home.highlights.security.description')
+      title: t('highlights.security.title'),
+      description: t('highlights.security.description')
     },
     {
       icon: <Zap className="h-6 w-6" />,
-      title: t('home.highlights.performance.title'),
-      description: t('home.highlights.performance.description')
+      title: t('highlights.performance.title'),
+      description: t('highlights.performance.description')
     },
     {
       icon: <Star className="h-6 w-6" />,
-      title: t('home.highlights.quality.title'),
-      description: t('home.highlights.quality.description')
+      title: t('highlights.quality.title'),
+      description: t('highlights.quality.description')
     }
   ];
 
@@ -61,13 +61,14 @@ const Home: React.FC = () => {
           >
             {/* Header */}            <div className="text-center mb-16">
               <motion.div variants={item} className="inline-block mb-6 py-1 px-4 bg-accent/10 rounded-full">
-                <span className="text-accent font-medium">{t('home.badge')}</span>
+                <span className="text-accent font-medium">{t('badge')}</span>
               </motion.div>              <motion.h1 
                 variants={item}
                 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold mb-6 leading-tight"
               >
                 <Trans 
-                  i18nKey="home.title"
+                  i18nKey="title"
+                  ns="home"
                   components={{
                     1: <span className="text-accent" />
                   }}
@@ -78,7 +79,8 @@ const Home: React.FC = () => {
                 className="text-lg sm:text-xl mb-8 text-text-dark max-w-3xl mx-auto leading-relaxed"
               >
                 <Trans 
-                  i18nKey="home.subtitle"
+                  i18nKey="subtitle"
+                  ns="home"
                   components={{
                     1: <span className="text-cta font-semibold" />,
                     2: <span className="text-accent font-semibold" />,
@@ -104,7 +106,7 @@ const Home: React.FC = () => {
               ))}
             </motion.div>            <motion.div variants={item} className="mb-16">
               <h2 className="text-2xl font-display font-bold text-center mb-8">
-                {t('home.explore_work')}
+                {t('explore_work')}
               </h2>
               <div className="grid sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
                 <Link 
@@ -115,10 +117,10 @@ const Home: React.FC = () => {
                     <div className="bg-accent text-white p-4 rounded-lg mb-4 group-hover:scale-110 transition-transform">
                       <Server className="h-8 w-8" />
                     </div>
-                    <h3 className="text-lg font-semibold mb-2">{t('home.backend_card.title')}</h3>
-                    <p className="text-text-dark text-sm mb-4">{t('home.backend_card.description')}</p>
+                    <h3 className="text-lg font-semibold mb-2">{t('backend_card.title')}</h3>
+                    <p className="text-text-dark text-sm mb-4">{t('backend_card.description')}</p>
                     <div className="flex items-center text-accent font-medium">
-                      <span>{t('home.backend_card.cta')}</span>
+                      <span>{t('backend_card.cta')}</span>
                       <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
                     </div>
                   </div>
@@ -132,10 +134,10 @@ const Home: React.FC = () => {
                     <div className="bg-cta text-white p-4 rounded-lg mb-4 group-hover:scale-110 transition-transform">
                       <LayoutIcon className="h-8 w-8" />
                     </div>
-                    <h3 className="text-lg font-semibold mb-2">{t('home.frontend_card.title')}</h3>
-                    <p className="text-text-dark text-sm mb-4">{t('home.frontend_card.description')}</p>
+                    <h3 className="text-lg font-semibold mb-2">{t('frontend_card.title')}</h3>
+                    <p className="text-text-dark text-sm mb-4">{t('frontend_card.description')}</p>
                     <div className="flex items-center text-cta font-medium">
-                      <span>{t('home.frontend_card.cta')}</span>
+                      <span>{t('frontend_card.cta')}</span>
                       <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
                     </div>
                   </div>
@@ -143,7 +145,7 @@ const Home: React.FC = () => {
               </div>
             </motion.div>            <motion.div variants={item} className="mb-16">
               <h2 className="text-2xl font-display font-bold text-center mb-8">
-                {t('home.highlights.title')}
+                {t('highlights.title')}
               </h2>
               <div className="grid md:grid-cols-3 gap-6">
                 {highlights.map((highlight, index) => (
@@ -170,14 +172,14 @@ const Home: React.FC = () => {
                   to="/about" 
                   className="inline-block text-accent hover:text-accent/80 text-lg font-medium transition-colors"
                 >
-                  {t('home.cta.learn_more')}
+                  {t('cta.learn_more')}
                 </Link>
                 <div>
                   <Link 
                     to="/contact"
                     className="inline-flex items-center gap-2 px-8 py-4 bg-cta hover:bg-cta/90 text-white font-medium rounded-lg transition-colors shadow-lg hover:shadow-xl"
                   >
-                    {t('home.cta.work_together')}
+                    {t('cta.work_together')}
                     <ArrowRight className="h-5 w-5" />
                   </Link>
                 </div>
