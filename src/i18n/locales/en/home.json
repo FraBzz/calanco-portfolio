@@ -1,7 +1,7 @@
 {
   "badge": "Full-Stack Developer",
-  "title": "Crafting <1>robust APIs</1> for real-world needs",
-  "subtitle": "Specialized in building <1>high-performance</1>, <2>secure</2>, and <3>scalable solutions</3> across backend and frontend platforms.",
+  "title": "Creating <1>complete digital solutions</1> for small businesses and companies",
+  "subtitle": "From <1>online presence</1> to <2>advanced backend solutions</2>, I create <3>digital tools</3> that grow your business.",
   "stats": {
     "experience": "Years Experience",
     "technologies": "Technologies", 
@@ -18,6 +18,36 @@
     "title": "Frontend", 
     "description": "React interfaces and modern web applications",
     "cta": "View Projects"
+  },
+  "business_section": {
+    "title": "Websites for Small Businesses",
+    "subtitle": "Take your business online with a professional and modern website",
+    "features": [
+      {
+        "title": "Responsive Design",
+        "description": "Perfect on smartphones, tablets and desktop"
+      },
+      {
+        "title": "Fast & Modern",
+        "description": "Quick loading and SEO optimized"
+      },
+      {
+        "title": "Results-Focused",
+        "description": "Designed to attract more customers"
+      }
+    ],
+    "business_types": {
+      "title": "Perfect for:",
+      "types": [
+        { "name": "Restaurants & Cafes", "icon": "🍕" },
+        { "name": "Shops & Boutiques", "icon": "🏪" },
+        { "name": "Professionals", "icon": "👔" },
+        { "name": "Craftsmen", "icon": "🔧" },
+        { "name": "Local Services", "icon": "🏘️" },
+        { "name": "Medical Practices", "icon": "🏥" }
+      ]
+    },
+    "cta": "Learn More"
   },
   "highlights": {
     "title": "What Sets Me Apart",

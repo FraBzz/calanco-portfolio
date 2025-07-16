@@ -1,7 +1,7 @@
 {
   "badge": "Sviluppatore Full-Stack",
-  "title": "Creo <1>API robuste</1> per esigenze reali",
-  "subtitle": "Specializzato nella costruzione di soluzioni <1>ad alte prestazioni</1>, <2>sicure</2> e <3>scalabili</3> per piattaforme backend e frontend.",
+  "title": "Creo <1>soluzioni digitali complete</1> per piccole attività e aziende",
+  "subtitle": "Dalla <1>presenza online</1> alle <2>soluzioni backend avanzate</2>, creo <3>strumenti digitali</3> che fanno crescere il tuo business.",
   "stats": {
     "experience": "Anni di Esperienza",
     "technologies": "Tecnologie",
@@ -18,6 +18,36 @@
     "title": "Frontend",
     "description": "Interfacce React e applicazioni web moderne", 
     "cta": "Vedi Progetti"
+  },
+  "business_section": {
+    "title": "Siti Web per Piccole Attività",
+    "subtitle": "Porta la tua attività online con un sito web professionale e moderno",
+    "features": [
+      {
+        "title": "Siti Responsive",
+        "description": "Perfetti su smartphone, tablet e desktop"
+      },
+      {
+        "title": "Veloci e Moderni",
+        "description": "Caricamento rapido e SEO ottimizzato"
+      },
+      {
+        "title": "Focalizzati sui Risultati",
+        "description": "Progettati per attrarre più clienti"
+      }
+    ],
+    "business_types": {
+      "title": "Perfetto per:",
+      "types": [
+        { "name": "Ristoranti e Bar", "icon": "🍕" },
+        { "name": "Negozi e Boutique", "icon": "🏪" },
+        { "name": "Professionisti", "icon": "👔" },
+        { "name": "Artigiani", "icon": "🔧" },
+        { "name": "Servizi Locali", "icon": "🏘️" },
+        { "name": "Studi Medici", "icon": "🏥" }
+      ]
+    },
+    "cta": "Scopri di Più"
   },
   "highlights": {
     "title": "Cosa Mi Distingue",

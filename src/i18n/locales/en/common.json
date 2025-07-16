@@ -4,6 +4,7 @@
     "about": "About",
     "backend": "Backend",
     "frontend": "Frontend",
+    "business": "Business", 
     "contact": "Contact"
   },
   "common": {
