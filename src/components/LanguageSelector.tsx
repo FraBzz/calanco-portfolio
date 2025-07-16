@@ -12,6 +12,25 @@ const LanguageSelector: React.FC = () => {
     { code: 'it', name: 'Italiano', flag: '🇮🇹' }
   ];
 
+  useEffect(() => {
+    const detectBrowserLanguage = () => {
+      const browserLang = navigator.language || navigator.languages?.[0] || 'en';
+
+      const isItalian = browserLang.toLowerCase().startsWith('it');
+
+      const targetLanguage = isItalian ? 'it' : 'en';
+
+      if (i18n.language !== targetLanguage) {
+        i18n.changeLanguage(targetLanguage);
+      }
+    };
+
+    //controllo la lingua e la setto solo se non ancora settata
+    if (!i18n.language || i18n.language === 'cimode') {
+      detectBrowserLanguage();
+    }
+  }, [i18n]);
+
   const changeLanguage = (langCode: string) => {
     i18n.changeLanguage(langCode);
     setIsOpen(false);
@@ -34,7 +53,7 @@ const LanguageSelector: React.FC = () => {
 
   return (
     <div className="relative" ref={dropdownRef}>
-      <button 
+      <button
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center gap-2 px-3 py-2 rounded-lg bg-neutral-800 border border-gray-700 hover:border-accent transition-colors"
       >
@@ -42,22 +61,21 @@ const LanguageSelector: React.FC = () => {
         <span className="text-sm">{currentLanguage.flag}</span>
         <span className="text-sm hidden sm:inline">{currentLanguage.name}</span>
       </button>
-      
+
       {isOpen && (
         <div className="absolute right-0 mt-2 w-48 bg-neutral-800 border border-gray-700 rounded-lg shadow-lg z-50">
           {languages.map((language) => (
             <button
               key={language.code}
               onClick={() => changeLanguage(language.code)}
-              className={`w-full flex items-center gap-3 px-4 py-2 text-left hover:bg-neutral-700 first:rounded-t-lg last:rounded-b-lg transition-colors ${
-                i18n.language === language.code ? 'text-accent' : 'text-white'
-}`}
+              className={`w-full flex items-center gap-3 px-4 py-2 text-left hover:bg-neutral-700 first:rounded-t-lg last:rounded-b-lg transition-colors ${i18n.language === language.code ? 'text-accent' : 'text-white'
+                }`}
             >
               <span className="text-lg">{language.flag}</span>
               <span className="text-sm">{language.name}</span>
             </button>
           ))}
-        </div>    )}
+        </div>)}
     </div>
   );
 };
