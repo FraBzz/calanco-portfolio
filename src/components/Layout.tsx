@@ -57,10 +57,12 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     }
   };
   return (
-    <div className="min-h-screen bg-background-dark text-text-dark">      <header className="sticky top-0 z-50 border-b border-separator-dark bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-sm">
+    <div className="min-h-screen bg-background-dark text-text-dark">      
+    <header className="sticky top-0 z-50 border-b border-separator-dark bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-sm">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
           {/* Mobile Layout */}
-          <div className="flex justify-between items-center md:hidden">            <NavLink to="/" className="flex items-center gap-0.5">
+          <div className="flex justify-between items-center md:hidden">            
+            <NavLink to="/" className="flex items-center gap-0.5">
               <CalancoLogo size="header" />
               <span className="text-2xl font-display font-black leading-[1] -translate-y-[1px]">
                 calanco<span className="text-accent">.dev</span>
@@ -76,7 +78,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           </div>
 
           {/* Desktop Layout */}
-          <div className="hidden md:grid grid-cols-3 items-center">            <NavLink to="/" className="flex items-center gap-0.5 justify-self-start">
+          <div className="hidden md:grid grid-cols-3 items-center">            
+            <NavLink to="/" className="flex items-center gap-0.5 justify-self-start">
               <CalancoLogo size="header" />
               <span className="text-2xl font-display font-black leading-[1] -translate-y-[1px]">
                 calanco<span className="text-accent">.dev</span>
@@ -139,7 +142,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               animate="open"
               exit="closed"
               className="fixed top-0 right-0 bottom-0 w-[280px] bg-background-dark z-50 md:hidden"
-            >              <div className="p-4 border-b border-separator-dark flex justify-between items-center">
+            >              
+             <div className="p-4 border-b border-separator-dark flex justify-between items-center">
                 <h2 className="font-display font-bold">Navigation</h2>
                 <div className="flex items-center gap-2">
                   <LanguageSelector />
