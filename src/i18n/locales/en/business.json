@@ -1,0 +1,200 @@
+{
+  "hero": {
+    "badge": "Web Solutions for Business",
+    "title": "Your <1>professional website</1> that converts visitors into customers",
+    "subtitle": "I help small businesses and professionals build an effective online presence with modern, fast websites optimized for search engines.",
+    "cta": "Start Your Project",
+    "stats": [
+      { "value": "5-10", "label": "Days to Launch" },
+      { "value": "100%", "label": "Mobile Responsive" },
+      { "value": "SEO", "label": "Optimized" },
+      { "value": "∞", "label": "Ongoing Support" }
+    ]
+  },
+  "services": {
+    "title": "What I Include in Every Project",
+    "subtitle": "Everything you need to succeed online",
+    "items": [
+      {
+        "title": "Modern Design",
+        "description": "Professional and appealing layout that reflects your identity",
+        "features": ["Responsive design", "Coordinated colors", "Professional typography"]
+      },
+      {
+        "title": "SEO Optimization",
+        "description": "Your site will be easily found on Google",
+        "features": ["Optimized meta tags", "SEO-friendly structure", "Loading speed"]
+      },
+      {
+        "title": "Content Management",
+        "description": "Flexible content management solutions based on your needs",
+        "features": ["Tailored approach", "Training included", "Ongoing support"]
+      }
+    ]
+  },
+  "process": {
+    "title": "How We Work Together",
+    "subtitle": "A simple and transparent process",
+    "steps": [
+      {
+        "number": "01",
+        "title": "Consultation",
+        "description": "We discuss your business, goals and vision for the website"
+      },
+      {
+        "number": "02", 
+        "title": "Design",
+        "description": "I create the design and structure based on your needs"
+      },
+      {
+        "number": "03",
+        "title": "Development",
+        "description": "I build the site with clean and optimized code"
+      },
+      {
+        "number": "04",
+        "title": "Launch",
+        "description": "We publish the site and I train you on management"
+      }
+    ]
+  },
+  "showcase": {
+    "title": "Types of Sites I Create",
+    "subtitle": "Custom solutions for every sector",
+    "types": [
+      {
+        "title": "Restaurants & Bars",
+        "description": "Digital menus, online reservations, photo galleries",
+        "icon": "🍕",
+        "features": ["Interactive menu", "Booking system", "Dish gallery", "Contact info"]
+      },
+      {
+        "title": "Shops & E-commerce",
+        "description": "Product catalogs, online sales, order management",
+        "icon": "🏪", 
+        "features": ["Product catalog", "Shopping cart", "Secure payments", "Inventory management"]
+      },
+      {
+        "title": "Professionals",
+        "description": "Service portfolios, appointments, client area",
+        "icon": "👔",
+        "features": ["Work portfolio", "Service booking", "Reserved area", "Testimonials"]
+      },
+      {
+        "title": "SEO Showcase Site",
+        "description": "Professional online presence optimized for Google",
+        "icon": "🌐",
+        "features": ["SEO optimized", "Responsive design", "Curated content", "Google My Business"]
+      }
+    ]
+  },
+  "portfolio": {
+    "title": "Project Examples",
+    "subtitle": "Discover some examples of projects I can create for your business",
+    "cta": "Discuss Your Project",
+    "projects": {
+      "restaurant": {
+        "homepage": {
+          "title": "Restaurant Website",
+          "description": "Elegant homepage for restaurant with rustic design, integrated menu and online booking system.",
+          "tags": ["React", "Responsive", "SEO"]
+        },
+        "menu": {
+          "title": "Digital Menu",
+          "description": "Digital menu with categories, prices, detailed descriptions and allergy filter system.",
+          "tags": ["Digital Menu", "Filters", "Pricing"]
+        },
+        "gallery": {
+          "title": "Photo Gallery",
+          "description": "Photo gallery to showcase the restaurant atmosphere, dishes and welcoming environment.",
+          "tags": ["Gallery", "Lightbox", "Categorized"]
+        }
+      },
+      "studio": {
+        "homepage": {
+          "title": "Architecture Studio",
+          "description": "Elegant website for architecture studio with project portfolio, services and sustainable approach.",
+          "tags": ["Architecture", "Portfolio", "Sustainability"]
+        },
+        "projects": {
+          "title": "Project Portfolio",
+          "description": "Detailed gallery of completed projects with descriptions, location and technical specifications.",
+          "tags": ["Projects", "Gallery", "Case Study"]
+        },
+        "contact": {
+          "title": "Contact Page",
+          "description": "Complete contact information with interactive map, request form and studio details.",
+          "tags": ["Contact", "Map", "Form"]
+        }
+      },
+      "ecommerce": {
+        "homepage": {
+          "title": "E-commerce Homepage",
+          "description": "Attractive homepage for online store with featured products, categories and advanced search system.",
+          "tags": ["E-commerce", "Homepage", "Search"]
+        },
+        "product": {
+          "title": "Product Page",
+          "description": "Detailed product page with image gallery, customer reviews and add to cart system.",
+          "tags": ["Product", "Gallery", "Reviews"]
+        },
+        "cart": {
+          "title": "Shopping Cart",
+          "description": "Complete cart with order summary, shipping calculation and secure, fast checkout process.",
+          "tags": ["Cart", "Checkout", "Security"]
+        }
+      }
+    }
+  },
+  "benefits": {
+    "title": "Why Choose My Services",
+    "items": [
+      {
+        "title": "Technical Experience",
+        "description": "5+ years of web development with modern and reliable technologies"
+      },
+      {
+        "title": "Ongoing Support", 
+        "description": "I don't leave you alone after launch: technical support and updates"
+      },
+      {
+        "title": "Measurable Results",
+        "description": "Sites optimized for conversions and search engine positioning"
+      },
+      {
+        "title": "Transparent Pricing",
+        "description": "No hidden costs, clear and detailed quote"
+      }
+    ]
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "items": [
+      {
+        "question": "How long does it take to create the site?",
+        "answer": "It depends on complexity, but generally 5-10 working days for standard showcase sites."
+      },
+      {
+        "question": "Does the site work on mobile devices?",
+        "answer": "Absolutely! All sites are responsive and optimized for smartphones and tablets."
+      },
+      {
+        "question": "Can I modify the content myself?",
+        "answer": "It depends on the package you choose. For some projects I provide a simple interface to update content, while for others I handle the updates myself."
+      },
+      {
+        "question": "Is post-launch support included?",
+        "answer": "Yes, I offer ongoing technical support and help with any changes or issues."
+      },
+      {
+        "question": "Will the site be optimized for Google?",
+        "answer": "Every site includes basic SEO optimization to improve visibility on search engines."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Ready to Grow Your Business Online?",
+    "subtitle": "Contact me for a free consultation and discover how I can help you",
+    "button": "Request Free Consultation"
+  }
+}

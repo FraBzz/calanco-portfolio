@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, Layout as LayoutIcon, Server, Calendar, Code2, Users, Coffee, Star, Shield, Zap } from 'lucide-react';
+import { ArrowRight, Layout as LayoutIcon, Server, Calendar, Code2, Users, Coffee, Star, Shield, Zap, Smartphone, Gauge, Target } from 'lucide-react';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation, Trans } from 'react-i18next';
@@ -104,7 +104,107 @@ const Home: React.FC = () => {
                   </div>
                 </div>
               ))}
-            </motion.div>            <motion.div variants={item} className="mb-16">
+            </motion.div>            
+            
+
+            {/* Business Section */}
+            <motion.div variants={item} className="mb-16">
+              <div className="text-center mb-12">
+                <h2 className="text-2xl font-display font-bold mb-4">
+                  {t('business_section.title')}
+                </h2>
+                <p className="text-lg text-text-dark max-w-2xl mx-auto">
+                  {t('business_section.subtitle')}
+                </p>
+              </div>
+
+              {/* Features Grid */}
+              <div className="grid md:grid-cols-3 gap-6 mb-12">
+                <div className="text-center p-6 bg-neutral-800 rounded-lg border border-gray-700">
+                  <div className="flex justify-center text-accent mb-4">
+                    <Smartphone className="h-6 w-6" />
+                  </div>
+                  <h3 className="text-lg font-semibold mb-2">
+                    {t('business_section.features.0.title')}
+                  </h3>
+                  <p className="text-text-dark">
+                    {t('business_section.features.0.description')}
+                  </p>
+                </div>
+
+                <div className="text-center p-6 bg-neutral-800 rounded-lg border border-gray-700">
+                  <div className="flex justify-center text-accent mb-4">
+                    <Gauge className="h-6 w-6" />
+                  </div>
+                  <h3 className="text-lg font-semibold mb-2">
+                    {t('business_section.features.1.title')}
+                  </h3>
+                  <p className="text-text-dark">
+                    {t('business_section.features.1.description')}
+                  </p>
+                </div>
+
+                <div className="text-center p-6 bg-neutral-800 rounded-lg border border-gray-700">
+                  <div className="flex justify-center text-accent mb-4">
+                    <Target className="h-6 w-6" />
+                  </div>
+                  <h3 className="text-lg font-semibold mb-2">
+                    {t('business_section.features.2.title')}
+                  </h3>
+                  <p className="text-text-dark">
+                    {t('business_section.features.2.description')}
+                  </p>
+                </div>
+              </div>
+
+              {/* Business Types */}
+              <div className="mb-8">
+                <h3 className="text-xl font-semibold text-center mb-6">
+                  {t('business_section.business_types.title')}
+                </h3>
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                  {[
+                    { name: t('business_section.business_types.types.0.name'), icon: '🍕' },
+                    { name: t('business_section.business_types.types.1.name'), icon: '🏪' },
+                    { name: t('business_section.business_types.types.2.name'), icon: '👔' },
+                    { name: t('business_section.business_types.types.3.name'), icon: '🔧' },
+                    { name: t('business_section.business_types.types.4.name'), icon: '🏘️' },
+                    { name: t('business_section.business_types.types.5.name'), icon: '🏥' }
+                  ].map((type, index) => (
+                    <div key={index} className="text-center p-4 bg-neutral-800 rounded-lg border border-gray-700 hover:border-accent transition-colors">
+                      <div className="text-2xl mb-2">{type.icon}</div>
+                      <div className="text-sm text-text-dark">{type.name}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* CTA */}
+              <div className="text-center">
+                <Link 
+                  to="/business"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-accent hover:bg-accent/90 text-white font-medium rounded-lg transition-colors shadow-lg hover:shadow-xl"
+                >
+                  {t('business_section.cta')}
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Work Exploration Section */}
+      <section className="py-16 bg-neutral-900">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            className="max-w-4xl mx-auto"
+            variants={container}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+          >
+            <motion.div variants={item} className="mb-16">
               <h2 className="text-2xl font-display font-bold text-center mb-8">
                 {t('explore_work')}
               </h2>
@@ -143,7 +243,22 @@ const Home: React.FC = () => {
                   </div>
                 </Link>
               </div>
-            </motion.div>            <motion.div variants={item} className="mb-16">
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Highlights Section */}
+      <section className="py-16">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            className="max-w-4xl mx-auto"
+            variants={container}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+          >
+            <motion.div variants={item} className="mb-16">
               <h2 className="text-2xl font-display font-bold text-center mb-8">
                 {t('highlights.title')}
               </h2>

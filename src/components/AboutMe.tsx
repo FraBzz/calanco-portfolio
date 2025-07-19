@@ -4,6 +4,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useTranslation, Trans } from "react-i18next";
 
+
 const AboutMe: React.FC = () => {
   const { t } = useTranslation('about');
   const container = {
@@ -70,27 +71,51 @@ const AboutMe: React.FC = () => {
           animate="show"
           className="max-w-4xl mx-auto"
         >          {/* Header Section */}
-          <div className="text-center mb-16">
-            <motion.div variants={item} className="inline-block mb-6 py-1 px-4 bg-accent/10 rounded-full">
-              <span className="text-accent font-medium">{t('intro.badge')}</span>
-            </motion.div>
-            <motion.h2 variants={item} className="text-4xl sm:text-5xl font-display font-bold mb-6 leading-tight">
-              <Trans
-                i18nKey="intro.title"
-                ns="about"
-                components={{ 1: <span className="text-accent" /> }}
-              />
-            </motion.h2>
-            <motion.p variants={item} className="text-lg sm:text-xl mb-8 text-text-dark leading-relaxed max-w-3xl mx-auto">
-              <Trans
-                i18nKey="intro.description"
-                ns="about"
-                components={{
-                  1: <span className="text-accent font-semibold" />,
-                  2: <span className="text-cta font-semibold" />
-                }}
-              />
-            </motion.p>
+          <div className="mb-16">
+            <div className="text-center mb-12">
+              <motion.div variants={item} className="inline-block mb-6 py-1 px-4 bg-accent/10 rounded-full">
+                <span className="text-accent font-medium">{t('intro.badge')}</span>
+              </motion.div>
+            </div>
+            
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              {/* Profile Photo */}
+              <motion.div variants={item} className="flex justify-center lg:justify-end">
+                <div className="relative">
+                  <div className="w-80 h-80 rounded-full overflow-hidden border-4 border-accent/20 shadow-2xl">
+                    <img 
+                      src="/profile-photo.jpg"
+                      alt="Calanco - Backend Developer"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="absolute -bottom-4 -right-4 w-16 h-16 bg-accent rounded-full flex items-center justify-center shadow-lg">
+                    <Code2 className="h-8 w-8 text-white" />
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Text Content */}
+              <div className="text-center lg:text-left">
+                <motion.h2 variants={item} className="text-4xl sm:text-5xl font-display font-bold mb-6 leading-tight">
+                  <Trans
+                    i18nKey="intro.title"
+                    ns="about"
+                    components={{ 1: <span className="text-accent" /> }}
+                  />
+                </motion.h2>
+                <motion.p variants={item} className="text-lg sm:text-xl mb-8 text-text-dark leading-relaxed">
+                  <Trans
+                    i18nKey="intro.description"
+                    ns="about"
+                    components={{
+                      1: <span className="text-accent font-semibold" />,
+                      2: <span className="text-cta font-semibold" />
+                    }}
+                  />
+                </motion.p>
+              </div>
+            </div>
           </div>
 
           {/* Stats Section */}
