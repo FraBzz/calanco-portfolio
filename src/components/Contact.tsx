@@ -79,7 +79,12 @@ const Contact: React.FC = () => {
 						initial={{ opacity: 0, y: 20 }}
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.5 }}
-						className="max-w-4xl mx-auto text-center mb-20"					>            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
+						className="max-w-4xl mx-auto text-center mb-20"
+					>
+            <motion.div className="inline-block mb-6 py-1 px-4 bg-accent/10 rounded-full">
+              <span className="text-accent font-medium">{t('badge')}</span>
+            </motion.div>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
               <Trans 
                 i18nKey="hero.title"
                 ns="contact"

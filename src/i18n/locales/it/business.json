@@ -88,6 +88,64 @@
       }
     ]
   },
+  "portfolio": {
+    "title": "Esempi di Progetti",
+    "subtitle": "Scopri alcuni esempi di progetti che posso realizzare per la tua attività",
+    "cta": "Discuti il Tuo Progetto",
+    "projects": {
+      "restaurant": {
+        "homepage": {
+          "title": "Sito Ristorante",
+          "description": "Homepage elegante per ristorante con design rustico, menu integrato e sistema di prenotazioni online.",
+          "tags": ["React", "Responsive", "SEO"]
+        },
+        "menu": {
+          "title": "Menu Digitale",
+          "description": "Menu digitale con categorie, prezzi, descrizioni dettagliate e sistema di filtri per allergie.",
+          "tags": ["Menu Digital", "Filtri", "Prezzi"]
+        },
+        "gallery": {
+          "title": "Galleria Fotografica",
+          "description": "Galleria fotografica per mostrare l'atmosfera del locale, i piatti e l'ambiente accogliente.",
+          "tags": ["Gallery", "Lightbox", "Categorizzata"]
+        }
+      },
+      "studio": {
+        "homepage": {
+          "title": "Studio di Architettura",
+          "description": "Sito web elegante per studio di architettura con portfolio progetti, servizi e approccio sostenibile.",
+          "tags": ["Architettura", "Portfolio", "Sostenibilità"]
+        },
+        "projects": {
+          "title": "Portfolio Progetti",
+          "description": "Galleria dettagliata dei progetti realizzati con descrizioni, localizzazione e specifiche tecniche.",
+          "tags": ["Progetti", "Galleria", "Case Study"]
+        },
+        "contact": {
+          "title": "Pagina Contatti",
+          "description": "Informazioni di contatto complete con mappa interattiva, form per richieste e dettagli dello studio.",
+          "tags": ["Contatti", "Mappa", "Form"]
+        }
+      },
+      "ecommerce": {
+        "homepage": {
+          "title": "E-commerce Homepage",
+          "description": "Homepage accattivante per negozio online con prodotti in evidenza, categorie e sistema di ricerca avanzato.",
+          "tags": ["E-commerce", "Homepage", "Ricerca"]
+        },
+        "product": {
+          "title": "Pagina Prodotto",
+          "description": "Scheda prodotto dettagliata con gallery immagini, recensioni clienti e sistema di aggiunta al carrello.",
+          "tags": ["Prodotto", "Gallery", "Recensioni"]
+        },
+        "cart": {
+          "title": "Carrello Acquisti",
+          "description": "Carrello completo con riepilogo ordine, calcolo spese e procedura di checkout sicura e veloce.",
+          "tags": ["Carrello", "Checkout", "Sicurezza"]
+        }
+      }
+    }
+  },
   "benefits": {
     "title": "Perché Scegliere i Miei Servizi",
     "items": [

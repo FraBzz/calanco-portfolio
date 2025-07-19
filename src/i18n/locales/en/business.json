@@ -88,6 +88,64 @@
       }
     ]
   },
+  "portfolio": {
+    "title": "Project Examples",
+    "subtitle": "Discover some examples of projects I can create for your business",
+    "cta": "Discuss Your Project",
+    "projects": {
+      "restaurant": {
+        "homepage": {
+          "title": "Restaurant Website",
+          "description": "Elegant homepage for restaurant with rustic design, integrated menu and online booking system.",
+          "tags": ["React", "Responsive", "SEO"]
+        },
+        "menu": {
+          "title": "Digital Menu",
+          "description": "Digital menu with categories, prices, detailed descriptions and allergy filter system.",
+          "tags": ["Digital Menu", "Filters", "Pricing"]
+        },
+        "gallery": {
+          "title": "Photo Gallery",
+          "description": "Photo gallery to showcase the restaurant atmosphere, dishes and welcoming environment.",
+          "tags": ["Gallery", "Lightbox", "Categorized"]
+        }
+      },
+      "studio": {
+        "homepage": {
+          "title": "Architecture Studio",
+          "description": "Elegant website for architecture studio with project portfolio, services and sustainable approach.",
+          "tags": ["Architecture", "Portfolio", "Sustainability"]
+        },
+        "projects": {
+          "title": "Project Portfolio",
+          "description": "Detailed gallery of completed projects with descriptions, location and technical specifications.",
+          "tags": ["Projects", "Gallery", "Case Study"]
+        },
+        "contact": {
+          "title": "Contact Page",
+          "description": "Complete contact information with interactive map, request form and studio details.",
+          "tags": ["Contact", "Map", "Form"]
+        }
+      },
+      "ecommerce": {
+        "homepage": {
+          "title": "E-commerce Homepage",
+          "description": "Attractive homepage for online store with featured products, categories and advanced search system.",
+          "tags": ["E-commerce", "Homepage", "Search"]
+        },
+        "product": {
+          "title": "Product Page",
+          "description": "Detailed product page with image gallery, customer reviews and add to cart system.",
+          "tags": ["Product", "Gallery", "Reviews"]
+        },
+        "cart": {
+          "title": "Shopping Cart",
+          "description": "Complete cart with order summary, shipping calculation and secure, fast checkout process.",
+          "tags": ["Cart", "Checkout", "Security"]
+        }
+      }
+    }
+  },
   "benefits": {
     "title": "Why Choose My Services",
     "items": [

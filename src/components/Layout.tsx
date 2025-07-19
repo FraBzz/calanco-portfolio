@@ -179,6 +179,18 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                   {t('nav.home')}
                 </NavLink>
                 <NavLink
+                  to="/business"
+                  onClick={closeMenu}
+                  className={({ isActive }) =>
+                    `p-2 rounded-md font-medium transition-colors ${isActive
+                      ? 'bg-accent/10 text-accent'
+                      : 'hover:bg-background-dark'
+                    }`
+                  }
+                >
+                  {t('nav.business')}
+                </NavLink>
+                <NavLink
                   to="/backend"
                   onClick={closeMenu}
                   className={({ isActive }) =>
@@ -201,18 +213,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                   }
                 >
                   {t('nav.frontend')}
-                </NavLink>
-                <NavLink
-                  to="/business"
-                  onClick={closeMenu}
-                  className={({ isActive }) =>
-                    `p-2 rounded-md font-medium transition-colors ${isActive
-                      ? 'bg-accent/10 text-accent'
-                      : 'hover:bg-background-dark'
-                    }`
-                  }
-                >
-                  {t('nav.business')}
                 </NavLink>
                 <NavLink
                   to="/about"

@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useTranslation, Trans } from 'react-i18next';
 import { 
@@ -16,7 +16,9 @@ import {
   ChevronRight,
   Calendar,
   Zap,
-  Headphones
+  Headphones,
+  X,
+  ChevronLeft
 } from 'lucide-react';
 
 const Business: React.FC = () => {
@@ -38,6 +40,41 @@ const Business: React.FC = () => {
   };
 
   const [openFaq, setOpenFaq] = React.useState<number | null>(null);
+  const [lightboxImage, setLightboxImage] = React.useState<{src: string, alt: string, title: string} | null>(null);
+
+  // Definizione delle immagini del portfolio
+  const portfolioImages = [
+    { src: "/restaurant/0.png", alt: "Trattoria del Borgo homepage", title: "Sito Ristorante - Homepage" },
+    { src: "/restaurant/2.png", alt: "Trattoria del Borgo menu", title: "Menu Digitale" },
+    { src: "/restaurant/1.png", alt: "Trattoria del Borgo galleria", title: "Galleria Fotografica" },
+    { src: "/studio/0.png", alt: "Studio LineaChiara homepage", title: "Studio di Architettura - Homepage" },
+    { src: "/studio/1.png", alt: "Studio LineaChiara progetti", title: "Portfolio Progetti" },
+    { src: "/studio/2.png", alt: "Studio LineaChiara contatti", title: "Pagina Contatti" },
+    { src: "/ecommerce/0.png", alt: "Lana & Magia homepage", title: "E-commerce Homepage" },
+    { src: "/ecommerce/1.png", alt: "Lana & Magia prodotto", title: "Pagina Prodotto" },
+    { src: "/ecommerce/2.png", alt: "Lana & Magia carrello", title: "Carrello Acquisti" }
+  ];
+
+  const openLightbox = (src: string, alt: string, title: string) => {
+    setLightboxImage({ src, alt, title });
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeLightbox = () => {
+    setLightboxImage(null);
+    document.body.style.overflow = 'unset';
+  };
+
+  // Gestione tasti ESC per chiudere lightbox
+  React.useEffect(() => {
+    const handleEsc = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && lightboxImage) {
+        closeLightbox();
+      }
+    };
+    document.addEventListener('keydown', handleEsc);
+    return () => document.removeEventListener('keydown', handleEsc);
+  }, [lightboxImage]);
 
   return (
     <motion.div
@@ -259,8 +296,321 @@ const Business: React.FC = () => {
         </div>
       </section>
 
-      {/* Benefits Section */}
+      {/* Portfolio Section */}
       <section className="py-16">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            className="max-w-6xl mx-auto"
+            variants={container}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+          >
+            <motion.div variants={item} className="text-center mb-16">
+              <h2 className="text-3xl font-display font-bold mb-4">
+                {t('portfolio.title')}
+              </h2>
+              <p className="text-lg text-text-dark max-w-2xl mx-auto">
+                {t('portfolio.subtitle')}
+              </p>
+            </motion.div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {/* Restaurant Website - Homepage */}
+              <motion.div
+                variants={item}
+                className="group bg-neutral-800 rounded-xl border border-gray-700 overflow-hidden hover:border-accent transition-all duration-300 hover:shadow-2xl hover:shadow-accent/10"
+              >
+                <div className="aspect-[4/3] relative overflow-hidden bg-gradient-to-br from-neutral-700 to-neutral-900 cursor-pointer" onClick={() => openLightbox("/restaurant/0.png", "Trattoria del Borgo homepage", t('portfolio.projects.restaurant.homepage.title'))}>
+                  <img 
+                    src="/restaurant/0.png"
+                    alt="Trattoria del Borgo homepage"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute top-4 left-4">
+                    <span className="px-3 py-1 bg-accent text-white text-xs font-medium rounded-full">
+                      Homepage
+                    </span>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-lg font-semibold mb-2">{t('portfolio.projects.restaurant.homepage.title')}</h3>
+                  <p className="text-text-dark text-sm mb-4 leading-relaxed">
+                    {t('portfolio.projects.restaurant.homepage.description')}
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {(t('portfolio.projects.restaurant.homepage.tags', { returnObjects: true }) as string[]).map((tag: string, index: number) => (
+                      <span key={index} className="px-3 py-1 bg-accent/10 text-accent text-xs rounded-full font-medium">{tag}</span>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Restaurant Website - Menu */}
+              <motion.div
+                variants={item}
+                className="group bg-neutral-800 rounded-xl border border-gray-700 overflow-hidden hover:border-accent transition-all duration-300 hover:shadow-2xl hover:shadow-accent/10"
+              >
+                <div className="aspect-[4/3] relative overflow-hidden bg-gradient-to-br from-neutral-700 to-neutral-900 cursor-pointer" onClick={() => openLightbox("/restaurant/2.png", "Trattoria del Borgo menu", t('portfolio.projects.restaurant.menu.title'))}>
+                  <img 
+                    src="/restaurant/2.png"
+                    alt="Trattoria del Borgo menu"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute top-4 left-4">
+                    <span className="px-3 py-1 bg-accent text-white text-xs font-medium rounded-full">
+                      Menu
+                    </span>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-lg font-semibold mb-2">{t('portfolio.projects.restaurant.menu.title')}</h3>
+                  <p className="text-text-dark text-sm mb-4 leading-relaxed">
+                    {t('portfolio.projects.restaurant.menu.description')}
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {(t('portfolio.projects.restaurant.menu.tags', { returnObjects: true }) as string[]).map((tag: string, index: number) => (
+                      <span key={index} className="px-3 py-1 bg-accent/10 text-accent text-xs rounded-full font-medium">{tag}</span>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Restaurant Website - Gallery */}
+              <motion.div
+                variants={item}
+                className="group bg-neutral-800 rounded-xl border border-gray-700 overflow-hidden hover:border-accent transition-all duration-300 hover:shadow-2xl hover:shadow-accent/10"
+              >
+                <div className="aspect-[4/3] relative overflow-hidden bg-gradient-to-br from-neutral-700 to-neutral-900 cursor-pointer" onClick={() => openLightbox("/restaurant/1.png", "Trattoria del Borgo galleria", t('portfolio.projects.restaurant.gallery.title'))}>
+                  <img
+                    src="/restaurant/1.png"
+                    alt="Trattoria del Borgo galleria"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute top-4 left-4">
+                    <span className="px-3 py-1 bg-accent text-white text-xs font-medium rounded-full">
+                      Gallery
+                    </span>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-lg font-semibold mb-2">{t('portfolio.projects.restaurant.gallery.title')}</h3>
+                  <p className="text-text-dark text-sm mb-4 leading-relaxed">
+                    {t('portfolio.projects.restaurant.gallery.description')}
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {(t('portfolio.projects.restaurant.gallery.tags', { returnObjects: true }) as string[]).map((tag: string, index: number) => (
+                      <span key={index} className="px-3 py-1 bg-accent/10 text-accent text-xs rounded-full font-medium">{tag}</span>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Architecture Studio - Homepage */}
+              <motion.div
+                variants={item}
+                className="group bg-neutral-800 rounded-xl border border-gray-700 overflow-hidden hover:border-accent transition-all duration-300 hover:shadow-2xl hover:shadow-accent/10"
+              >
+                <div className="aspect-[4/3] relative overflow-hidden bg-gradient-to-br from-neutral-700 to-neutral-900 cursor-pointer" onClick={() => openLightbox("/studio/0.png", "Studio LineaChiara homepage", t('portfolio.projects.studio.homepage.title'))}>
+                  <img 
+                    src="/studio/0.png"
+                    alt="Studio LineaChiara homepage"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute top-4 left-4">
+                    <span className="px-3 py-1 bg-accent text-white text-xs font-medium rounded-full">
+                      Homepage
+                    </span>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-lg font-semibold mb-2">{t('portfolio.projects.studio.homepage.title')}</h3>
+                  <p className="text-text-dark text-sm mb-4 leading-relaxed">
+                    {t('portfolio.projects.studio.homepage.description')}
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {(t('portfolio.projects.studio.homepage.tags', { returnObjects: true }) as string[]).map((tag: string, index: number) => (
+                      <span key={index} className="px-3 py-1 bg-accent/10 text-accent text-xs rounded-full font-medium">{tag}</span>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Architecture Studio - Projects */}
+              <motion.div
+                variants={item}
+                className="group bg-neutral-800 rounded-xl border border-gray-700 overflow-hidden hover:border-accent transition-all duration-300 hover:shadow-2xl hover:shadow-accent/10"
+              >
+                <div className="aspect-[4/3] relative overflow-hidden bg-gradient-to-br from-neutral-700 to-neutral-900 cursor-pointer" onClick={() => openLightbox("/studio/1.png", "Studio LineaChiara progetti", t('portfolio.projects.studio.projects.title'))}>
+                  <img 
+                    src="/studio/1.png"
+                    alt="Studio LineaChiara progetti"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute top-4 left-4">
+                    <span className="px-3 py-1 bg-accent text-white text-xs font-medium rounded-full">
+                      Progetti
+                    </span>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-lg font-semibold mb-2">{t('portfolio.projects.studio.projects.title')}</h3>
+                  <p className="text-text-dark text-sm mb-4 leading-relaxed">
+                    {t('portfolio.projects.studio.projects.description')}
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {(t('portfolio.projects.studio.projects.tags', { returnObjects: true }) as string[]).map((tag: string, index: number) => (
+                      <span key={index} className="px-3 py-1 bg-accent/10 text-accent text-xs rounded-full font-medium">{tag}</span>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Architecture Studio - Contact */}
+              <motion.div
+                variants={item}
+                className="group bg-neutral-800 rounded-xl border border-gray-700 overflow-hidden hover:border-accent transition-all duration-300 hover:shadow-2xl hover:shadow-accent/10"
+              >
+                <div className="aspect-[4/3] relative overflow-hidden bg-gradient-to-br from-neutral-700 to-neutral-900 cursor-pointer" onClick={() => openLightbox("/studio/2.png", "Studio LineaChiara contatti", t('portfolio.projects.studio.contact.title'))}>
+                  <img 
+                    src="/studio/2.png"
+                    alt="Studio LineaChiara contatti"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute top-4 left-4">
+                    <span className="px-3 py-1 bg-accent text-white text-xs font-medium rounded-full">
+                      Contatti
+                    </span>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-lg font-semibold mb-2">{t('portfolio.projects.studio.contact.title')}</h3>
+                  <p className="text-text-dark text-sm mb-4 leading-relaxed">
+                    {t('portfolio.projects.studio.contact.description')}
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {(t('portfolio.projects.studio.contact.tags', { returnObjects: true }) as string[]).map((tag: string, index: number) => (
+                      <span key={index} className="px-3 py-1 bg-accent/10 text-accent text-xs rounded-full font-medium">{tag}</span>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* E-commerce Website - Homepage */}
+              <motion.div
+                variants={item}
+                className="group bg-neutral-800 rounded-xl border border-gray-700 overflow-hidden hover:border-accent transition-all duration-300 hover:shadow-2xl hover:shadow-accent/10"
+              >
+                <div className="aspect-[4/3] relative overflow-hidden bg-gradient-to-br from-neutral-700 to-neutral-900 cursor-pointer" onClick={() => openLightbox("/ecommerce/0.png", "Lana & Magia homepage", t('portfolio.projects.ecommerce.homepage.title'))}>
+                  <img 
+                    src="/ecommerce/0.png"
+                    alt="Lana & Magia homepage"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute top-4 left-4">
+                    <span className="px-3 py-1 bg-accent text-white text-xs font-medium rounded-full">
+                      Homepage
+                    </span>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-lg font-semibold mb-2">{t('portfolio.projects.ecommerce.homepage.title')}</h3>
+                  <p className="text-text-dark text-sm mb-4 leading-relaxed">
+                    {t('portfolio.projects.ecommerce.homepage.description')}
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {(t('portfolio.projects.ecommerce.homepage.tags', { returnObjects: true }) as string[]).map((tag: string, index: number) => (
+                      <span key={index} className="px-3 py-1 bg-accent/10 text-accent text-xs rounded-full font-medium">{tag}</span>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* E-commerce Website - Product */}
+              <motion.div
+                variants={item}
+                className="group bg-neutral-800 rounded-xl border border-gray-700 overflow-hidden hover:border-accent transition-all duration-300 hover:shadow-2xl hover:shadow-accent/10"
+              >
+                <div className="aspect-[4/3] relative overflow-hidden bg-gradient-to-br from-neutral-700 to-neutral-900 cursor-pointer" onClick={() => openLightbox("/ecommerce/1.png", "Lana & Magia prodotto", t('portfolio.projects.ecommerce.product.title'))}>
+                  <img 
+                    src="/ecommerce/1.png"
+                    alt="Lana & Magia prodotto"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute top-4 left-4">
+                    <span className="px-3 py-1 bg-accent text-white text-xs font-medium rounded-full">
+                      Prodotto
+                    </span>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-lg font-semibold mb-2">{t('portfolio.projects.ecommerce.product.title')}</h3>
+                  <p className="text-text-dark text-sm mb-4 leading-relaxed">
+                    {t('portfolio.projects.ecommerce.product.description')}
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {(t('portfolio.projects.ecommerce.product.tags', { returnObjects: true }) as string[]).map((tag: string, index: number) => (
+                      <span key={index} className="px-3 py-1 bg-accent/10 text-accent text-xs rounded-full font-medium">{tag}</span>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* E-commerce Website - Cart */}
+              <motion.div
+                variants={item}
+                className="group bg-neutral-800 rounded-xl border border-gray-700 overflow-hidden hover:border-accent transition-all duration-300 hover:shadow-2xl hover:shadow-accent/10"
+              >
+                <div className="aspect-[4/3] relative overflow-hidden bg-gradient-to-br from-neutral-700 to-neutral-900 cursor-pointer" onClick={() => openLightbox("/ecommerce/2.png", "Lana & Magia carrello", t('portfolio.projects.ecommerce.cart.title'))}>
+                  <img 
+                    src="/ecommerce/2.png"
+                    alt="Lana & Magia carrello"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute top-4 left-4">
+                    <span className="px-3 py-1 bg-accent text-white text-xs font-medium rounded-full">
+                      Carrello
+                    </span>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-lg font-semibold mb-2">{t('portfolio.projects.ecommerce.cart.title')}</h3>
+                  <p className="text-text-dark text-sm mb-4 leading-relaxed">
+                    {t('portfolio.projects.ecommerce.cart.description')}
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {(t('portfolio.projects.ecommerce.cart.tags', { returnObjects: true }) as string[]).map((tag: string, index: number) => (
+                      <span key={index} className="px-3 py-1 bg-accent/10 text-accent text-xs rounded-full font-medium">{tag}</span>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+
+            <motion.div variants={item} className="text-center mt-12">
+              <Link 
+                to="/contact"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-accent/10 hover:bg-accent/20 text-accent border border-accent/20 hover:border-accent/40 font-medium rounded-lg transition-colors"
+              >
+                {t('portfolio.cta')}
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Benefits Section */}
+      <section className="py-16 bg-neutral-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             className="max-w-4xl mx-auto"
@@ -392,6 +742,58 @@ const Business: React.FC = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* Lightbox */}
+      <AnimatePresence>
+        {lightboxImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90"
+            onClick={closeLightbox}
+          >
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.8, opacity: 0 }}
+            transition={{ 
+              type: "spring", 
+              damping: 25, 
+              stiffness: 300,
+              duration: 0.3
+            }}
+            className="relative max-w-6xl max-h-[90vh] w-full"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Pulsante chiudi */}
+            <button
+              onClick={closeLightbox}
+              className="absolute -top-12 right-0 text-white hover:text-accent transition-colors z-10"
+            >
+              <X className="h-8 w-8" />
+            </button>
+            
+            {/* Immagine */}
+            <div className="relative bg-neutral-900 rounded-lg overflow-hidden shadow-2xl">
+              <img
+                src={lightboxImage.src}
+                alt={lightboxImage.alt}
+                className="w-full h-auto max-h-[80vh] object-contain"
+              />
+              
+              {/* Titolo sovrapposto */}
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                <h3 className="text-white text-xl font-semibold">
+                  {lightboxImage.title}
+                </h3>
+              </div>
+            </div>
+          </motion.div>
+        </motion.div>
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 };
