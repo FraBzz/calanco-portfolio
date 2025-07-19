@@ -8,7 +8,8 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "genera-comuni": "node src/tools/genera-comuni-json.js"
+    "genera-comuni": "node src/tools/genera-comuni-json.js",
+    "optimize-images": "node scripts/optimize-profile-image.js"
   },
   "dependencies": {
     "framer-motion": "^11.0.3",
@@ -32,6 +33,7 @@
     "eslint-plugin-react-refresh": "^0.4.11",
     "globals": "^15.9.0",
     "postcss": "^8.4.35",
+    "sharp": "^0.34.3",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.3.0",

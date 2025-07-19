@@ -3,10 +3,18 @@ import { Send, Code2, Database, Smartphone, Monitor, Server, Calendar, Coffee, U
 import React from "react";
 import { Link } from "react-router-dom";
 import { useTranslation, Trans } from "react-i18next";
+import { useProgressiveImage } from "../utils/useProgressiveImage";
 
 
 const AboutMe: React.FC = () => {
   const { t } = useTranslation('about');
+  
+  // Progressive image loading per l'immagine del profilo
+  const profileImage = useProgressiveImage({
+    src: '/profile-photo.webp',
+    placeholder: '/profile-photo-placeholder.webp'
+  });
+
   const container = {
     hidden: { opacity: 0 },
     show: {
@@ -83,11 +91,19 @@ const AboutMe: React.FC = () => {
               <motion.div variants={item} className="flex justify-center lg:justify-end">
                 <div className="relative">
                   <div className="w-80 h-80 rounded-full overflow-hidden border-4 border-accent/20 shadow-2xl">
-                    <img 
-                      src="/profile-photo.jpg"
-                      alt="Calanco - Backend Developer"
-                      className="w-full h-full object-cover"
-                    />
+                    <picture>
+                      <source srcSet="/profile-photo.webp" type="image/webp" />
+                      <img 
+                        src={profileImage.src || "/profile-photo-optimized.jpg"}
+                        alt="Calanco - Backend Developer"
+                        className={`w-full h-full object-cover transition-opacity duration-500 ${
+                          profileImage.isLoaded ? 'opacity-100' : 'opacity-80'
+                        }`}
+                        loading="lazy"
+                        decoding="async"
+                        ref={profileImage.ref}
+                      />
+                    </picture>
                   </div>
                   <div className="absolute -bottom-4 -right-4 w-16 h-16 bg-accent rounded-full flex items-center justify-center shadow-lg">
                     <Code2 className="h-8 w-8 text-white" />
