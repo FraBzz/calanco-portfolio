@@ -1,0 +1,200 @@
+{
+  "hero": {
+    "badge": "Soluzioni Web per Business",
+    "title": "Il tuo <1>sito web professionale</1> che converte visitatori in clienti",
+    "subtitle": "Aiuto piccole attività e professionisti a costruire una <1>presenza online efficace</1> con siti web moderni, veloci e ottimizzati per i motori di ricerca.",
+    "cta": "Inizia il Tuo Progetto",
+    "stats": [
+      { "value": "5-10", "label": "Giorni per il Lancio" },
+      { "value": "100%", "label": "Mobile Responsive" },
+      { "value": "SEO", "label": "Ottimizzato" },
+      { "value": "∞", "label": "Supporto Continuo" }
+    ]
+  },
+  "services": {
+    "title": "Cosa Includo in Ogni Progetto",
+    "subtitle": "Tutto quello che serve per avere successo online",
+    "items": [
+      {
+        "title": "Design Moderno",
+        "description": "Layout professionale e accattivante che riflette la tua identità",
+        "features": ["Design responsive", "Colori coordinati", "Tipografia professionale"]
+      },
+      {
+        "title": "Ottimizzazione SEO",
+        "description": "Il tuo sito sarà facilmente trovabile su Google",
+        "features": ["Meta tag ottimizzati", "Struttura SEO-friendly", "Velocità di caricamento"]
+      },
+      {
+        "title": "Gestione Contenuti",
+        "description": "Soluzioni di gestione contenuti flessibili in base alle tue esigenze",
+        "features": ["Approccio personalizzato", "Formazione inclusa", "Supporto continuo"]
+      }
+    ]
+  },
+  "process": {
+    "title": "Come Lavoriamo Insieme",
+    "subtitle": "Un processo semplice e trasparente",
+    "steps": [
+      {
+        "number": "01",
+        "title": "Consultazione",
+        "description": "Parliamo della tua attività, obiettivi e visione per il sito web"
+      },
+      {
+        "number": "02", 
+        "title": "Progettazione",
+        "description": "Creo il design e la struttura del sito basandomi sulle tue esigenze"
+      },
+      {
+        "number": "03",
+        "title": "Sviluppo",
+        "description": "Realizzo il sito con codice pulito e ottimizzato"
+      },
+      {
+        "number": "04",
+        "title": "Lancio",
+        "description": "Pubblichiamo il sito e ti formo sulla gestione"
+      }
+    ]
+  },
+  "showcase": {
+    "title": "Tipologie di Siti che Realizzo",
+    "subtitle": "Soluzioni su misura per ogni settore",
+    "types": [
+      {
+        "title": "Sito Vetrina SEO",
+        "description": "Presenza online professionale ottimizzata per Google",
+        "icon": "🌐",
+        "features": ["SEO ottimizzato", "Design responsive", "Contenuti curati", "Google My Business"]
+      },
+      {
+        "title": "Ristoranti & Bar",
+        "description": "Menu digitali, prenotazioni online, gallerie foto",
+        "icon": "🍕",
+        "features": ["Menu interattivo", "Sistema prenotazioni", "Galleria piatti", "Info contatti"]
+      },
+      {
+        "title": "Negozi & E-commerce",
+        "description": "Cataloghi prodotti, vendita online, gestione ordini",
+        "icon": "🏪", 
+        "features": ["Catalogo prodotti", "Carrello acquisti", "Pagamenti sicuri", "Gestione magazzino"]
+      },
+      {
+        "title": "Professionisti",
+        "description": "Portfolio servizi, appuntamenti, area clienti",
+        "icon": "👔",
+        "features": ["Portfolio lavori", "Prenotazione servizi", "Area riservata", "Testimonianze"]
+      }
+    ]
+  },
+  "portfolio": {
+    "title": "Esempi di Progetti",
+    "subtitle": "Scopri alcuni esempi di progetti che posso realizzare per la tua attività",
+    "cta": "Discuti il Tuo Progetto",
+    "projects": {
+      "restaurant": {
+        "homepage": {
+          "title": "Sito Ristorante",
+          "description": "Homepage elegante per ristorante con design rustico, menu integrato e sistema di prenotazioni online.",
+          "tags": ["React", "Responsive", "SEO"]
+        },
+        "menu": {
+          "title": "Menu Digitale",
+          "description": "Menu digitale con categorie, prezzi, descrizioni dettagliate e sistema di filtri per allergie.",
+          "tags": ["Menu Digital", "Filtri", "Prezzi"]
+        },
+        "gallery": {
+          "title": "Galleria Fotografica",
+          "description": "Galleria fotografica per mostrare l'atmosfera del locale, i piatti e l'ambiente accogliente.",
+          "tags": ["Gallery", "Lightbox", "Categorizzata"]
+        }
+      },
+      "studio": {
+        "homepage": {
+          "title": "Studio di Architettura",
+          "description": "Sito web elegante per studio di architettura con portfolio progetti, servizi e approccio sostenibile.",
+          "tags": ["Architettura", "Portfolio", "Sostenibilità"]
+        },
+        "projects": {
+          "title": "Portfolio Progetti",
+          "description": "Galleria dettagliata dei progetti realizzati con descrizioni, localizzazione e specifiche tecniche.",
+          "tags": ["Progetti", "Galleria", "Case Study"]
+        },
+        "contact": {
+          "title": "Pagina Contatti",
+          "description": "Informazioni di contatto complete con mappa interattiva, form per richieste e dettagli dello studio.",
+          "tags": ["Contatti", "Mappa", "Form"]
+        }
+      },
+      "ecommerce": {
+        "homepage": {
+          "title": "E-commerce Homepage",
+          "description": "Homepage accattivante per negozio online con prodotti in evidenza, categorie e sistema di ricerca avanzato.",
+          "tags": ["E-commerce", "Homepage", "Ricerca"]
+        },
+        "product": {
+          "title": "Pagina Prodotto",
+          "description": "Scheda prodotto dettagliata con gallery immagini, recensioni clienti e sistema di aggiunta al carrello.",
+          "tags": ["Prodotto", "Gallery", "Recensioni"]
+        },
+        "cart": {
+          "title": "Carrello Acquisti",
+          "description": "Carrello completo con riepilogo ordine, calcolo spese e procedura di checkout sicura e veloce.",
+          "tags": ["Carrello", "Checkout", "Sicurezza"]
+        }
+      }
+    }
+  },
+  "benefits": {
+    "title": "Perché Scegliere i Miei Servizi",
+    "items": [
+      {
+        "title": "Esperienza Tecnica",
+        "description": "5+ anni di sviluppo web con tecnologie moderne e affidabili"
+      },
+      {
+        "title": "Supporto Continuo", 
+        "description": "Non ti lascio solo dopo il lancio: supporto tecnico e aggiornamenti"
+      },
+      {
+        "title": "Risultati Misurabili",
+        "description": "Siti ottimizzati per conversioni e posizionamento sui motori di ricerca"
+      },
+      {
+        "title": "Prezzo Trasparente",
+        "description": "Nessun costo nascosto, preventivo chiaro e dettagliato"
+      }
+    ]
+  },
+  "faq": {
+    "title": "Domande Frequenti",
+    "items": [
+      {
+        "question": "Quanto tempo serve per realizzare il sito?",
+        "answer": "Dipende dalla complessità, ma generalmente tra 5-10 giorni lavorativi per siti vetrina standard."
+      },
+      {
+        "question": "Il sito funziona sui dispositivi mobili?",
+        "answer": "Assolutamente sì! Tutti i siti sono responsive e ottimizzati per smartphone e tablet."
+      },
+      {
+        "question": "Posso modificare i contenuti da solo?",
+        "answer": "Dipende dal pacchetto scelto. Per alcuni progetti fornisco un'interfaccia semplice per aggiornare contenuti, mentre per altri gestisco io gli aggiornamenti."
+      },
+      {
+        "question": "È incluso il supporto post-lancio?",
+        "answer": "Sì, offro supporto tecnico continuo e ti aiuto con eventuali modifiche o problemi."
+      },
+      {
+        "question": "Il sito sarà ottimizzato per Google?",
+        "answer": "Ogni sito include ottimizzazione SEO di base per migliorare la visibilità sui motori di ricerca."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Pronto a Far Crescere la Tua Attività Online?",
+    "subtitle": "Contattami per una consulenza gratuita e scopri come posso aiutarti",
+    "button": "Richiedi Consulenza Gratuita"
+  }
+}

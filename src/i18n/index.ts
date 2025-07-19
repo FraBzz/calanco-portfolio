@@ -14,6 +14,8 @@ import enHome from './locales/en/home.json';
 import itHome from './locales/it/home.json';
 import enContact from './locales/en/contact.json';
 import itContact from './locales/it/contact.json';
+import enBusiness from './locales/en/business.json';
+import itBusiness from './locales/it/business.json';
 
 const resources = {
   en: {
@@ -22,7 +24,8 @@ const resources = {
     backend: enBackend,
     about: enAbout,
     home: enHome,
-    contact: enContact
+    contact: enContact,
+    business: enBusiness
   },
   it: {
     common: itTranslations,
@@ -30,7 +33,8 @@ const resources = {
     backend: itBackend,
     about: itAbout,
     home: itHome,
-    contact: itContact
+    contact: itContact,
+    business: itBusiness
   }
 };
 
@@ -41,7 +45,7 @@ i18n
     resources,
     fallbackLng: 'en',
     defaultNS: 'common',
-    ns: ['common', 'frontend', 'backend', 'about', 'home', 'contact'],
+    ns: ['common', 'frontend', 'backend', 'about', 'home', 'contact', 'business'],
     
     detection: {
       order: ['localStorage', 'navigator', 'htmlTag'],

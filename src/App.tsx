@@ -4,6 +4,7 @@ import Layout from './components/Layout';
 import ScrollToTop from './components/ScrollToTop';
 import About from './pages/About';
 import Backend from './pages/Backend';
+import Business from './pages/Business';
 import Contact from './pages/Contact';
 import Frontend from './pages/Frontend';
 import Home from './pages/Home';
@@ -20,6 +21,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/backend" element={<Backend />} />
           <Route path="/frontend" element={<Frontend />} />
+          <Route path="/business" element={<Business />} />
           {/* <Route path="/mobile" element={<Mobile />} /> */}
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />

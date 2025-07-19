@@ -44,7 +44,11 @@ const ApiProjects: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             className="max-w-4xl mx-auto text-center mb-16"
-          >            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
+          >
+            <motion.div className="inline-block mb-6 py-1 px-4 bg-accent/10 rounded-full">
+              <span className="text-accent font-medium">{t('badge')}</span>
+            </motion.div>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
               <Trans 
                 i18nKey="title"
                 ns="backend"
@@ -65,21 +69,25 @@ const ApiProjects: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.15 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20"
+            className="max-w-4xl mx-auto"
           >
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
             {stats.map((stat, index) => (
               <motion.div
                 key={stat.label}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.15 + index * 0.1 }}
-                className="text-center p-6 bg-neutral-800 rounded-xl border border-separator-dark"
+                className="text-center p-4 bg-neutral-800 rounded-lg border border-gray-700"
               >
-                <stat.icon className="h-8 w-8 text-accent mx-auto mb-3" />
-                <div className="text-2xl sm:text-3xl font-bold text-accent mb-1">{stat.value}</div>
+                <div className="flex justify-center text-accent mb-2">
+                  <stat.icon className="h-5 w-5" />
+                </div>
+                <div className="text-2xl font-bold mb-1">{stat.value}</div>
                 <div className="text-sm text-text-dark">{stat.label}</div>
               </motion.div>
             ))}
+            </div>
           </motion.div>
 
           {/* Backend Expertise */}
@@ -87,7 +95,7 @@ const ApiProjects: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="mb-20"
+            className="max-w-6xl mx-auto mb-16"
           >            <h2 className="text-3xl font-bold text-center mb-12">
               <Trans 
                 i18nKey="expertise.title"
@@ -118,7 +126,7 @@ const ApiProjects: React.FC = () => {
       </section>
 
       {/* API Projects Section */}
-      <section className="py-16 border-t border-separator-dark">
+      <section className="py-16 bg-neutral-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -136,7 +144,7 @@ const ApiProjects: React.FC = () => {
               {t('demo_description')}
             </p>
           </motion.div>
-            <div className="space-y-24">
+            <div className="space-y-16">
             {apiProjects.map((project, index) => (
               <ApiCard 
                 key={project.id}
@@ -145,13 +153,17 @@ const ApiProjects: React.FC = () => {
               />
             ))}
           </div>
+        </div>
+      </section>
 
-          {/* CTA Section */}
+      {/* CTA Section */}
+      <section className="py-16">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.8 }}
-            className="text-center mt-20"
+            className="max-w-4xl mx-auto text-center"
           >
             <div className="bg-gradient-to-r from-accent/10 to-accent2/10 rounded-2xl p-8 sm:p-12 border border-accent/20">              <h3 className="text-2xl sm:text-3xl font-bold mb-4">
                 <Trans 

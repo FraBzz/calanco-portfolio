@@ -3,7 +3,8 @@
     "home": "Home",
     "about": "Chi Sono",
     "backend": "Backend",
-    "frontend": "Frontend", 
+    "frontend": "Frontend",
+    "business": "Business", 
     "contact": "Contatti"
   },
   "common": {
