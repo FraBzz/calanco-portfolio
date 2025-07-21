@@ -17,8 +17,7 @@ import {
   Calendar,
   Zap,
   Headphones,
-  X,
-  ChevronLeft
+  X
 } from 'lucide-react';
 
 const Business: React.FC = () => {
@@ -42,18 +41,8 @@ const Business: React.FC = () => {
   const [openFaq, setOpenFaq] = React.useState<number | null>(null);
   const [lightboxImage, setLightboxImage] = React.useState<{src: string, alt: string, title: string} | null>(null);
 
-  // Definizione delle immagini del portfolio
-  const portfolioImages = [
-    { src: "/restaurant/0.png", alt: "Trattoria del Borgo homepage", title: "Sito Ristorante - Homepage" },
-    { src: "/restaurant/2.png", alt: "Trattoria del Borgo menu", title: "Menu Digitale" },
-    { src: "/restaurant/1.png", alt: "Trattoria del Borgo galleria", title: "Galleria Fotografica" },
-    { src: "/studio/0.png", alt: "Studio LineaChiara homepage", title: "Studio di Architettura - Homepage" },
-    { src: "/studio/1.png", alt: "Studio LineaChiara progetti", title: "Portfolio Progetti" },
-    { src: "/studio/2.png", alt: "Studio LineaChiara contatti", title: "Pagina Contatti" },
-    { src: "/ecommerce/0.png", alt: "Lana & Magia homepage", title: "E-commerce Homepage" },
-    { src: "/ecommerce/1.png", alt: "Lana & Magia prodotto", title: "Pagina Prodotto" },
-    { src: "/ecommerce/2.png", alt: "Lana & Magia carrello", title: "Carrello Acquisti" }
-  ];
+  // Portfolio projects from translations
+  const portfolioProjects = t('portfolio.projects', { returnObjects: true }) as any[];
 
   const openLightbox = (src: string, alt: string, title: string) => {
     setLightboxImage({ src, alt, title });
@@ -316,284 +305,48 @@ const Business: React.FC = () => {
             </motion.div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {/* Restaurant Website - Homepage */}
-              <motion.div
-                variants={item}
-                className="group bg-neutral-800 rounded-xl border border-gray-700 overflow-hidden hover:border-accent transition-all duration-300 hover:shadow-2xl hover:shadow-accent/10"
-              >
-                <div className="aspect-[4/3] relative overflow-hidden bg-gradient-to-br from-neutral-700 to-neutral-900 cursor-pointer" onClick={() => openLightbox("/restaurant/0.png", "Trattoria del Borgo homepage", t('portfolio.projects.restaurant.homepage.title'))}>
-                  <img 
-                    src="/restaurant/0.png"
-                    alt="Trattoria del Borgo homepage"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 bg-accent text-white text-xs font-medium rounded-full">
-                      Homepage
-                    </span>
+              {portfolioProjects.map((project: any) => (
+                <motion.div
+                  key={project.id}
+                  variants={item}
+                  className="group bg-neutral-800 rounded-xl border border-gray-700 overflow-hidden hover:border-accent transition-all duration-300 hover:shadow-2xl hover:shadow-accent/10"
+                >
+                  <div 
+                    className="aspect-[4/3] relative overflow-hidden bg-gradient-to-br from-neutral-700 to-neutral-900 cursor-pointer" 
+                    onClick={() => openLightbox(project.image, project.alt, project.title)}
+                  >
+                    <img 
+                      src={project.image}
+                      alt={project.alt}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="absolute top-4 left-4">
+                      <span className="px-3 py-1 bg-accent text-white text-xs font-medium rounded-full">
+                        {project.type}
+                      </span>
+                    </div>
+                    <div className="absolute top-4 right-4">
+                      <span className="px-3 py-1 bg-neutral-900/80 text-white text-xs font-medium rounded-full">
+                        {project.category}
+                      </span>
+                    </div>
                   </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-lg font-semibold mb-2">{t('portfolio.projects.restaurant.homepage.title')}</h3>
-                  <p className="text-text-dark text-sm mb-4 leading-relaxed">
-                    {t('portfolio.projects.restaurant.homepage.description')}
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {(t('portfolio.projects.restaurant.homepage.tags', { returnObjects: true }) as string[]).map((tag: string, index: number) => (
-                      <span key={index} className="px-3 py-1 bg-accent/10 text-accent text-xs rounded-full font-medium">{tag}</span>
-                    ))}
+                  <div className="p-6">
+                    <h3 className="text-lg font-semibold mb-2">{project.title}</h3>
+                    <p className="text-text-dark text-sm mb-4 leading-relaxed">
+                      {project.description}
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {project.tags.map((tag: string, tagIndex: number) => (
+                        <span key={tagIndex} className="px-3 py-1 bg-accent/10 text-accent text-xs rounded-full font-medium">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              </motion.div>
-
-              {/* Restaurant Website - Menu */}
-              <motion.div
-                variants={item}
-                className="group bg-neutral-800 rounded-xl border border-gray-700 overflow-hidden hover:border-accent transition-all duration-300 hover:shadow-2xl hover:shadow-accent/10"
-              >
-                <div className="aspect-[4/3] relative overflow-hidden bg-gradient-to-br from-neutral-700 to-neutral-900 cursor-pointer" onClick={() => openLightbox("/restaurant/2.png", "Trattoria del Borgo menu", t('portfolio.projects.restaurant.menu.title'))}>
-                  <img 
-                    src="/restaurant/2.png"
-                    alt="Trattoria del Borgo menu"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 bg-accent text-white text-xs font-medium rounded-full">
-                      Menu
-                    </span>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-lg font-semibold mb-2">{t('portfolio.projects.restaurant.menu.title')}</h3>
-                  <p className="text-text-dark text-sm mb-4 leading-relaxed">
-                    {t('portfolio.projects.restaurant.menu.description')}
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {(t('portfolio.projects.restaurant.menu.tags', { returnObjects: true }) as string[]).map((tag: string, index: number) => (
-                      <span key={index} className="px-3 py-1 bg-accent/10 text-accent text-xs rounded-full font-medium">{tag}</span>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Restaurant Website - Gallery */}
-              <motion.div
-                variants={item}
-                className="group bg-neutral-800 rounded-xl border border-gray-700 overflow-hidden hover:border-accent transition-all duration-300 hover:shadow-2xl hover:shadow-accent/10"
-              >
-                <div className="aspect-[4/3] relative overflow-hidden bg-gradient-to-br from-neutral-700 to-neutral-900 cursor-pointer" onClick={() => openLightbox("/restaurant/1.png", "Trattoria del Borgo galleria", t('portfolio.projects.restaurant.gallery.title'))}>
-                  <img
-                    src="/restaurant/1.png"
-                    alt="Trattoria del Borgo galleria"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 bg-accent text-white text-xs font-medium rounded-full">
-                      Gallery
-                    </span>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-lg font-semibold mb-2">{t('portfolio.projects.restaurant.gallery.title')}</h3>
-                  <p className="text-text-dark text-sm mb-4 leading-relaxed">
-                    {t('portfolio.projects.restaurant.gallery.description')}
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {(t('portfolio.projects.restaurant.gallery.tags', { returnObjects: true }) as string[]).map((tag: string, index: number) => (
-                      <span key={index} className="px-3 py-1 bg-accent/10 text-accent text-xs rounded-full font-medium">{tag}</span>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Architecture Studio - Homepage */}
-              <motion.div
-                variants={item}
-                className="group bg-neutral-800 rounded-xl border border-gray-700 overflow-hidden hover:border-accent transition-all duration-300 hover:shadow-2xl hover:shadow-accent/10"
-              >
-                <div className="aspect-[4/3] relative overflow-hidden bg-gradient-to-br from-neutral-700 to-neutral-900 cursor-pointer" onClick={() => openLightbox("/studio/0.png", "Studio LineaChiara homepage", t('portfolio.projects.studio.homepage.title'))}>
-                  <img 
-                    src="/studio/0.png"
-                    alt="Studio LineaChiara homepage"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 bg-accent text-white text-xs font-medium rounded-full">
-                      Homepage
-                    </span>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-lg font-semibold mb-2">{t('portfolio.projects.studio.homepage.title')}</h3>
-                  <p className="text-text-dark text-sm mb-4 leading-relaxed">
-                    {t('portfolio.projects.studio.homepage.description')}
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {(t('portfolio.projects.studio.homepage.tags', { returnObjects: true }) as string[]).map((tag: string, index: number) => (
-                      <span key={index} className="px-3 py-1 bg-accent/10 text-accent text-xs rounded-full font-medium">{tag}</span>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Architecture Studio - Projects */}
-              <motion.div
-                variants={item}
-                className="group bg-neutral-800 rounded-xl border border-gray-700 overflow-hidden hover:border-accent transition-all duration-300 hover:shadow-2xl hover:shadow-accent/10"
-              >
-                <div className="aspect-[4/3] relative overflow-hidden bg-gradient-to-br from-neutral-700 to-neutral-900 cursor-pointer" onClick={() => openLightbox("/studio/1.png", "Studio LineaChiara progetti", t('portfolio.projects.studio.projects.title'))}>
-                  <img 
-                    src="/studio/1.png"
-                    alt="Studio LineaChiara progetti"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 bg-accent text-white text-xs font-medium rounded-full">
-                      Progetti
-                    </span>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-lg font-semibold mb-2">{t('portfolio.projects.studio.projects.title')}</h3>
-                  <p className="text-text-dark text-sm mb-4 leading-relaxed">
-                    {t('portfolio.projects.studio.projects.description')}
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {(t('portfolio.projects.studio.projects.tags', { returnObjects: true }) as string[]).map((tag: string, index: number) => (
-                      <span key={index} className="px-3 py-1 bg-accent/10 text-accent text-xs rounded-full font-medium">{tag}</span>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Architecture Studio - Contact */}
-              <motion.div
-                variants={item}
-                className="group bg-neutral-800 rounded-xl border border-gray-700 overflow-hidden hover:border-accent transition-all duration-300 hover:shadow-2xl hover:shadow-accent/10"
-              >
-                <div className="aspect-[4/3] relative overflow-hidden bg-gradient-to-br from-neutral-700 to-neutral-900 cursor-pointer" onClick={() => openLightbox("/studio/2.png", "Studio LineaChiara contatti", t('portfolio.projects.studio.contact.title'))}>
-                  <img 
-                    src="/studio/2.png"
-                    alt="Studio LineaChiara contatti"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 bg-accent text-white text-xs font-medium rounded-full">
-                      Contatti
-                    </span>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-lg font-semibold mb-2">{t('portfolio.projects.studio.contact.title')}</h3>
-                  <p className="text-text-dark text-sm mb-4 leading-relaxed">
-                    {t('portfolio.projects.studio.contact.description')}
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {(t('portfolio.projects.studio.contact.tags', { returnObjects: true }) as string[]).map((tag: string, index: number) => (
-                      <span key={index} className="px-3 py-1 bg-accent/10 text-accent text-xs rounded-full font-medium">{tag}</span>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* E-commerce Website - Homepage */}
-              <motion.div
-                variants={item}
-                className="group bg-neutral-800 rounded-xl border border-gray-700 overflow-hidden hover:border-accent transition-all duration-300 hover:shadow-2xl hover:shadow-accent/10"
-              >
-                <div className="aspect-[4/3] relative overflow-hidden bg-gradient-to-br from-neutral-700 to-neutral-900 cursor-pointer" onClick={() => openLightbox("/ecommerce/0.png", "Lana & Magia homepage", t('portfolio.projects.ecommerce.homepage.title'))}>
-                  <img 
-                    src="/ecommerce/0.png"
-                    alt="Lana & Magia homepage"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 bg-accent text-white text-xs font-medium rounded-full">
-                      Homepage
-                    </span>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-lg font-semibold mb-2">{t('portfolio.projects.ecommerce.homepage.title')}</h3>
-                  <p className="text-text-dark text-sm mb-4 leading-relaxed">
-                    {t('portfolio.projects.ecommerce.homepage.description')}
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {(t('portfolio.projects.ecommerce.homepage.tags', { returnObjects: true }) as string[]).map((tag: string, index: number) => (
-                      <span key={index} className="px-3 py-1 bg-accent/10 text-accent text-xs rounded-full font-medium">{tag}</span>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* E-commerce Website - Product */}
-              <motion.div
-                variants={item}
-                className="group bg-neutral-800 rounded-xl border border-gray-700 overflow-hidden hover:border-accent transition-all duration-300 hover:shadow-2xl hover:shadow-accent/10"
-              >
-                <div className="aspect-[4/3] relative overflow-hidden bg-gradient-to-br from-neutral-700 to-neutral-900 cursor-pointer" onClick={() => openLightbox("/ecommerce/1.png", "Lana & Magia prodotto", t('portfolio.projects.ecommerce.product.title'))}>
-                  <img 
-                    src="/ecommerce/1.png"
-                    alt="Lana & Magia prodotto"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 bg-accent text-white text-xs font-medium rounded-full">
-                      Prodotto
-                    </span>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-lg font-semibold mb-2">{t('portfolio.projects.ecommerce.product.title')}</h3>
-                  <p className="text-text-dark text-sm mb-4 leading-relaxed">
-                    {t('portfolio.projects.ecommerce.product.description')}
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {(t('portfolio.projects.ecommerce.product.tags', { returnObjects: true }) as string[]).map((tag: string, index: number) => (
-                      <span key={index} className="px-3 py-1 bg-accent/10 text-accent text-xs rounded-full font-medium">{tag}</span>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* E-commerce Website - Cart */}
-              <motion.div
-                variants={item}
-                className="group bg-neutral-800 rounded-xl border border-gray-700 overflow-hidden hover:border-accent transition-all duration-300 hover:shadow-2xl hover:shadow-accent/10"
-              >
-                <div className="aspect-[4/3] relative overflow-hidden bg-gradient-to-br from-neutral-700 to-neutral-900 cursor-pointer" onClick={() => openLightbox("/ecommerce/2.png", "Lana & Magia carrello", t('portfolio.projects.ecommerce.cart.title'))}>
-                  <img 
-                    src="/ecommerce/2.png"
-                    alt="Lana & Magia carrello"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 bg-accent text-white text-xs font-medium rounded-full">
-                      Carrello
-                    </span>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-lg font-semibold mb-2">{t('portfolio.projects.ecommerce.cart.title')}</h3>
-                  <p className="text-text-dark text-sm mb-4 leading-relaxed">
-                    {t('portfolio.projects.ecommerce.cart.description')}
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {(t('portfolio.projects.ecommerce.cart.tags', { returnObjects: true }) as string[]).map((tag: string, index: number) => (
-                      <span key={index} className="px-3 py-1 bg-accent/10 text-accent text-xs rounded-full font-medium">{tag}</span>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
+                </motion.div>
+              ))}
             </div>
 
             <motion.div variants={item} className="text-center mt-12">

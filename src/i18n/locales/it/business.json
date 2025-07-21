@@ -92,59 +92,98 @@
     "title": "Esempi di Progetti",
     "subtitle": "Scopri alcuni esempi di progetti che posso realizzare per la tua attività",
     "cta": "Discuti il Tuo Progetto",
-    "projects": {
-      "restaurant": {
-        "homepage": {
-          "title": "Sito Ristorante",
-          "description": "Homepage elegante per ristorante con design rustico, menu integrato e sistema di prenotazioni online.",
-          "tags": ["React", "Responsive", "SEO"]
-        },
-        "menu": {
-          "title": "Menu Digitale",
-          "description": "Menu digitale con categorie, prezzi, descrizioni dettagliate e sistema di filtri per allergie.",
-          "tags": ["Menu Digital", "Filtri", "Prezzi"]
-        },
-        "gallery": {
-          "title": "Galleria Fotografica",
-          "description": "Galleria fotografica per mostrare l'atmosfera del locale, i piatti e l'ambiente accogliente.",
-          "tags": ["Gallery", "Lightbox", "Categorizzata"]
-        }
+    "projects": [
+      {
+        "id": "restaurant-homepage",
+        "title": "Sito Ristorante - Homepage",
+        "category": "Ristorazione",
+        "type": "Homepage",
+        "description": "Homepage moderna per attività di ristorazione con design accattivante, menu integrato e sistema di prenotazioni online.",
+        "tags": ["React", "Responsive", "SEO"],
+        "image": "/restaurant/0.png",
+        "alt": "Homepage ristorante moderno"
       },
-      "studio": {
-        "homepage": {
-          "title": "Studio di Architettura",
-          "description": "Sito web elegante per studio di architettura con portfolio progetti, servizi e approccio sostenibile.",
-          "tags": ["Architettura", "Portfolio", "Sostenibilità"]
-        },
-        "projects": {
-          "title": "Portfolio Progetti",
-          "description": "Galleria dettagliata dei progetti realizzati con descrizioni, localizzazione e specifiche tecniche.",
-          "tags": ["Progetti", "Galleria", "Case Study"]
-        },
-        "contact": {
-          "title": "Pagina Contatti",
-          "description": "Informazioni di contatto complete con mappa interattiva, form per richieste e dettagli dello studio.",
-          "tags": ["Contatti", "Mappa", "Form"]
-        }
+      {
+        "id": "restaurant-menu",
+        "title": "Menu Digitale Interattivo",
+        "category": "Ristorazione", 
+        "type": "Menu",
+        "description": "Menu digitale con categorie organizzate, prezzi aggiornabili e sistema di filtri per allergie e preferenze alimentari.",
+        "tags": ["Menu Digital", "Filtri", "UX/UI"],
+        "image": "/restaurant/2.png",
+        "alt": "Menu digitale interattivo"
       },
-      "ecommerce": {
-        "homepage": {
-          "title": "E-commerce Homepage",
-          "description": "Homepage accattivante per negozio online con prodotti in evidenza, categorie e sistema di ricerca avanzato.",
-          "tags": ["E-commerce", "Homepage", "Ricerca"]
-        },
-        "product": {
-          "title": "Pagina Prodotto",
-          "description": "Scheda prodotto dettagliata con gallery immagini, recensioni clienti e sistema di aggiunta al carrello.",
-          "tags": ["Prodotto", "Gallery", "Recensioni"]
-        },
-        "cart": {
-          "title": "Carrello Acquisti",
-          "description": "Carrello completo con riepilogo ordine, calcolo spese e procedura di checkout sicura e veloce.",
-          "tags": ["Carrello", "Checkout", "Sicurezza"]
-        }
+      {
+        "id": "restaurant-gallery",
+        "title": "Galleria Fotografica",
+        "category": "Ristorazione",
+        "type": "Gallery", 
+        "description": "Galleria fotografica ottimizzata per mostrare l'atmosfera del locale, i piatti e l'esperienza culinaria.",
+        "tags": ["Gallery", "Lightbox", "Performance"],
+        "image": "/restaurant/1.png",
+        "alt": "Galleria fotografica ristorante"
+      },
+      {
+        "id": "studio-homepage",
+        "title": "Studio Professionale - Homepage",
+        "category": "Servizi Professionali",
+        "type": "Homepage",
+        "description": "Sito web elegante per studi professionali con portfolio servizi, approccio metodologico e presentazione del team.",
+        "tags": ["Professionale", "Portfolio", "Corporate"],
+        "image": "/studio/0.png",
+        "alt": "Homepage studio professionale"
+      },
+      {
+        "id": "studio-portfolio",
+        "title": "Portfolio Progetti",
+        "category": "Servizi Professionali",
+        "type": "Portfolio",
+        "description": "Sezione portfolio con galleria dettagliata dei progetti realizzati, case study e specifiche tecniche.",
+        "tags": ["Progetti", "Case Study", "Presentazione"],
+        "image": "/studio/1.png",
+        "alt": "Portfolio progetti professionali"
+      },
+      {
+        "id": "studio-contact",
+        "title": "Area Contatti Avanzata",
+        "category": "Servizi Professionali",
+        "type": "Contatti",
+        "description": "Pagina contatti completa con mappa interattiva, form di richiesta informazioni e dettagli di contatto.",
+        "tags": ["Contatti", "Mappa", "Lead Generation"],
+        "image": "/studio/2.png",
+        "alt": "Pagina contatti avanzata"
+      },
+      {
+        "id": "ecommerce-homepage",
+        "title": "E-commerce - Homepage",
+        "category": "E-commerce",
+        "type": "Homepage",
+        "description": "Homepage e-commerce con prodotti in evidenza, categorie navigabili e sistema di ricerca avanzato per una UX ottimale.",
+        "tags": ["E-commerce", "Vendite Online", "Conversioni"],
+        "image": "/ecommerce/0.png",
+        "alt": "Homepage e-commerce moderno"
+      },
+      {
+        "id": "ecommerce-product",
+        "title": "Scheda Prodotto Dettagliata",
+        "category": "E-commerce",
+        "type": "Prodotto",
+        "description": "Pagina prodotto completa con gallery immagini, recensioni verificate e sistema di aggiunta al carrello ottimizzato.",
+        "tags": ["Prodotto", "Recensioni", "Conversioni"],
+        "image": "/ecommerce/1.png",
+        "alt": "Scheda prodotto e-commerce"
+      },
+      {
+        "id": "ecommerce-cart",
+        "title": "Carrello e Checkout",
+        "category": "E-commerce",
+        "type": "Checkout",
+        "description": "Sistema di carrello completo con riepilogo ordine, calcolo automatico delle spese e checkout sicuro e veloce.",
+        "tags": ["Carrello", "Pagamenti", "Sicurezza"],
+        "image": "/ecommerce/2.png",
+        "alt": "Carrello e checkout e-commerce"
       }
-    }
+    ]
   },
   "benefits": {
     "title": "Perché Scegliere i Miei Servizi",
